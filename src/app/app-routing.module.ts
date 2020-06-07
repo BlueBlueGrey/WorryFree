@@ -9,11 +9,10 @@ import { RegisterComponent } from './register/register.component';
 import { ForgetComponent } from './forget/forget.component';
 import { SquareComponent } from './square/square.component';
 const routes: Routes = [
-    // { path: '',component:CoverComponent },
-    { path: '',component:SquareComponent },
-
+    { path: '',component:CoverComponent },
+    { path: 'square',component:SquareComponent },
     { path: 'login',component:LoginComponent },
-    { path: 'index',component:IndexComponent },
+    // { path: 'index',component:IndexComponent },
     { path: 'register',component:RegisterComponent },
     { path: 'forget',component:ForgetComponent }
 ];
