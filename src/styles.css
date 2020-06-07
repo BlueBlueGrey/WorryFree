@@ -1,1 +1,13 @@
 /* You can add global styles to this file, and also import other style files */
+
+html, body { height: 100%; }
+body { margin: 0; font-family: 'Roboto', sans-serif; }
+.g-green {
+    color: rgba(0, 179, 138, 1);
+}
+.g-white {
+    color: white;
+}
+.g-grey {
+    color:rgba(166, 166, 166, 1)
+}
