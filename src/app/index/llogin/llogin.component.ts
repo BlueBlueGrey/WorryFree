@@ -1,55 +1,40 @@
-// import { Component } from '@angular/core';
 
 import { Component,TemplateRef,NgModule } from '@angular/core';
 import { BsModalService } from 'ngx-bootstrap/modal';
 import { BsModalRef } from 'ngx-bootstrap/modal/bs-modal-ref.service';
 import { Http } from '@angular/http';
 import { Router }from '@angular/router'
-import { MsgService } from '../services/CommonService'
+import { MsgService } from '../../services/CommonService'
 // 映射
 @Component({
-  selector: 'app-root',
-  templateUrl: './index.html',
+  selector: 'app-llogin',
+  templateUrl: './llogin.component.html',
+  styleUrls: ['./llogin.component.css']
 })
-export class IndexComponent {
+export class LloginComponent {
   title = 'WorryFree';
+  msgService = MsgService.getInstance()
   modalRef:BsModalRef;
-  msgService = MsgService.getInstance();
-  loginFlag=true;
   constructor(private modalService:BsModalService,private http:Http,private router:Router){}
-  logout(){
-    let url='api/logout'
-    let thisa =this
-    this.http.get(url).subscribe(function(res){
-      let data=res.json()
-      if(data==1){
-        thisa.msgService.loginFlag = true
-        console.log('注销')
-        thisa.router.navigate(['/llogin'])
-      }
-    })
-  }
   ngOnInit(){
     let url='api/getSession'
-    let thisa =this
+    let thisa=this
     this.http.get(url).subscribe(function(res){
       let data=res.json()
-      console.log(data)
       if(data==0){
-        console.log('没登录ii')
-        thisa.router.navigate(['/llogin'])
+        console.log('没登录')
         thisa.msgService.loginFlag = true
       }
       else{
-        thisa.msgService.loginFlag = false
         console.log('登录')
         console.log(data['nicheng'])
+        thisa.msgService.loginFlag = false
         thisa.router.navigate(['/daohang'])
       }
     })
   }
   Register(template){
-    this.modalRef = this.modalService.show(template);
+    // this.modalRef = this.modalService.show(template);
   }
   onRegisterSubmit(form:any){
       let url = 'api/login'
@@ -63,13 +48,15 @@ export class IndexComponent {
   }
   onLoginSubmit(form:any){
     let url = 'api/login'
+    let thisa=this
     this.http.post(url,null,{params:form}).subscribe(function(res){
       
       let data =res.json()
       if(data!=1){
-        console.log("success")
+        console.log("onLoginSubmit")
         console.log(data['nicheng'])
-        // console.log(json['nicheng'])
+        thisa.router.navigate(['/daohang'])
+        thisa.msgService.loginFlag = false
       }else {
         console.log("登录失败")
       }

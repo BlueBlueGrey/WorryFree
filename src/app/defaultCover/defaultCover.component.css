@@ -1,0 +1,45 @@
+.square {
+    width: 100%;
+    padding-bottom: 50%;
+    height: 0;
+    background: url("https://s1.ax1x.com/2020/06/06/t6zS2T.jpg");
+    background-size: 100% auto;
+    padding-left:35%;
+    padding-top: 5%;
+}
+.l-p {
+    padding-left: 10px;
+}
+.r-m {
+    margin-right: 10px;
+}
+.second-part{
+    height: 400px;
+}
+.write {
+    height: 100%;
+    width: 55%;
+    padding-top:80px;
+    padding-left: 80px;
+    background-color:rgba(253, 162, 103, 1);
+}
+.message {
+    height: 100%;
+    width: 45%;
+    padding-top:80px;
+    padding-left: 80px;
+    background-color:rgba(249, 184, 135, 1);
+}
+.push {
+    height: 100%;
+    width: 45%;
+    padding-top:80px;
+    padding-left: 80px;
+    background-color: rgba(168, 1, 255, 1);;
+}
+.img {
+    width: 55%;
+    height: 100%;
+    background: url("https://s1.ax1x.com/2020/06/06/t6zZPx.jpg");
+    background-size: 100% 100%;
+}

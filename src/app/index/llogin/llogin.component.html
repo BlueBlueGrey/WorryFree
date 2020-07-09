@@ -1,0 +1,36 @@
+<div class="col-xs-3 col-sm-3" style="text-align: center;">
+  <form #loginf="ngForm" (ngSubmit)="onLoginSubmit(loginf.value)">
+    <table> 
+      <tr>
+        <td colspan="2">
+          登录
+        </td>
+      </tr>
+      <tr>
+        <td>
+          账号
+        </td>
+        <td>
+          <input type="text" name="email" class="form-control" ngModel/>
+        </td>
+      </tr>
+      <tr>
+        <td>
+          密码
+        </td>
+        <td>
+          <input type="text" name="pwd" class="form-control" ngModel/>
+        </td>
+      </tr>
+      <tr>
+        <td colspan="2" valign="buttom">
+          <input type="submit" value="登录" class="btn"/>
+          &nbsp;&nbsp;
+          <a href="javascript:void(0);">找回密码</a>
+        </td>
+      </tr>
+    </table>
+  </form>
+</div>
+
+
