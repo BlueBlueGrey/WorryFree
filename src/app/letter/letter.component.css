@@ -9,6 +9,12 @@
     justify-content: center;
     padding: 0px 60px;
 }
+input {
+    margin-top: 40px;
+    background: rgba(255, 255, 255, 0.5);
+    border: 1px solid rgba(255, 255, 255, 0.5);
+    width: 100%;
+}
 .labelg{
     text-align: center;
     line-height: 36px;
@@ -25,7 +31,7 @@
 }
 .form-control {
     padding: 20px 0;
-    margin-top: 100px;
+    margin-top: 80px;
     /* text-align: center; */
     min-height: 400px;
     background: rgba(255, 255, 255, 0.5);

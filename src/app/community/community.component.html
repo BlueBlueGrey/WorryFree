@@ -14,30 +14,98 @@
 </div>
 <div class="container">
 <div class="row">
-  <div class="cp col-md-4" *ngFor="let item of [1,2,3,4,5,6,7,8];let i = index">
+  <div class="cp col-md-4" *ngFor="let item of tablePageList;let i = index">
   <mat-card class="example-card">
     <mat-card-header>
-      <div mat-card-avatar class="example-header-image"></div>
-      <mat-card-title>Shiba Inu</mat-card-title>
-      <mat-card-subtitle>Dog Breed</mat-card-subtitle>
+      <!-- <div mat-card-avatar class="example-header-image"></div> -->
+      <mat-card-title>{{ item.letter_topic }}</mat-card-title>
+      <!-- <mat-card-subtitle>Dog Breed</mat-card-subtitle> -->
     </mat-card-header>
     <!-- <img mat-card-image src="https://material.angular.io/assets/img/examples/shiba2.jpg" alt="Photo of a Shiba Inu"> -->
-    <mat-card-content>
-      <p>
-        The Shiba Inu is the smallest of the six original and distinct spitz breeds of dog from Japan.
-        A small, agile dog that copes very well with mountainous terrain, the Shiba Inu was originally
-        bred for hunting.
-      </p>
+    <mat-card-content  class="ellipsis" (click)="popLetter(myModal,i)">
+      <div class="ellipsis">
+        {{ item.context }}
+      </div>
     </mat-card-content>
     <mat-card-actions>
-      <button mat-button>LIKE</button>
-      <button mat-button>SHARE</button>
+      <button mat-icon-button disabled>
+        <mat-icon *ngIf="item.collect_flag" aria-label="Example icon-button with a heart icon" (click)='test()'>favorite_border</mat-icon>
+        <mat-icon *ngIf="!item.collect_flag" aria-label="Example icon-button with a heart icon" (click)='test()'>favorite</mat-icon>
+      </button>
     </mat-card-actions>
   </mat-card>
 </div>
 </div>
+<div class="pagination">
+  <custom-pagination *ngIf="tablePageList.length"
+                        [fastTurnBtn]="false"
+                        [totalPage]="pageNo"
+                        [maxSize]="pageSize"
+                        [(ngModel)]="curPage"
+                        (changePage)="changePage($event)">
+  </custom-pagination>
+</div>
+
+</div>
+</div>
+<!-- <button class="btn btn-outline-primary" (click)="myModal.show()">模态框</button> -->
+<div bsModal #myModal="bs-modal" class="modal fade" tabindex="-1" role="dialog"
+    aria-labelledby="myModalLabel" aria-hidden="true">
+    <div class="modal-dialog modal-primary" role="document">
+        <div class="modal-content">
+            <div class="modal-header">
+                <h4 class="modal-title">{{ showLetter.letter_topic }}</h4>
+                <button type="button" class="close" (click)="myModal.hide()" aria-label="Close">
+                    <span aria-hidden="true">&times;</span>
+                </button>
+            </div>
+            <div class="modal-footer">
+              <p style="justify-content: flex-start;">
+                {{ showLetter.context }}
+              </p>
+                <!-- <button type="button" class="btn btn-outline-secondary">确定</button> -->
+                <button mat-icon-button disabled style="justify-content: flex-end;">
+                  <mat-icon *ngIf="!showLetter.collect_flag" aria-label="Example icon-button with a heart icon" (click)='test()'>favorite_border</mat-icon>
+        <mat-icon *ngIf="showLetter.collect_flag" aria-label="Example icon-button with a heart icon" (click)='test()'>favorite</mat-icon>
+                </button>
+            </div>
+        </div>
+    </div>
 </div>
 
 
+<!-- <button (click)='Register(template)'></button> -->
 
+<ng-template #template >
+  <div class="modal-header">
+    <h4 class="modal-title pull-left">Modal</h4>
+    <button type="button" class="close pull-right" aria-label="Close"
+    (click)="modalRef.hide()">
+    <span aria-hidden="true">&times;</span>
+    </button>
+  </div>
+  <div class="modal-body" style="width: 1200px;">
+    <p *ngFor="let item of [0,1,2,3,4,5,6,7,8,9,10,1,2,3,4,5,6,7]">
+      {{text}}
+    </p>
+    <h3>Icon Buttons</h3>
+<div class="example-button-row">
+  <button mat-icon-button>
+    <mat-icon aria-label="Example icon-button with a heart icon">favorite</mat-icon>
+  </button>
+  <button mat-icon-button color="primary">
+    <mat-icon aria-label="Example icon-button with a heart icon" (click)='test()'>favorite</mat-icon>
+  </button>
+  <button mat-icon-button color="accent">
+    <mat-icon aria-label="Example icon-button with a heart icon" (click)='test()'>favorite</mat-icon>
+  </button>
+  <button mat-icon-button color="disabled">
+    <mat-icon aria-label="Example icon-button with a heart icon" (click)='test()'>favorite_border</mat-icon>
+  </button>
+  <button mat-icon-button disabled>
+    <mat-icon aria-label="Example icon-button with a heart icon" (click)='test()'>favorite</mat-icon>
+  </button>
 </div>
+</div>
+  <button mat-button (click)='test()'><i class="material-icons">home</i></button>
+</ng-template>

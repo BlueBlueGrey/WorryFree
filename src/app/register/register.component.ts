@@ -1,5 +1,8 @@
 import { Component, OnInit } from '@angular/core';
 import { Http } from '@angular/http';
+import { ToastrService } from 'ngx-toastr';
+import { Router }from '@angular/router'
+
 @Component({
   selector: 'app-register',
   templateUrl: './register.component.html',
@@ -11,34 +14,35 @@ export class RegisterComponent implements OnInit {
   repassword: string;
   email:string;
   public anyList:any
-  constructor(private http:Http) { }
+  constructor(private http:Http,private toastr: ToastrService,private router:Router) { }
+  showSuccess() {
+    this.toastr.success('注册成功！',null,{timeOut: 1500});
+  }
+  showFail() {
+    this.toastr.error('注册失败！',null,{timeOut: 1500});
+  }
   ngOnInit() {
-    let data ={
-      "username":"xx",
-      "password":"122",
-      "email":"df"
-    };
-    this.http.post('api/register/',null,{params:data}).subscribe(
-    function (data){
-      console.log(data)
-    }
-    );
-    console.log("sdfasdfasdfas")
-    console.log("sdfasdfasdfas")
+    
   }
   register(){
-    console.log("star============");
-
-    console.log(this.name);
-    console.log(this.password);
-    console.log(this.repassword);
-    console.log(this.email);
+    let data ={
+      "username":this.name,
+      "password":this.password,
+      "email":this.email
+    };
     console.log("register============");
     // 跨域 get
-    let url = 'api/register';
-    // this.http.get(url).subscribe(function(data){
-    //   console.log(data['_body']);
-    // });
+    let url = 'api/register/';
+    let thisa=this
+    this.http.post(url,null,{params:data}).subscribe(function(res){
+      let data = res.json()
+      if(data==1){
+        thisa.showSuccess()
+        thisa.router.navigate(['/login'])
+      }else{
+        thisa.showFail()
+      }
+    });
   }
   checkPassword(event){
     console.log(event);

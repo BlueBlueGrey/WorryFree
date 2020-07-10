@@ -28,6 +28,10 @@ import { SwiperModule } from 'ngx-swiper-wrapper';
 import { SWIPER_CONFIG } from 'ngx-swiper-wrapper';
 import { SwiperConfigInterface } from 'ngx-swiper-wrapper';
 import {MatCardModule} from '@angular/material/card';
+import { ToastrModule } from 'ngx-toastr';
+import { PaginationComponent } from './pagination/pagination.component';
+import { PopupCommonComponent } from './popup.component';
+import { PopupComponent } from './popup/popup.component';
 const DEFAULT_SWIPER_CONFIG: SwiperConfigInterface = {
    direction: 'horizontal',
    slidesPerView: 'auto'
@@ -46,7 +50,10 @@ const DEFAULT_SWIPER_CONFIG: SwiperConfigInterface = {
       CommunityComponent,
       PersonComponent,
       DefaultCoverComponent,
-      LetterComponent
+      LetterComponent,
+      PaginationComponent,
+      PopupCommonComponent,
+      PopupComponent
    ],
    imports: [
       BrowserModule,
@@ -62,7 +69,8 @@ const DEFAULT_SWIPER_CONFIG: SwiperConfigInterface = {
       MatTreeModule,
       MatGridListModule,
       SwiperModule,
-      MatCardModule
+      MatCardModule,
+      ToastrModule.forRoot()
    ],
    providers: [{
       provide: SWIPER_CONFIG, 

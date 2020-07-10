@@ -13,7 +13,8 @@
     <mat-tab label="写信"></mat-tab>
     <mat-tab label="帮助"></mat-tab>
   </mat-tab-group>
-  <button mat-raised-button color="primary" class="r-m">注销</button>
+  <button *ngIf='msgService.loginFlag' mat-raised-button color="primary" class="r-m" (click)='logout()'>注销</button>
+  <button *ngIf='!msgService.loginFlag' mat-raised-button color="primary" class="r-m" [routerLink]="['/login']" >登录</button>
   </div>
 </div>
 <router-outlet></router-outlet>

@@ -1,0 +1,65 @@
+/* https://s1.ax1x.com/2020/07/06/Ui6ve1.jpg */
+.profile {
+    width: 100%;
+    /* padding-bottom: 50%; */
+    height: 100%;
+    background: url("https://s1.ax1x.com/2020/07/07/UFeK1A.jpg");
+    background-size: 100% 100%;
+    display: flex;
+    justify-content: center;
+    padding: 0px 60px;
+    color: rgba(80, 80, 80, 1);
+}
+#left {
+    flex: 0 0 200px; /* 左侧固定200px */
+    margin: 50px 10px;
+    padding-right: 12px;
+    height:90%;
+    background:rgba(255, 255, 255, 0.5);;
+  }
+  #right {
+    /* 此处解释下
+    flex: 1 1 0%
+    0%表示此处宽度是按照自身内容宽度来，此处自身内容宽度为0，但是分配剩余的空间，所以可以自适应变化
+     */
+    flex: 1; /* 随父级变化 */
+    height: 90%;
+    margin: 50px 30px;
+    background:rgba(255, 255, 255, 0.5);;
+  }
+
+.mask-box {
+    margin-top: 6%;
+    padding: 40px 60px;
+    width: 66%;
+    text-align: center;
+    min-height: 400px;
+    background: rgba(255, 255, 255, 0.5);
+
+}
+mat-grid-tile {
+    background: lightblue; 
+}
+ul li {
+  list-style: none;
+  margin-top: 8px;
+  flex-direction: column;
+  align-items: center;
+}
+
+.arrow {
+  float: right;
+  border: solid black;
+  border-width: 0 1px 1px 0;
+  display: inline-block;
+  padding: 3px;
+  margin-top: 6px;
+}
+.up {
+  transform: rotate(-135deg);
+  -webkit-transform: rotate(-135deg);
+}
+.down {
+  transform: rotate(45deg);
+  -webkit-transform: rotate(45deg);
+}

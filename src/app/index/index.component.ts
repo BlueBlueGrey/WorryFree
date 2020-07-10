@@ -15,7 +15,6 @@ export class IndexComponent {
   title = 'WorryFree';
   modalRef:BsModalRef;
   msgService = MsgService.getInstance();
-  loginFlag=true;
   constructor(private modalService:BsModalService,private http:Http,private router:Router){}
   logout(){
     let url='api/logout'
@@ -23,9 +22,10 @@ export class IndexComponent {
     this.http.get(url).subscribe(function(res){
       let data=res.json()
       if(data==1){
-        thisa.msgService.loginFlag = true
+        thisa.msgService.loginFlag = false
         console.log('注销')
-        thisa.router.navigate(['/llogin'])
+        thisa.msgService.USERNAME = ""
+        thisa.router.navigate(['/login'])
       }
     })
   }
@@ -37,11 +37,11 @@ export class IndexComponent {
       console.log(data)
       if(data==0){
         console.log('没登录ii')
-        thisa.router.navigate(['/llogin'])
-        thisa.msgService.loginFlag = true
+        thisa.router.navigate(['/login'])
+        thisa.msgService.loginFlag = false
       }
       else{
-        thisa.msgService.loginFlag = false
+        thisa.msgService.loginFlag = true
         console.log('登录')
         console.log(data['nicheng'])
         thisa.router.navigate(['/daohang'])
@@ -52,7 +52,7 @@ export class IndexComponent {
     this.modalRef = this.modalService.show(template);
   }
   onRegisterSubmit(form:any){
-      let url = 'api/login'
+      let url = 'api/register/'
       this.http.post(url,null,{params:form}).subscribe(function(data){
         
         console.log(data['_body'])
@@ -62,13 +62,12 @@ export class IndexComponent {
       });
   }
   onLoginSubmit(form:any){
-    let url = 'api/login'
+    let url = 'api/login/'
     this.http.post(url,null,{params:form}).subscribe(function(res){
-      
+      console.log(res)
       let data =res.json()
       if(data!=1){
         console.log("success")
-        console.log(data['nicheng'])
         // console.log(json['nicheng'])
       }else {
         console.log("登录失败")

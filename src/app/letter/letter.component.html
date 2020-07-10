@@ -1,17 +1,18 @@
 <div class="letter">
   <div class="container">
-   <button mat-raised-button color="primary" class="r-m" (click)="goback()">返回</button>
-  <textarea class="form-control" rows="9"></textarea>
+   <!-- <button mat-raised-button color="primary" class="r-m" (click)="goback()   ">返回</button> -->
+   <!-- <input type="text" placeholder="请输入标题" [(ngModel)]="letter_topic"> -->
+   <textarea class="form-control" rows="9" [(ngModel)]="context"></textarea>
   <div class="row" style="margin: 0px;">
       <label class="labelg">信件主题</label>
-      <select [(ngModel)]="theme">
-        <option value="0">爱情</option>
-        <option value="1">亲情</option>
-        <option value="2">人际关系</option>
-        <option value="3">学业</option>
-        <option value="4">工作</option>
-        <option value="5">压力</option>
-        <option value="6">吐槽</option>
+      <select [(ngModel)]="letter_topic">
+        <option value="爱情">爱情</option>
+        <option value="亲情">亲情</option>
+        <option value="人际关系">人际关系</option>
+        <option value="学业">学业</option>
+        <option value="求职工作">工作</option>
+        <option value="压力">压力</option>
+        <option value="吐槽">吐槽</option>
       </select>
       <label class="labelg">权限</label>
       <select [(ngModel)]="limit">
@@ -20,8 +21,8 @@
       </select>
       <div style="margin-left: auto;">
         <!-- <a mat-stroked-button routerLink=".">保存</a> -->
-        <button mat-raised-button style="float: right; box-shadow: rgba(128, 128, 128, 1) solid 1px;">保存</button>
-        <button mat-raised-button style="box-shadow: rgba(128, 128, 128, 1) solid 1px;">提交</button>
+        <button mat-raised-button style="float: right; box-shadow: rgba(128, 128, 128, 1) solid 1px;" (click)="submit(0)">保存</button>
+        <button mat-raised-button style="box-shadow: rgba(128, 128, 128, 1) solid 1px;" (click)="submit(1)">提交</button>
       </div>
   </div>
 </div>

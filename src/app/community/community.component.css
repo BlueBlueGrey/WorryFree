@@ -2,6 +2,46 @@
 .container {
     background-color:rgba(61, 189, 182, 1) ;
 }
+.example-card{
+    max-height: 300px;
+}
+
+.ellipsis{
+    display: block;
+    display: -webkit-box;
+    max-width: 400px;
+    height: 130px;
+    margin: 0 auto;
+    font-size: 16px;
+    line-height: 1.5;
+    -webkit-line-clamp: 3;
+    -webkit-box-orient: vertical;
+    overflow: hidden;
+    text-overflow: ellipsis;
+}
+
+.modal-dialog {
+    max-width: 100%;
+    /* padding-bottom: 50%; */
+    min-height: 70%;
+    height: auto;
+    /* padding-bottom: 80px; */
+    /* https://s1.ax1x.com/2020/07/10/UuV736.jpg
+    https://ss0.bdstatic.com/70cFvHSh_Q1YnxGkpoWK1HF6hhy/it/u=1200585275,1465101733&fm=26&gp=0.jpg */
+    background: url("https://s1.ax1x.com/2020/07/08/UZvv4A.jpg");
+    background-size: 100% auto;
+    background-repeat: repeat-y;
+    display: flex;
+    justify-content: center;
+    margin: 100px;
+}
+.modal-content {
+    margin: 0;
+    padding: 80px 60px;
+    width: 66%;
+    background: rgba(255, 255, 255, 0.5);
+}
+
 .swiper-container {
     /* padding-tip: 50px; */
     width: 1200px;
@@ -20,3 +60,9 @@
 .cp {
     padding: 0px 15px;
 }
+.pagination {
+    display: flex;
+    justify-content: center;
+}
+
+

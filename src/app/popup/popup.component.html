@@ -1,0 +1,10 @@
+<div class="popup-mask">
+  <div class="popup-maskBox">
+      <div class="popup-maskContentBox" [ngStyle]="getStyle()">
+          <ng-content select=".popup-title"></ng-content>
+          <ng-content select=".popup-content"></ng-content>
+          <ng-content select=".popup-footer"></ng-content>
+          <span class="fa fa-close close-icon" *ngIf="closebtn" (click)="closePopupFn()"></span>
+      </div>
+  </div>
+</div>

@@ -1,5 +1,6 @@
 export class MsgService {
-    loginFlag = true;
+    loginFlag = false;
+    USERNAME ="";
     static instance;
     static getInstance(){
         if(!MsgService.instance){

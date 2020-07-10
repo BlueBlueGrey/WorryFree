@@ -26,13 +26,13 @@
       <!-- <div style="background-color: black;width: 50%;height: 100%;"></div> -->
         <div class="text">用户登录</div>
 
-        <input type="text" placeholder="请输入邮箱">
-        <input type="text" placeholder="请输入密码">
+        <input type="text" placeholder="请输入用户名" [(ngModel)]="username">
+        <input type="password" placeholder="请输入密码" [(ngModel)]="password">
         <div class="form-inline re-fo g-green" style="padding-top: 20px;width: 100%;">
            <a routerLink="/register">立即注册</a>
            <a routerLink="/forget"> 忘记密码</a>
         </div>
-        <button class="log-btn btn btn-large btn-block" width="100%" routerLink="/square">登录</button>
+        <button class="log-btn btn btn-large btn-block" width="100%" (click)='onLoginSubmit()'>登录</button>
     </div>
 </div>
     </div>

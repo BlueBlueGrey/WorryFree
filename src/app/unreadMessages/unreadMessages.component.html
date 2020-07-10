@@ -1,3 +1,41 @@
-<p>
-  unreadMessages works!
-</p>
+<div class="unread-Messages">
+  <aside id="left">
+    <ul>
+      <li class=""><i class="material-icons">home</i>个人资料</li>
+      <li class="" (click)='showCollect=!showCollect'>我的收藏
+        <i  class="arrow" [ngClass]="{'up': showCollect, 'down': !showCollect}"></i>
+      </li>
+      <li *ngIf='showCollect'>
+        <ul style="padding-left: 20px;">
+          <li class="" >信件</li>
+          <li class="" >心理知识</li>
+          <li class="" >心理测试</li>
+        </ul>
+      </li>
+      <li class="" (click)='showMailbox=!showMailbox'>我的信箱
+        <i class="arrow" [ngClass]="{'up': showMailbox, 'down': !showMailbox}"></i>
+      </li>
+      <li *ngIf='showMailbox'>
+        <ul style="padding-left: 20px;">
+          <li class="" (click)='showMail=!showMail'>我的信件
+            <i class="arrow" [ngClass]="{'up': showMail, 'down': !showMail}"></i>
+          </li>
+          <li *ngIf='showMail'>
+            <ul style="padding-left: 20px;">
+              <li class="">公开信件</li>
+              <li class="">隐私信件</li>
+              <li class="">草稿</li>
+            </ul>
+          </li>
+          <li class="" >我的回信</li>
+          <li class="" >垃圾箱</li>
+        </ul>
+      </li>
+  
+    </ul>
+  </aside>
+  <section id="right">
+    
+  </section>
+</div>
+

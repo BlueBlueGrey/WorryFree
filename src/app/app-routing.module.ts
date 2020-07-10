@@ -21,35 +21,35 @@ import {  DaohangComponent } from './index/daohang/daohang.component'
 import {  PubQuesComponent } from './index/nav/pubques.component'
 // import { QuillModule } from 'ngx-quill';
 const routes: Routes = [
-    { path: '',component:IndexComponent,
-    children:[
-        {
-            path:'llogin',
-            component:LloginComponent
-        },
-        {
-            path:'daohang',
-            component:DaohangComponent,
-            children:[
-                {
-                    path:'pubque',
-                    component:PubQuesComponent,
-                },
-                // {
-                //     path:'',
-                //     component: ,
-                // },
-                // {
-                //     path:'',
-                //     component: ,
-                // }
-                // {
-                //     path:'',
-                //     component: ,
-                // }
-            ]
-        },
-    ]
+    { path: '',component:CoverComponent,
+    // children:[
+    //     {
+    //         path:'llogin',
+    //         component:LloginComponent
+    //     },
+    //     {
+    //         path:'daohang',
+    //         component:DaohangComponent,
+    //         children:[
+    //             {
+    //                 path:'pubque',
+    //                 component:PubQuesComponent,
+    //             },
+    //             // {
+    //             //     path:'',
+    //             //     component: ,
+    //             // },
+    //             // {
+    //             //     path:'',
+    //             //     component: ,
+    //             // }
+    //             // {
+    //             //     path:'',
+    //             //     component: ,
+    //             // }
+    //         ]
+    //     },
+    // ]
     },
     { path: 'square',
     component:SquareComponent,
@@ -77,11 +77,12 @@ const routes: Routes = [
         {
             path:'help',
             component: HelpComponent
-        }
+        },
+        { path: 'letter',component:LetterComponent },
     ]    
 },
     { path: 'login',component:LoginComponent },
-    { path: 'letter',component:LetterComponent },
+   
     { path: 'index',component:IndexComponent },
     { path: 'register',component:RegisterComponent },
     { path: 'forget',component:ForgetComponent }

@@ -52,14 +52,15 @@ export class LloginComponent {
     this.http.post(url,null,{params:form}).subscribe(function(res){
       
       let data =res.json()
-      if(data!=1){
-        console.log("onLoginSubmit")
-        console.log(data['nicheng'])
-        thisa.router.navigate(['/daohang'])
-        thisa.msgService.loginFlag = false
-      }else {
-        console.log("登录失败")
-      }
+      console.log(data)
+      // if(data!=1){
+      //   console.log("onLoginSubmit")
+      //   console.log(data['nicheng'])
+      //   thisa.router.navigate(['/daohang'])
+      //   thisa.msgService.loginFlag = false
+      // }else {
+      //   console.log("登录失败")
+      // }
     });
 }
 }
