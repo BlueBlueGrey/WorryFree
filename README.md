@@ -56,4 +56,4 @@ https://www.jianshu.com/p/7c6c31c12c41
 
 ​	  启动成功之后打开 http://localhost:4200/  
 
-​	5、修改代码，使用git 提交修改
+​	5、修改代码，使用git 提交修改。
