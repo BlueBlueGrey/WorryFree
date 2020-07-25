@@ -88,9 +88,15 @@ export class CommunityComponent implements OnInit {
   getPageList2(str,x) {
     let url='api/all_message'
     let thisa =  this
-   
+    console.log("asdfadsfasdf")
+    console.log(str)
+    console.log("asdfadsfasdf")
+    if(str!=="")
+    {
+      str = "'"+str+"'"
+    }
     let params={ 
-      letter_topic:"'爱情'",
+      letter_topic:str,
       page:x
    }
   console.log(params)

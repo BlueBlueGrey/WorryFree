@@ -19,9 +19,13 @@ import {  LetterComponent } from './letter/letter.component'
 import {  LloginComponent } from './index/llogin/llogin.component'
 import {  DaohangComponent } from './index/daohang/daohang.component'
 import {  PubQuesComponent } from './index/nav/pubques.component'
+import {  TestComponent } from './test/test.component'
 // import { QuillModule } from 'ngx-quill';
 const routes: Routes = [
     { path: '',component:CoverComponent,
+    },
+    {
+        path:'test',component:TestComponent
     },
     { path: 'square',
     component:SquareComponent,

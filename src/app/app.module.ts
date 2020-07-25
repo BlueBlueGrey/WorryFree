@@ -53,7 +53,7 @@ const DEFAULT_SWIPER_CONFIG: SwiperConfigInterface = {
       LetterComponent,
       PaginationComponent,
       PopupCommonComponent,
-      PopupComponent
+      PopupComponent,
    ],
    imports: [
       BrowserModule,
@@ -81,3 +81,10 @@ const DEFAULT_SWIPER_CONFIG: SwiperConfigInterface = {
    ]
 })
 export class AppModule { }
+
+/*
+ providers: [{
+      provide: SWIPER_CONFIG, 
+      useValue: DEFAULT_SWIPER_CONFIG
+   }],
+ */
