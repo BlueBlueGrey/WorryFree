@@ -42,6 +42,7 @@ export class IndexComponent {
       }
       else{
         thisa.msgService.loginFlag = true
+        
         console.log('登录')
         console.log(data['nicheng'])
         thisa.router.navigate(['/daohang'])

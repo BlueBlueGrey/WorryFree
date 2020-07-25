@@ -52,7 +52,7 @@ https://www.jianshu.com/p/7c6c31c12c41
 
   	npm install  # 下载依赖
 
-​	  ng start  # 启动项目，默认是4200 端口
+​	  npm start  # 启动项目，默认是4200 端口
 
 ​	  启动成功之后打开 http://localhost:4200/  
 

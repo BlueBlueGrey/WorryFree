@@ -1,41 +1,53 @@
 <div class="profile">
-  <aside id="left">
+  <aside id="left" class="xleft">
     <ul>
-      <li class=""><i class="material-icons">home</i>个人资料</li>
-      <li class="" (click)='showCollect=!showCollect'>我的收藏
-        <i  class="arrow" [ngClass]="{'up': showCollect, 'down': !showCollect}"></i>
-      </li>
-      <li *ngIf='showCollect'>
-        <ul style="padding-left: 20px;">
-          <li class="" >信件</li>
-          <li class="" >心理知识</li>
-          <li class="" >心理测试</li>
-        </ul>
-      </li>
-      <li class="" (click)='showMailbox=!showMailbox'>我的信箱
-        <i class="arrow" [ngClass]="{'up': showMailbox, 'down': !showMailbox}"></i>
-      </li>
-      <li *ngIf='showMailbox'>
-        <ul style="padding-left: 20px;">
-          <li class="" (click)='showMail=!showMail'>我的信件
-            <i class="arrow" [ngClass]="{'up': showMail, 'down': !showMail}"></i>
-          </li>
-          <li *ngIf='showMail'>
-            <ul style="padding-left: 20px;">
-              <li class="">公开信件</li>
-              <li class="">隐私信件</li>
-              <li class="">草稿</li>
-            </ul>
-          </li>
-          <li class="" >我的回信</li>
-          <li class="" >垃圾箱</li>
-        </ul>
-      </li>
+    
+      
+      <li class="">抑郁症</li>
+      <li class="">焦虑症</li>
+      <li class="">恋爱心理</li>
+      <li class="">亲子关系</li>
+      <li>人际交往障碍</li>
+      <li></li>
   
     </ul>
   </aside>
-  <section id="right">
-    
+  <section id="right" class="xright">
+    <div class="push">
+     <div class="yleft">
+      <img style=" width: 100%;
+      height: 100%;" src="https://ossimg.xinli001.com/20200619/ef419321d341b0cf3cf2ebac318866d8.jpeg?x-oss-process=image/quality,Q_80" alt="Photo of a Shiba Inu">
+     </div>
+     <div class="yright">
+      <div class="title">安全感：亲密关系的第一步</div>
+      <div class="con">在恋爱关系中，我们常常被传说中的“安全感”牵着鼻子走，女生总说她没有安全感，，那么这个虚无缥缈的安全感到底是什么呢？安全感是个体对可能出现的身心危险的预感以及在应对相关情境时的无力感，主要表现为确定感。。。
+
+      </div>
+      <div class="tim">2020-06-19</div>
+     </div>
+   </div>
+    <!-- <div class="">
+
+    </div>
+    <mat-card class="example-card">
+      <mat-card-header>
+        <div mat-card-avatar class="example-header-image"></div>
+        <mat-card-title>Shiba Inu</mat-card-title>
+        <mat-card-subtitle>Dog Breed</mat-card-subtitle>
+      </mat-card-header>
+      <img mat-card-image src="https://material.angular.io/assets/img/examples/shiba2.jpg" alt="Photo of a Shiba Inu">
+      <mat-card-content>
+        <p>
+          The Shiba Inu is the smallest of the six original and distinct spitz breeds of dog from Japan.
+          A small, agile dog that copes very well with mountainous terrain, the Shiba Inu was originally
+          bred for hunting.
+        </p>
+      </mat-card-content>
+      <mat-card-actions>
+        <button mat-button>LIKE</button>
+        <button mat-button>SHARE</button>
+      </mat-card-actions>
+    </mat-card> -->
   </section>
 </div>
 

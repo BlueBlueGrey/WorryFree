@@ -22,34 +22,6 @@ import {  PubQuesComponent } from './index/nav/pubques.component'
 // import { QuillModule } from 'ngx-quill';
 const routes: Routes = [
     { path: '',component:CoverComponent,
-    // children:[
-    //     {
-    //         path:'llogin',
-    //         component:LloginComponent
-    //     },
-    //     {
-    //         path:'daohang',
-    //         component:DaohangComponent,
-    //         children:[
-    //             {
-    //                 path:'pubque',
-    //                 component:PubQuesComponent,
-    //             },
-    //             // {
-    //             //     path:'',
-    //             //     component: ,
-    //             // },
-    //             // {
-    //             //     path:'',
-    //             //     component: ,
-    //             // }
-    //             // {
-    //             //     path:'',
-    //             //     component: ,
-    //             // }
-    //         ]
-    //     },
-    // ]
     },
     { path: 'square',
     component:SquareComponent,
