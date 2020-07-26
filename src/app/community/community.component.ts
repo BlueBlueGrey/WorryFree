@@ -16,7 +16,7 @@ export class CommunityComponent implements OnInit {
   //假数据
   modalRef:BsModalRef;
   showLetter:{}
-
+  msgService = MsgService.getInstance()
   tablePageList = [];  //分页后前台显示数据
   pageNo = 0; //当前页码
   preShow = false; //上一页
@@ -81,7 +81,7 @@ export class CommunityComponent implements OnInit {
       thisa.setPageParams()
       for(var i=0;i<data.length-1;i++){
         thisa.tablePageList.push(data[i])
-     }
+      }
     })
 
   }
@@ -188,7 +188,21 @@ export class CommunityComponent implements OnInit {
     this.getPageList2(this.themes[index],1)
 
   }
-  test(){
-    console.log("o k ok ")
+  collect(letterId,flag){
+    console.log("c")
+    console.log(letterId)
+    let url='api/collect_letter'
+    let thisa =  this
+    let params={ 
+      letter_topic:letterId,
+      username: thisa.msgService.USERNAME
+     }
+    console.log(params)
+    this.http.get(url,{params:params}).subscribe(function(res){
+      let data = res.json()
+      console.log(data)
+      console.log("show success")
+      
+      })
   }
 }

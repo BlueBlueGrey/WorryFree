@@ -41,7 +41,9 @@
     width: 66%;
     background: rgba(255, 255, 255, 0.5);
 }
-
+.modal-footer {
+    display: inline;
+}
 .swiper-container {
     /* padding-tip: 50px; */
     width: 1200px;

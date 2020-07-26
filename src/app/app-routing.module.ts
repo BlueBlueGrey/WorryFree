@@ -19,7 +19,7 @@ import {  LetterComponent } from './letter/letter.component'
 import {  LloginComponent } from './index/llogin/llogin.component'
 import {  DaohangComponent } from './index/daohang/daohang.component'
 import {  PubQuesComponent } from './index/nav/pubques.component'
-// import { QuillModule } from 'ngx-quill';
+import { ViewletterComponent } from './viewletter/viewletter.component'
 const routes: Routes = [
     { path: '',component:CoverComponent,
     },
@@ -54,10 +54,11 @@ const routes: Routes = [
     ]    
 },
     { path: 'login',component:LoginComponent },
-   
+    { path: 'letter',component:LetterComponent },
     { path: 'index',component:IndexComponent },
     { path: 'register',component:RegisterComponent },
-    { path: 'forget',component:ForgetComponent }
+    { path: 'forget',component:ForgetComponent },
+    { path: 'viewletter',component:ViewletterComponent }
 ];
 
 

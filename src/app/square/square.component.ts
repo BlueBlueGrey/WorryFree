@@ -32,7 +32,15 @@ export class SquareComponent implements OnInit {
         console.log(data['username'])
         thisa.router.navigate(['/square'])
       }
-    })
+    });
+    console.log(this.activatedroute)
+    this.activatedroute.data.subscribe(function(res){
+
+        console.log("------");
+        console.log(res)
+        console.log("------");
+
+    });
   }
   selectedIndexChange(index){
     if(index==0){
@@ -40,8 +48,8 @@ export class SquareComponent implements OnInit {
       this.selectedIndex=0
       
     }else if(index==5){
-      this.route.navigate(['letter'],{relativeTo: this.activatedroute});
-      // this.route.navigate(['letter'])
+      // this.route.navigate(['letter'],{relativeTo: this.activatedroute});
+      this.route.navigate(['letter'])
     }
     else
     {

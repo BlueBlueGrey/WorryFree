@@ -3,29 +3,40 @@
     <ul>
     
       
-      <li class="">抑郁症</li>
-      <li class="">焦虑症</li>
-      <li class="">恋爱心理</li>
-      <li class="">亲子关系</li>
+      <li class="" (click)="refreshTheme('抑郁症')">抑郁症</li>
+      <li class="" (click)="refreshTheme('焦虑症')">焦虑症</li>
+      <li class="" (click)="refreshTheme('恋爱心理')">恋爱心理</li>
+      <li class="" (click)="refreshTheme('亲子关系')">亲子关系</li>
       <li>人际交往障碍</li>
       <li></li>
   
     </ul>
   </aside>
   <section id="right" class="xright">
-    <div class="push">
+    <div class="push" *ngFor="let item of tablePageList;let i=index">
      <div class="yleft">
       <img style=" width: 100%;
-      height: 100%;" src="https://ossimg.xinli001.com/20200619/ef419321d341b0cf3cf2ebac318866d8.jpeg?x-oss-process=image/quality,Q_80" alt="Photo of a Shiba Inu">
+      height: 100%;" [src]="item.url" alt="Photo of a Shiba Inu">
      </div>
      <div class="yright">
-      <div class="title">安全感：亲密关系的第一步</div>
-      <div class="con">在恋爱关系中，我们常常被传说中的“安全感”牵着鼻子走，女生总说她没有安全感，，那么这个虚无缥缈的安全感到底是什么呢？安全感是个体对可能出现的身心危险的预感以及在应对相关情境时的无力感，主要表现为确定感。。。
+      <div class="title">{{ item.title }}</div>
+      <div class="con">{{ item.context }}
 
       </div>
-      <div class="tim">2020-06-19</div>
+      <div class="tim">{{ item.date }}</div>
      </div>
+     
    </div>
+   
+   <div class="pagination">
+    <custom-pagination *ngIf="tablePageList.length"
+                          [fastTurnBtn]="false"
+                          [totalPage]="pageNo"
+                          [maxSize]="pageSize"
+                          [(ngModel)]="curPage"
+                          (changePage)="changePage($event)">
+    </custom-pagination>
+  </div>
     <!-- <div class="">
 
     </div>

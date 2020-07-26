@@ -32,6 +32,7 @@ import { ToastrModule } from 'ngx-toastr';
 import { PaginationComponent } from './pagination/pagination.component';
 import { PopupCommonComponent } from './popup.component';
 import { PopupComponent } from './popup/popup.component';
+import { ViewletterComponent } from './viewletter/viewletter.component';
 const DEFAULT_SWIPER_CONFIG: SwiperConfigInterface = {
    direction: 'horizontal',
    slidesPerView: 'auto'
@@ -54,6 +55,7 @@ const DEFAULT_SWIPER_CONFIG: SwiperConfigInterface = {
       PaginationComponent,
       PopupCommonComponent,
       PopupComponent,
+      ViewletterComponent
    ],
    imports: [
       BrowserModule,
@@ -73,7 +75,7 @@ const DEFAULT_SWIPER_CONFIG: SwiperConfigInterface = {
       ToastrModule.forRoot()
    ],
    providers: [{
-      provide: SWIPER_CONFIG,
+      provide: SWIPER_CONFIG, 
       useValue: DEFAULT_SWIPER_CONFIG
    }],
    bootstrap: [

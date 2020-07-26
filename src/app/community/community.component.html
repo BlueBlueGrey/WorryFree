@@ -1,6 +1,4 @@
-
 <div style="background-color: rgba(61, 189, 182, 1);">
-
 <div class="swiper-container" [swiper]='config'>
   <div class="swiper-wrapper">
       <div class="swiper-slide" *ngFor="let item of swiperList;let i = index">
@@ -29,8 +27,8 @@
     </mat-card-content>
     <mat-card-actions>
       <button mat-icon-button disabled>
-        <mat-icon *ngIf="item.collect_flag" aria-label="Example icon-button with a heart icon" (click)='test()'>favorite_border</mat-icon>
-        <mat-icon *ngIf="!item.collect_flag" aria-label="Example icon-button with a heart icon" (click)='test()'>favorite</mat-icon>
+        <mat-icon *ngIf="item.collect_flag" aria-label="Example icon-button with a heart icon" (click)='collect(item.letterID,0)'>favorite_border</mat-icon>
+        <mat-icon *ngIf="!item.collect_flag" aria-label="Example icon-button with a heart icon" (click)='collect(item.letterID,1)'>favorite</mat-icon>
       </button>
     </mat-card-actions>
   </mat-card>
@@ -60,14 +58,17 @@
                 </button>
             </div>
             <div class="modal-footer">
-              <p style="justify-content: flex-start;">
+              <p style="white-space: pre-wrap;
+              word-wrap: break-word;">
                 {{ showLetter.context }}
               </p>
+              <div style="float: right;">
                 <!-- <button type="button" class="btn btn-outline-secondary">确定</button> -->
                 <button mat-icon-button disabled style="justify-content: flex-end;">
                   <mat-icon *ngIf="!showLetter.collect_flag" aria-label="Example icon-button with a heart icon" (click)='test()'>favorite_border</mat-icon>
         <mat-icon *ngIf="showLetter.collect_flag" aria-label="Example icon-button with a heart icon" (click)='test()'>favorite</mat-icon>
                 </button>
+              </div>
             </div>
         </div>
     </div>
