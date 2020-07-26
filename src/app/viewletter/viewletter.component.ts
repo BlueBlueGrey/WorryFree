@@ -1,4 +1,4 @@
-import { Component, OnInit } from '@angular/core';
+import { Component, OnInit, Input } from '@angular/core';
 import { MsgService } from '../services/CommonService'
 import { Router,ActivatedRoute } from '@angular/router';
 import { Http } from "@angular/http"
@@ -14,7 +14,7 @@ export class ViewletterComponent implements OnInit {
   letter_topic="";
   context="";
   msgService = MsgService.getInstance()
-  
+  id=""
   constructor(public route:Router,public activatedroute:ActivatedRoute,private toastr: ToastrService,private http:Http,private router:Router) { }
   showSuccess(str) {
     this.toastr.success(str,null,{timeOut: 1500});
@@ -24,6 +24,9 @@ export class ViewletterComponent implements OnInit {
   }
   ngOnInit(){
     let url='api/getSession'
+    this.id = this.activatedroute.snapshot.params['id']
+    console.log("id")
+    console.log(this.id)
     let thisa =this
     this.http.get(url).subscribe(function(res){
       let data=res.json()

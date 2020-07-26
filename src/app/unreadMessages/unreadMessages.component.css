@@ -45,8 +45,11 @@ ul li {
   margin-top: 8px;
   flex-direction: column;
   align-items: center;
+  cursor:pointer;
 }
-
+ul {
+  position: relative;
+}
 .arrow {
   float: right;
   border: solid black;
@@ -54,6 +57,10 @@ ul li {
   display: inline-block;
   padding: 3px;
   margin-top: 6px;
+}
+.material-icons{
+  position: absolute;
+  left: 8px;
 }
 .up {
   transform: rotate(-135deg);

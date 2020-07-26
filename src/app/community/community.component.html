@@ -20,7 +20,7 @@
       <!-- <mat-card-subtitle>Dog Breed</mat-card-subtitle> -->
     </mat-card-header>
     <!-- <img mat-card-image src="https://material.angular.io/assets/img/examples/shiba2.jpg" alt="Photo of a Shiba Inu"> -->
-    <mat-card-content  class="ellipsis" (click)="popLetter(myModal,i)">
+    <mat-card-content  class="ellipsis" [routerLink]="['/viewletter',item.letterID]" [queryParams]="{id:1}">
       <div class="ellipsis">
         {{ item.context }}
       </div>

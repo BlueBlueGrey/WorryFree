@@ -3,6 +3,7 @@
     <ul>
       <li class=""><i class="material-icons">home</i>个人资料</li>
       <li class="" (click)='showCollect=!showCollect'>我的收藏
+        <i class="material-icons">email</i>
         <i  class="arrow" [ngClass]="{'up': showCollect, 'down': !showCollect}"></i>
       </li>
       <li *ngIf='showCollect'>
@@ -12,7 +13,7 @@
           <li class="" >心理测试</li>
         </ul>
       </li>
-      <li class="" (click)='showMailbox=!showMailbox'>我的信箱
+      <li class="" (click)='showMailbox=!showMailbox'><i class="material-icons">&#xe89b;</i>我的信箱
         <i class="arrow" [ngClass]="{'up': showMailbox, 'down': !showMailbox}"></i>
       </li>
       <li *ngIf='showMailbox'>
@@ -35,7 +36,7 @@
     </ul>
   </aside>
   <section id="right">
-    
+    <router-outlet></router-outlet>
   </section>
 </div>
 

@@ -129,7 +129,7 @@ export class CommunityComponent implements OnInit {
   changePage(event){
       console.log("change")
       console.log(this.curPage)
-      let page=this.curPage+""
+      let page=this.curPage
       this.getPageList2(this.theme,page)
   }
   ngOnInit() {
@@ -186,7 +186,7 @@ export class CommunityComponent implements OnInit {
     this.tablePageList=[]
     this.theme=this.themes[index]
     this.getPageList2(this.themes[index],1)
-
+    this.curPage=1
   }
   collect(letterId,flag){
     console.log("c")

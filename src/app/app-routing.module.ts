@@ -20,6 +20,7 @@ import {  LloginComponent } from './index/llogin/llogin.component'
 import {  DaohangComponent } from './index/daohang/daohang.component'
 import {  PubQuesComponent } from './index/nav/pubques.component'
 import { ViewletterComponent } from './viewletter/viewletter.component'
+import { PersonalDataComponent } from './profile/personalData/personalData.component'
 const routes: Routes = [
     { path: '',component:CoverComponent,
     },
@@ -32,7 +33,17 @@ const routes: Routes = [
         },
         {
             path:'person',
-            component: PersonComponent
+            component: PersonComponent,
+            children:[
+                {
+                    path:'',
+                    component:PersonalDataComponent
+                },
+                {
+                    path:'dada',
+                    component:PersonalDataComponent
+                }
+            ]
         },
         {
             path:'community',
@@ -58,7 +69,7 @@ const routes: Routes = [
     { path: 'index',component:IndexComponent },
     { path: 'register',component:RegisterComponent },
     { path: 'forget',component:ForgetComponent },
-    { path: 'viewletter',component:ViewletterComponent }
+    { path: 'viewletter/:id',component:ViewletterComponent }
 ];
 
 

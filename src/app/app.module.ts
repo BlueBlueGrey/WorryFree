@@ -33,6 +33,8 @@ import { PaginationComponent } from './pagination/pagination.component';
 import { PopupCommonComponent } from './popup.component';
 import { PopupComponent } from './popup/popup.component';
 import { ViewletterComponent } from './viewletter/viewletter.component';
+import { PersonalDataComponent } from './profile/personalData/personalData.component'
+import { from } from 'rxjs';
 const DEFAULT_SWIPER_CONFIG: SwiperConfigInterface = {
    direction: 'horizontal',
    slidesPerView: 'auto'
@@ -55,7 +57,8 @@ const DEFAULT_SWIPER_CONFIG: SwiperConfigInterface = {
       PaginationComponent,
       PopupCommonComponent,
       PopupComponent,
-      ViewletterComponent
+      ViewletterComponent,
+      PersonalDataComponent
    ],
    imports: [
       BrowserModule,

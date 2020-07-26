@@ -41,12 +41,15 @@ mat-grid-tile {
     background: lightblue; 
 }
 ul li {
+  cursor:pointer;
   list-style: none;
   margin-top: 8px;
   flex-direction: column;
   align-items: center;
 }
-
+ul{
+  position: relative;
+}
 .arrow {
   float: right;
   border: solid black;
@@ -62,4 +65,8 @@ ul li {
 .down {
   transform: rotate(45deg);
   -webkit-transform: rotate(45deg);
+}
+.material-icons{
+  position: absolute;
+  left: 8px;
 }
