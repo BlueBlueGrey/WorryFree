@@ -141,13 +141,10 @@ export class CommunityComponent implements OnInit {
       "collect_flag":0
     };
     this.getPageList();
-    this.themes=["爱情","亲情","人际关系","学业","求职工作",
+    this.themes=["学业","求职工作","人际关系","亲情","爱情",
     "压力","吐槽"]
     this.swiperList = [
       {
-      
-
-
           imgUrl: 'https://s1.ax1x.com/2020/07/09/UekoIf.jpg'
       },
       {
