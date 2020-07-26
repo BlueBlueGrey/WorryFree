@@ -184,6 +184,7 @@ export class CommunityComponent implements OnInit {
   freshLetter(index){
     console.log(index)
     this.tablePageList=[]
+    this.theme=this.themes[index]
     this.getPageList2(this.themes[index],1)
 
   }
