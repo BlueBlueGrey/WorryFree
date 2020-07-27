@@ -3,33 +3,41 @@
     width: 100%;
     /* padding-bottom: 50%; */
     height: auto;
-    background: url("https://s1.ax1x.com/2020/07/07/UFeK1A.jpg");
+    background: url("https://s1.ax1x.com/2020/06/06/t6zpxU.jpg");
     background-size: 100% auto;
     background-repeat:repeat;
-    display: flex;
-    justify-content: center;
-    padding: 0px 60px;
+    position: relative;
+    /* display: flex; */
+    /* justify-content: center; */
+    padding: 50px 0px;
     color: rgba(80, 80, 80, 1);
 }
 .xleft {
-    flex: 0 0 200px; /* 左侧固定200px */
-    margin: 50px 10px;
+    /* flex: 0 0 200px; 左侧固定200px */
+    position: fixed;
+    top:50px;
+    left: 30px;
+    width: 200px;
     padding-right: 12px;
     height:500px;
-    background:rgba(255, 255, 255, 0.5);;
+    background:rgba(255, 255, 255, 0.5);
   }
   .xright {
     /* 此处解释下
     flex: 1 1 0%
     0%表示此处宽度是按照自身内容宽度来，此处自身内容宽度为0，但是分配剩余的空间，所以可以自适应变化
      */
-    flex: 1; /* 随父级变化 */
-    height: 90%;
-    margin: 50px 30px;
-    background:rgba(255, 255, 255, 0.5);;
+    /* flex: 1; 随父级变化 */
+    position: relative;
+    left: 300px;
+    width: 70%;
+    /* height: 90%; */
+    /* margin: 50px 30px; */
+    /* background:rgba(255, 255, 255, 0.5); */
   }
   .yleft { 
     position: absolute;
+    padding: 20px;
     top: 0px;
     width: 30%;
     left: 0px;
@@ -40,22 +48,26 @@
     top: 0px;
     right:0px;
     width: 70%;
+    padding: 20px;
     height: 100%;
-    padding: 10px;
-    /* background-color:rgba(162, 162, 162, 1); */
+    background-color: white;
     
   }
   .title {
     font-size:24px;
-    padding:5px
+    padding:5px;
+    color:rgba(80, 80, 80, 1);
   }
   .con {
     font-size:15px;
     overflow: hidden;
     height: 100px;
+    color: rgba(80, 80, 80, 1);
   }
-  .time {
-    font-size:16px
+  .tim {
+    padding: 5px;
+    font-size:16px;
+    color: rgba(166, 166, 166, 1);
   }
   #img {
     width: 100%;
@@ -64,9 +76,10 @@
   .push{
     position: relative;
     width: 100%;
-    height: 200px;
+    margin-bottom:50px;
+    height: 220px;
     /* position: absolute; */
-     background-color: white; 
+    background:rgba(255, 255, 255, 0.5);
   }
 
 .mask-box {
