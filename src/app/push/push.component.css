@@ -2,7 +2,7 @@
 .profile {
     width: 100%;
     /* padding-bottom: 50%; */
-    height: auto;
+    min-height: 100%;
     background: url("https://s1.ax1x.com/2020/06/06/t6zpxU.jpg");
     background-size: 100% auto;
     background-repeat:repeat;

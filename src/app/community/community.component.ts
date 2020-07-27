@@ -92,10 +92,6 @@ export class CommunityComponent implements OnInit {
     console.log("asdfadsfasdf")
     console.log(str)
     console.log("asdfadsfasdf")
-    if(str!=="")
-    {
-      str = "'"+str+"'"
-    }
     let params={ 
       letter_topic:str,
       page:x,
