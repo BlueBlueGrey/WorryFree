@@ -16,14 +16,14 @@ export class PushComponent implements OnInit {
   showMailbox=false;
   showMail=false;
   tablePageList = [];  //分页后前台显示数据
-  pageNo = 0; //当前页码
+  pageNo = 0; //一共多少页
   preShow = false; //上一页
   nextShow = true; //下一页
   pageSize = 4; //单页显示数
   totalCount:0; //总页数
   curPage = 0; //当前页
   showPupup = false;
-  theme="抑郁症"
+  theme=""
   constructor(private http:Http,private router:Router) { }
 
   ngOnInit() {
@@ -32,7 +32,7 @@ export class PushComponent implements OnInit {
     let thisa =  this
     let params={ 
       page:1,
-      top: "\"抑郁症\""
+      top: ""
      }
     console.log(params)
     this.http.get(url,{params:params}).subscribe(function(res){
@@ -84,17 +84,15 @@ export class PushComponent implements OnInit {
 
 refreshTheme(str){
   console.log("refreshTheme")
+  this.curPage=1
+  this.tablePageList=[]
+  this.theme=str
   this.getPageList2(str,1);
 }
 getPageList2(str,x) {
-  let url='api/send_xinli_messag'
+  let url='api/send_xinli_message'
   let thisa =  this
   console.log("getPageList2")
-
-  if(str!=="")
-  {
-    str = "'"+str+"'"
-  }
   let params={ 
     page:x,
     top:str

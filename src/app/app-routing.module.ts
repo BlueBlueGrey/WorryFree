@@ -21,6 +21,7 @@ import {  DaohangComponent } from './index/daohang/daohang.component'
 import {  PubQuesComponent } from './index/nav/pubques.component'
 import { ViewletterComponent } from './viewletter/viewletter.component'
 import { PersonalDataComponent } from './profile/personalData/personalData.component'
+import { MyLetterComponent } from './myLetter/myLetter.component'
 const routes: Routes = [
     { path: '',component:CoverComponent,
     },
@@ -42,6 +43,10 @@ const routes: Routes = [
                 {
                     path:'dada',
                     component:PersonalDataComponent
+                },
+                {
+                    path:'myletter',
+                    component:MyLetterComponent
                 }
             ]
         },

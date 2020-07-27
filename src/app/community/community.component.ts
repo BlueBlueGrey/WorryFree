@@ -66,6 +66,7 @@ export class CommunityComponent implements OnInit {
     console.log("aaaa")
     let prams={ 
       letter_topic:"",
+      username:this.msgService.USERNAME,
       page:'1'
     }
     this.http.get(url,{params:prams}).subscribe(function(res){
@@ -97,7 +98,8 @@ export class CommunityComponent implements OnInit {
     }
     let params={ 
       letter_topic:str,
-      page:x
+      page:x,
+      username:this.msgService.USERNAME
    }
   console.log(params)
     this.http.get(url,{params:params}).subscribe(function(res){
@@ -188,21 +190,41 @@ export class CommunityComponent implements OnInit {
     this.getPageList2(this.themes[index],1)
     this.curPage=1
   }
-  collect(letterId,flag){
-    console.log("c")
+  collect(letterId,index){
+    console.log("collect")
     console.log(letterId)
     let url='api/collect_letter'
     let thisa =  this
-    let params={ 
-      letter_topic:letterId,
+    let params={
+      letterID:letterId,
       username: thisa.msgService.USERNAME
      }
     console.log(params)
     this.http.get(url,{params:params}).subscribe(function(res){
       let data = res.json()
-      console.log(data)
-      console.log("show success")
-      
+      if(data.data=="collect success"){
+        thisa.tablePageList[index].collect_flag=!thisa.tablePageList[index].collect_flag
+        console.log("show success")
+      }
+      })
+  }
+  deleteCollect(letterId,index){
+    console.log("deleteCollect")
+    console.log(letterId)
+    let url='api/delete_collect_letter'
+    let thisa =  this
+    let params={
+      letterID:letterId,
+      username: thisa.msgService.USERNAME
+     }
+    console.log(params)
+    this.http.get(url,{params:params}).subscribe(function(res){
+      let data = res.json()
+      // console.log("show success")
+      if(data.data=="delete collect success"){
+        thisa.tablePageList[index].collect_flag=!thisa.tablePageList[index].collect_flag
+        console.log("delete collect success")
+      }
       })
   }
 }

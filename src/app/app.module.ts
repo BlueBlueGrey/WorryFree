@@ -35,6 +35,7 @@ import { PopupComponent } from './popup/popup.component';
 import { ViewletterComponent } from './viewletter/viewletter.component';
 import { PersonalDataComponent } from './profile/personalData/personalData.component'
 import { from } from 'rxjs';
+import { MyLetterComponent } from './myLetter/myLetter.component';
 const DEFAULT_SWIPER_CONFIG: SwiperConfigInterface = {
    direction: 'horizontal',
    slidesPerView: 'auto'
@@ -58,7 +59,8 @@ const DEFAULT_SWIPER_CONFIG: SwiperConfigInterface = {
       PopupCommonComponent,
       PopupComponent,
       ViewletterComponent,
-      PersonalDataComponent
+      PersonalDataComponent,
+      MyLetterComponent
    ],
    imports: [
       BrowserModule,
