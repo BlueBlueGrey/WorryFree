@@ -23,9 +23,9 @@
           </li>
           <li *ngIf='showMail'>
             <ul style="padding-left: 20px;">
-              <li class="" [routerLink]="['myletter']">公开信件</li>
-              <li class="">隐私信件</li>
-              <li class="">草稿</li>
+              <li class="" [routerLink]="['myletter',0]">公开信件</li>
+              <li class="" [routerLink]="['myletter',1]">隐私信件</li>
+              <li class="" [routerLink]="['myletter',2]">草稿</li>
             </ul>
           </li>
           <li class="" >我的回信</li>

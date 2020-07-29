@@ -1,6 +1,8 @@
 import { Component, OnInit } from '@angular/core';
 import { MsgService } from '../services/CommonService'
 import { Http } from '@angular/http';
+import { Router,ActivatedRoute,NavigationEnd,ActivationEnd } from '@angular/router';
+import 'rxjs/add/operator/filter'
 @Component({
   selector: 'app-myLetter',
   templateUrl: './myLetter.component.html',
@@ -9,7 +11,16 @@ import { Http } from '@angular/http';
 export class MyLetterComponent implements OnInit {
 
   msgService = MsgService.getInstance();
-  constructor(private http:Http) { }
+  constructor(private http:Http,private activatedroute:ActivatedRoute, router:Router) { 
+    this.router=router
+    let thisa=this
+    router.events.filter(event=>event instanceof NavigationEnd).subscribe((event:NavigationEnd)=>{
+      thisa.flag = thisa.activatedroute.snapshot.params['flag']
+      thisa.getPageList();
+      thisa.curPage=1;
+    
+    })
+  }
   tablePageList=[];
   pageNo = 0; //当前页码
   preShow = false; //上一页
@@ -17,6 +28,8 @@ export class MyLetterComponent implements OnInit {
   pageSize = 6; //单页显示数
   totalCount:0; //总页数
   curPage = 0; //当前页
+  flag=0;
+  private router:Router;
   ngOnInit() {
     this.getPageList();
   }
@@ -46,54 +59,19 @@ export class MyLetterComponent implements OnInit {
 
   }
 
-  getPageList() {
+  getPageList(str="",x=1) {
     let url='api/all_message'
     let thisa =  this
-    console.log("aaaa")
-    let prams={ 
-      letter_topic:"",
-      username:this.msgService.USERNAME,
-      page:'1'
-    }
-    this.http.get(url,{params:prams}).subscribe(function(res){
-      let data = res.json()
-      console.log(data)
-      console.log("getPageList")
-      // console.log(res)
-      thisa.tablePageList=[]
-      let len = data.length-1
-      thisa.totalCount = data[len]['all_count']
-      console.log(data[len]['all_count'])
-      console.log(thisa.totalCount)
-      thisa.setPageParams()
-      for(var i=0;i<data.length-1;i++){
-        thisa.tablePageList.push(data[i])
-      }
-    })
-
-  }
-  getPageList2(str,x) {
-    let url='api/all_message'
-    let thisa =  this
-    console.log("asdfadsfasdf")
-    console.log(str)
-    console.log("asdfadsfasdf")
     let params={ 
       letter_topic:str,
       page:x,
       username:this.msgService.USERNAME
    }
-  console.log(params)
-    this.http.get(url,{params:params}).subscribe(function(res){
+      this.http.get(url,{params:params}).subscribe(function(res){
       let data = res.json()
-      console.log(data)
-      console.log("getPageList")
-      // console.log(res)
       thisa.tablePageList=[]
       let len = data.length-1
       thisa.totalCount = data[len]['all_count']
-      console.log(data[len]['all_count'])
-      console.log(thisa.totalCount)
       thisa.setPageParams()
       for(var i=0;i<data.length-1;i++){
         thisa.tablePageList.push(data[i])
@@ -103,10 +81,8 @@ export class MyLetterComponent implements OnInit {
 
   }
   changePage(event){
-    console.log("change")
-    console.log(this.curPage)
     let page=this.curPage
-    this.getPageList2("",page)
+    this.getPageList("",page)
   }
 
 }

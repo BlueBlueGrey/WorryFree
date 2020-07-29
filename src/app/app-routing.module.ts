@@ -49,7 +49,7 @@ const routes: Routes = [
                     component:PersonalDataComponent
                 },
                 {
-                    path:'myletter',
+                    path:'myletter/:flag',
                     component:MyLetterComponent
                 }
             ]

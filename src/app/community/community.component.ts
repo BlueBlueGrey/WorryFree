@@ -59,55 +59,19 @@ export class CommunityComponent implements OnInit {
 
   }
 
-
-  getPageList() {
+  getPageList(str="",x=1) {
     let url='api/all_message'
     let thisa =  this
-    console.log("aaaa")
-    let prams={ 
-      letter_topic:"",
-      username:this.msgService.USERNAME,
-      page:'1'
-    }
-    this.http.get(url,{params:prams}).subscribe(function(res){
-      let data = res.json()
-      console.log(data)
-      console.log("getPageList")
-      // console.log(res)
-      thisa.tablePageList=[]
-      let len = data.length-1
-      thisa.totalCount = data[len]['all_count']
-      console.log(data[len]['all_count'])
-      console.log(thisa.totalCount)
-      thisa.setPageParams()
-      for(var i=0;i<data.length-1;i++){
-        thisa.tablePageList.push(data[i])
-      }
-    })
-
-  }
-  getPageList2(str,x) {
-    let url='api/all_message'
-    let thisa =  this
-    console.log("asdfadsfasdf")
-    console.log(str)
-    console.log("asdfadsfasdf")
     let params={ 
       letter_topic:str,
       page:x,
       username:this.msgService.USERNAME
    }
-  console.log(params)
     this.http.get(url,{params:params}).subscribe(function(res){
       let data = res.json()
-      console.log(data)
-      console.log("getPageList")
-      // console.log(res)
       thisa.tablePageList=[]
       let len = data.length-1
       thisa.totalCount = data[len]['all_count']
-      console.log(data[len]['all_count'])
-      console.log(thisa.totalCount)
       thisa.setPageParams()
       for(var i=0;i<data.length-1;i++){
         thisa.tablePageList.push(data[i])
@@ -118,17 +82,14 @@ export class CommunityComponent implements OnInit {
   }
 
   popLetter(template,index){
-    console.log("popLetter")
     template.show()
     this.showLetter=this.tablePageList[index]
     // this.modalRef = this.modalService.show(template);
   }
 
   changePage(event){
-      console.log("change")
-      console.log(this.curPage)
       let page=this.curPage
-      this.getPageList2(this.theme,page)
+      this.getPageList(this.theme,page)
   }
   ngOnInit() {
     this.showLetter={
@@ -180,22 +141,18 @@ export class CommunityComponent implements OnInit {
 
   }
   freshLetter(index){
-    console.log(index)
     this.tablePageList=[]
     this.theme=this.themes[index]
-    this.getPageList2(this.themes[index],1)
+    this.getPageList(this.themes[index],1)
     this.curPage=1
   }
   collect(letterId,index){
-    console.log("collect")
-    console.log(letterId)
     let url='api/collect_letter'
     let thisa =  this
     let params={
       letterID:letterId,
       username: thisa.msgService.USERNAME
      }
-    console.log(params)
     this.http.get(url,{params:params}).subscribe(function(res){
       let data = res.json()
       if(data.data=="collect success"){
@@ -205,18 +162,14 @@ export class CommunityComponent implements OnInit {
       })
   }
   deleteCollect(letterId,index){
-    console.log("deleteCollect")
-    console.log(letterId)
     let url='api/delete_collect_letter'
     let thisa =  this
-    let params={
+    let params= {
       letterID:letterId,
       username: thisa.msgService.USERNAME
-     }
-    console.log(params)
+    }
     this.http.get(url,{params:params}).subscribe(function(res){
       let data = res.json()
-      // console.log("show success")
       if(data.data=="delete collect success"){
         thisa.tablePageList[index].collect_flag=!thisa.tablePageList[index].collect_flag
         console.log("delete collect success")
