@@ -1,7 +1,10 @@
 <div style="margin-bottom:10px" *ngFor="let item of tablePageList ;let i=index">
-<app-letterItem [Obj]=item>
+<app-letterItem [Obj]=item [flag]="isCollect" *ngIf="!isPush" [isTrash]="isTrash">
 
 </app-letterItem>
+<app-pushItem [item]=item *ngIf="isPush" (fromChild)='fromChildFunc($event)'>
+
+</app-pushItem>
 </div>
 <div class="pagination">
   <custom-pagination *ngIf="tablePageList.length"

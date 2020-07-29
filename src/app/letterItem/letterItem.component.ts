@@ -15,7 +15,8 @@ export class LetterItemComponent implements OnInit {
   }
   
   @Input() Obj;
-
+  @Input() flag;
+  @Input() isTrash;
   collect(letterId){
     let url='api/collect_letter'
     let thisa =  this

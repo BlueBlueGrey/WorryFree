@@ -1,7 +1,3 @@
-
-
-
-
 import { Component, OnInit, Injectable,TemplateRef,NgModule } from '@angular/core';
 import { Http } from '@angular/http';
 import { Router }from '@angular/router'
@@ -27,28 +23,7 @@ export class PushComponent implements OnInit {
   constructor(private http:Http,private router:Router) { }
 
   ngOnInit() {
-    console.log("push")
-    let url='api/send_xinli_message'
-    let thisa =  this
-    let params={ 
-      page:1,
-      top: ""
-     }
-    console.log(params)
-    this.http.get(url,{params:params}).subscribe(function(res){
-      console.log("api/send_xinli_messag")
-      let data = res.json()
-      console.log(data)
-      let len = data.length-1
-      thisa.totalCount=data[len]['all_count']
-      thisa.tablePageList=[]
-      for(var i=0;i<data.length-1;i++){
-        thisa.tablePageList.push(data[i])
-      }
-      console.log("show success")
-      console.log(thisa.tablePageList)
-      thisa.setPageParams()
-      })
+    this.getPageList()
   }
   setPageParams(){
     let len = this.totalCount
@@ -76,38 +51,28 @@ export class PushComponent implements OnInit {
 
   }
   changePage(event){
-    console.log("change")
-    console.log(this.curPage)
-    let page=this.curPage+""
-    this.getPageList2(this.theme,page)
+    this.getPageList(this.theme,this.curPage)
 }
 
 refreshTheme(str){
-  console.log("refreshTheme")
   this.curPage=1
   this.tablePageList=[]
   this.theme=str
-  this.getPageList2(str,1);
+  this.getPageList(str,1);
 }
-getPageList2(str,x) {
+
+getPageList(str="",x=1) {
   let url='api/send_xinli_message'
   let thisa =  this
-  console.log("getPageList2")
   let params={ 
     page:x,
     top:str
    }
-console.log(params)
   this.http.get(url,{params:params}).subscribe(function(res){
     let data = res.json()
-    console.log(data)
-    console.log("getPageList")
-    // console.log(res)
     thisa.tablePageList=[]
     let len = data.length-1
-    thisa.totalCount = data[len]['all_count']
-    console.log(data[len]['all_count'])
-    console.log(thisa.totalCount)
+    thisa.totalCount = data[len]['all_count'] 
     thisa.setPageParams()
     for(var i=0;i<data.length-1;i++){
       thisa.tablePageList.push(data[i])

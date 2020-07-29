@@ -51,6 +51,10 @@ const routes: Routes = [
                 {
                     path:'myletter/:flag',
                     component:MyLetterComponent
+                },
+                {
+                    path:'collect/:flag',
+                    component:MyLetterComponent
                 }
             ]
         },

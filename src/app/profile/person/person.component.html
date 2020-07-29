@@ -8,8 +8,8 @@
       </li>
       <li *ngIf='showCollect'>
         <ul style="padding-left: 20px;">
-          <li class="" >信件</li>
-          <li class="" >心理知识</li>
+          <li class="" [routerLink]="['collect','letter']">信件</li>
+          <li class="" [routerLink]="['collect','push']">心理知识</li>
           <li class="" >心理测试</li>
         </ul>
       </li>
@@ -23,13 +23,13 @@
           </li>
           <li *ngIf='showMail'>
             <ul style="padding-left: 20px;">
-              <li class="" [routerLink]="['myletter',0]">公开信件</li>
-              <li class="" [routerLink]="['myletter',1]">隐私信件</li>
-              <li class="" [routerLink]="['myletter',2]">草稿</li>
+              <li class="" [routerLink]="['myletter','public']">公开信件</li>
+              <li class="" [routerLink]="['myletter','privacy']">隐私信件</li>
+              <li class="" [routerLink]="['myletter','draft']">草稿</li>
             </ul>
           </li>
           <li class="" >我的回信</li>
-          <li class="" >垃圾箱</li>
+          <li class="" [routerLink]="['myletter','trash']">垃圾箱</li>
         </ul>
       </li>
   

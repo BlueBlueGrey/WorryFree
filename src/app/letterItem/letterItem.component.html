@@ -4,12 +4,18 @@
         Obj.context
       }}
     </div>
-    <div class="bottom">
-      <span>举报</span>
-      <div style="width: 1px;height: 20px; background: black;margin-right: 13px;"></div>
-      <button mat-icon-button disabled style="justify-content: flex-end;">
-        <mat-icon *ngIf="!Obj.collect_flag" aria-label="Example icon-button with a heart icon" (click)='collect(Obj.letterID)'>favorite_border</mat-icon>
-        <mat-icon *ngIf="Obj.collect_flag" aria-label="Example icon-button with a heart icon" style="color: pink;" (click)='deleteCollect(Obj.letterID)'>favorite</mat-icon>
-      </button>
+    <div class="bottom" *ngIf="!flag">
+      <a href="">删除</a>
+      <div class="line"></div>
+      <a *ngIf="!isTrash" href="">修改</a>
+      <a *ngIf="isTrash" href="">还原</a>
     </div>
+    <div class="bottom" *ngIf="flag">
+      <a href="">举报</a>
+      <div class="line"></div>
+    <button mat-icon-button disabled>
+      <mat-icon *ngIf="!Obj.collect_flag" aria-label="Example icon-button with a heart icon" (click)='collect(Obj.letterID)'>favorite_border</mat-icon>
+      <mat-icon *ngIf="Obj.collect_flag" aria-label="Example icon-button with a heart icon" style="color: pink;" (click)='deleteCollect(Obj.letterID)'>favorite</mat-icon>
+    </button>
+  </div>
 </div>

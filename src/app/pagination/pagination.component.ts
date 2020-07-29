@@ -41,7 +41,6 @@ export class PaginationComponent implements OnInit,OnChanges {
     }
   }
   prevNextPage (page) {
-    console.log(this.currentPage)
     if (this.totalPage < 2) {
       return;
     }
@@ -89,7 +88,6 @@ export class PaginationComponent implements OnInit,OnChanges {
         this.handlePagesData(startPage, this.showEndPage);
       }
     }
-    console.log(this.showPageList)
   }
   initPages () { // 根据传入的参数初始化页码
     if (this.totalPage > this.maxSize) {

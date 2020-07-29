@@ -9,13 +9,18 @@ import 'rxjs/add/operator/filter'
   styleUrls: ['./myLetter.component.css']
 })
 export class MyLetterComponent implements OnInit {
-
+  isCollect=false;
+  isPush=false;
+  isTrash=false;
   msgService = MsgService.getInstance();
   constructor(private http:Http,private activatedroute:ActivatedRoute, router:Router) { 
     this.router=router
     let thisa=this
     router.events.filter(event=>event instanceof NavigationEnd).subscribe((event:NavigationEnd)=>{
-      thisa.flag = thisa.activatedroute.snapshot.params['flag']
+      thisa.flag = thisa.activatedroute.snapshot.params['flag'];  
+      thisa.isCollect= thisa.flag=='letter'?true:false; 
+      thisa.isPush= thisa.flag=='push'?true:false; 
+      thisa.isTrash= thisa.flag=='trash'?true:false; 
       thisa.getPageList();
       thisa.curPage=1;
     
@@ -28,7 +33,7 @@ export class MyLetterComponent implements OnInit {
   pageSize = 6; //单页显示数
   totalCount:0; //总页数
   curPage = 0; //当前页
-  flag=0;
+  flag="";
   private router:Router;
   ngOnInit() {
     this.getPageList();
@@ -61,13 +66,26 @@ export class MyLetterComponent implements OnInit {
 
   getPageList(str="",x=1) {
     let url='api/all_message'
+    // if(this.flag == 'public'){
+    // }else{
+    //   url = this.flag == 'privacy' ? 'api/all_message': 'api/all_message';
+    // }
     let thisa =  this
     let params={ 
       letter_topic:str,
       page:x,
       username:this.msgService.USERNAME
    }
-      this.http.get(url,{params:params}).subscribe(function(res){
+   let params2={
+    page:x,
+    top:str
+  };
+  let p= (this.flag == 'push'?params2:params);
+   if(this.flag == 'push'){
+    url='api/send_xinli_message'
+  }
+  
+      this.http.get(url,{params:p}).subscribe(function(res){
       let data = res.json()
       thisa.tablePageList=[]
       let len = data.length-1
@@ -84,5 +102,7 @@ export class MyLetterComponent implements OnInit {
     let page=this.curPage
     this.getPageList("",page)
   }
-
+  fromChildFunc(data){
+    console.log(data)
+  }
 }
