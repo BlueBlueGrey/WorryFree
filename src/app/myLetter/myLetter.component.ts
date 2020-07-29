@@ -108,42 +108,5 @@ export class MyLetterComponent implements OnInit {
     let page=this.curPage
     this.getPageList2("",page)
   }
-  collect(letterId,index){
-    console.log("collect")
-    console.log(letterId)
-    let url='api/collect_letter'
-    let thisa =  this
-    let params={
-      letterID:letterId,
-      username: thisa.msgService.USERNAME
-     }
-    console.log(params)
-    // this.http.get(url,{params:params}).subscribe(function(res){
-    //   let data = res.json()
-    //   if(data.data=="collect success"){
-    //     thisa.tablePageList[index].collect_flag=!thisa.tablePageList[index].collect_flag
-    //     console.log("show success")
-    //   }
-    //   })
-  }
-  deleteCollect(letterId,index){
-    console.log("deleteCollect")
-    console.log(letterId)
-    let url='api/delete_collect_letter'
-    let thisa =  this
-    let params={
-      letterID:letterId,
-      username: thisa.msgService.USERNAME
-     }
-    console.log(params)
-    // this.http.get(url,{params:params}).subscribe(function(res){
-    //   let data = res.json()
-    //   // console.log("show success")
-    //   if(data.data=="delete collect success"){
-    //     thisa.tablePageList[index].collect_flag=!thisa.tablePageList[index].collect_flag
-    //     console.log("delete collect success")
-    //   }
-    //   })
-  }
 
 }
