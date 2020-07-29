@@ -1,7 +1,7 @@
 <div class="profile">
   <aside id="left">
     <ul>
-      <li class=""><i class="material-icons">home</i>个人资料</li>
+      <li class="" [routerLink]="['personalData']"><i class="material-icons">home</i>个人资料</li>
       <li class="" (click)='showCollect=!showCollect'>我的收藏
         <i class="material-icons">email</i>
         <i  class="arrow" [ngClass]="{'up': showCollect, 'down': !showCollect}"></i>

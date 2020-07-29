@@ -1,3 +1,14 @@
-<p>
-  myLetter works!
-</p>
+<div style="margin-bottom:10px" *ngFor="let item of tablePageList ;let i=index">
+<app-letterItem [Obj]=item>
+
+</app-letterItem>
+</div>
+<div class="pagination">
+  <custom-pagination *ngIf="tablePageList.length"
+                        [fastTurnBtn]="false"
+                        [totalPage]="pageNo"
+                        [maxSize]="pageSize"
+                        [(ngModel)]="curPage"
+                        (changePage)="changePage($event)">
+  </custom-pagination>
+</div>

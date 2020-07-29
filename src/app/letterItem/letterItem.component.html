@@ -1,0 +1,15 @@
+<div class="item">
+    <div class="context" [routerLink]="['/viewletter',Obj.letterID]">
+      {{
+        Obj.context
+      }}
+    </div>
+    <div class="bottom">
+      <span>举报</span>
+      <div style="width: 1px;height: 20px; background: black;margin-right: 13px;"></div>
+      <button mat-icon-button disabled style="justify-content: flex-end;">
+        <mat-icon *ngIf="!Obj.collect_flag" aria-label="Example icon-button with a heart icon" (click)='collect(Obj.letterID)'>favorite_border</mat-icon>
+        <mat-icon *ngIf="Obj.collect_flag" aria-label="Example icon-button with a heart icon" style="color: pink;" (click)='deleteCollect(Obj.letterID)'>favorite</mat-icon>
+      </button>
+    </div>
+</div>

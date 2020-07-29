@@ -41,6 +41,10 @@ const routes: Routes = [
                     component:PersonalDataComponent
                 },
                 {
+                    path:'personalData',
+                    component:PersonalDataComponent
+                },
+                {
                     path:'dada',
                     component:PersonalDataComponent
                 },

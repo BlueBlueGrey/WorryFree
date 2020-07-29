@@ -6,7 +6,8 @@ import { Component, OnInit } from '@angular/core';
   styleUrls: ['./personalData.component.css']
 })
 export class PersonalDataComponent implements OnInit {
-
+  username="test";
+  password="1234512345"
   constructor() { }
 
   ngOnInit() {
