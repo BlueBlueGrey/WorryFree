@@ -82,7 +82,7 @@ const routes: Routes = [
             path:'help',
             component: HelpComponent
         },
-        { path: 'letter',component:LetterComponent },
+        { path: 'letter/:id',component:LetterComponent },
     ]    
 },
     { path: 'login',component:LoginComponent },

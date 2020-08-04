@@ -5,13 +5,14 @@
       }}
     </div>
     <div class="bottom" *ngIf="!flag">
-      <a href="">删除</a>
+      <button  mat-button color="primary" (click)="delete()">删除</button>
       <div class="line"></div>
-      <a *ngIf="!isTrash" href="">修改</a>
-      <a *ngIf="isTrash" href="">还原</a>
-    </div>
+      <button *ngIf="!isTrash"  color="primary" mat-button [routerLink]="['/square/letter',this.Obj.letter_id]">修改</button>
+      <!-- <a *ngIf="isTrash" href="">还原</a> -->
+      <button  *ngIf="isTrash" mat-button color="primary" (click)="recover()">还原</button>
+    </div> 
     <div class="bottom" *ngIf="flag">
-      <a (click)="report(Obj.letter_id)">举报</a>
+      <button (click)="report(Obj.letter_id)" mat-button color="primary">举报</button>
       <div class="line"></div>
     <button mat-icon-button disabled>
       <mat-icon *ngIf="!Obj.collect_flag" aria-label="Example icon-button with a heart icon" (click)='collect(Obj.letterID)'>favorite_border</mat-icon>

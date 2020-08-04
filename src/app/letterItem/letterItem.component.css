@@ -27,3 +27,6 @@ a{
     padding: 8px;
     cursor:pointer;
 }
+.mat-icon-button{
+    width: 80px;
+}

@@ -54,19 +54,6 @@ export class LoginComponent implements OnInit {
       }
     })
 
-    console.log(Md5.hashStr('加密'));
-    //十六进制字符串，32位小写，常用
-    //56563edf23b9d717dc63981b8836fc60
-    console.log(Md5.hashStr('加密', true));
-    //32 位二补码有符号整数,大小4字节
-    // [-549562794, 400013603, 462971868, 1627141768]
-    console.log(Md5.hashAsciiStr('加密'));
-    //十六进制字符串
-    //2228f0e9007f05342a4be3f5377d8a29
-    console.log(Md5.hashAsciiStr('加密', true));
-    //32 位二补码有符号整数,大小4字节
-    //[-370137054, 872775424, -169653462, 696941879]
-
   }
   
   onLoginSubmit(){

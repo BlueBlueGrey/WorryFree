@@ -7,7 +7,7 @@
 <a mat-button routerLink="community">广场社区</a>
 <a mat-button routerLink="push">心理知识推送</a>
 <a mat-button routerLink="person/myreply">未读消息提醒</a>
-<a mat-button routerLink="letter">写信</a>
+<a mat-button [routerLink]="['letter','']">写信</a>
 <a mat-button routerLink="help">帮助</a>
 <button *ngIf='msgService.loginFlag' mat-raised-button color="primary" class="r-m" (click)='logout()'>注销</button>
 <button *ngIf='!msgService.loginFlag' mat-raised-button color="primary" class="r-m" [routerLink]="['/login']" >登录</button>

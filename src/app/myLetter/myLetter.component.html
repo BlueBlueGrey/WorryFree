@@ -1,5 +1,5 @@
 <div style="margin-bottom:10px" *ngFor="let item of tablePageList ;let i=index">
-<app-letterItem [Obj]=item [flag]="isCollect" *ngIf="!isPush" [isTrash]="isTrash">
+<app-letterItem [Obj]=item [flag]="isCollect" *ngIf="!isPush" [isTrash]="isTrash" (fromChild)="fromChildFunc($event)">
 
 </app-letterItem>
 <!-- <app-pushItem [item]=item *ngIf="isPush" (fromChild)='fromChildFunc($event)'>

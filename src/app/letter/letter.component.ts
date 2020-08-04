@@ -4,6 +4,7 @@ import { Router,ActivatedRoute } from '@angular/router';
 import { Http } from "@angular/http"
 import { ToastrService } from 'ngx-toastr';
 import { Md5 } from "ts-md5/dist/md5";
+import { AES, mode, pad, enc } from 'crypto-js';
 @Component({
   selector: 'app-letter',
   templateUrl: './letter.component.html',
@@ -13,9 +14,23 @@ export class LetterComponent implements OnInit {
   limit=0;
   letter_topic="爱情";
   context="";
+  id=0;
+  isEdit=false;
   msgService = MsgService.getInstance()
   
-  constructor(public route:Router,public activatedroute:ActivatedRoute,private toastr: ToastrService,private http:Http,private router:Router) { }
+  constructor(public route:Router,public activatedroute:ActivatedRoute,private toastr: ToastrService,private http:Http,private router:Router) { 
+    this.id = this.activatedroute.snapshot.params['id'];
+    console.log(this.id)
+    if(this.id)
+    {
+      this.isEdit=true
+      console.log("this.isEdit=true")
+      
+    }
+    else{
+      console.log("write")
+    }
+  }
   showSuccess(str) {
     this.toastr.success(str,null,{timeOut: 1500});
   }
@@ -54,7 +69,28 @@ export class LetterComponent implements OnInit {
     }
     return true;
   }
+  encryptByEnAES(data: string): string {
+    let Key = "123456";
+    let tmpAES = AES.encrypt(data, Key, {
+      mode: mode.CBC,
+      padding: pad.Pkcs7
+    });
+    return tmpAES.toString();
+  }
+  encryptByDeAES(data: string): string {
+    let Key = "123456";
+    let tmpDeAES = AES.decrypt(data, Key, {
+      mode: mode.CBC,
+      padding: pad.Pkcs7
+    });
+    return tmpDeAES.toString(enc.Utf8);
+  }
   submit(f){
+
+    // console.log(this.context)
+    // let s=this.encryptByEnAES(this.context)
+    // console.log(s)
+    // console.log(this.encryptByDeAES(s))
 
     if(this.checkLogin()){
       let data = {
@@ -64,15 +100,14 @@ export class LetterComponent implements OnInit {
         'right':this.limit,
         'context':this.context
       }
-      console.log(this.context)
-      let s=Md5.hashStr(this.context)
-      console.log(s);
       let url='api/write_letter/save'
       let thisa=this
       this.http.post(url,null,{params:data}).subscribe(function(res){
           let data=res.json()
+          console.log(data)
           data=data.data
-          if(data=='save success'){
+          console.log(data)
+          if(data=='reply success'){
             if(f==0){
               thisa.showSuccess('保存成功')
             }

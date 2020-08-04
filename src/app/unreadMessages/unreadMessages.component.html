@@ -1,5 +1,7 @@
 <div class="unread-Messages">
- 
+  <div *ngIf="tablePageList.length==0" class="nothing">
+    nothing......
+    </div>
     <div style="margin-bottom:10px" *ngFor="let Obj of tablePageList ;let i=index">
 
       <div class="item">

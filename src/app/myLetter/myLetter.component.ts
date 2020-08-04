@@ -113,9 +113,13 @@ export class MyLetterComponent implements OnInit {
           url='api/show_my_collect';
           isLetter=true;
           break;
+        case 'trash':
+          url='api/show_rubbish_letter'
+          isLetter=true;
+          break;
     }
    if(isLetter){
-     if(this.isCollect){
+     if(this.isCollect||this.isTrash){
       params={
         username:this.msgService.USERNAME,
         page:x,
@@ -159,7 +163,10 @@ export class MyLetterComponent implements OnInit {
     this.getPageList("",page)
   }
   fromChildFunc(data){
+    console.log("sdfasdff")
     console.log(data)
+
+    this.getPageList("",1)
   }
   
 }
