@@ -37,9 +37,26 @@ export class MyLetterComponent implements OnInit {
   curPage = 1; //当前页
   flag="";
   private router:Router;
+
+  showPush={
+    title:"",
+    context:"",
+    editor:"",
+    date:"",
+    url:"",
+    collect_flag:0
+  }
+
+
   ngOnInit() {
     this.getPageList();
   }
+
+  clickContext(m,i){
+    this.showPush=this.tablePageList[i]
+    m.show()
+  }
+
   setPageParams(){
     let len = this.totalCount
     if (len >= 1) {
@@ -144,4 +161,5 @@ export class MyLetterComponent implements OnInit {
   fromChildFunc(data){
     console.log(data)
   }
+  
 }

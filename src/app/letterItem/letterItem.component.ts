@@ -11,7 +11,7 @@ export class LetterItemComponent implements OnInit {
   constructor(private http:Http) { }
   
   ngOnInit() {
-    
+    console.log(this.Obj)
   }
   
   @Input() Obj;

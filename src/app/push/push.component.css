@@ -12,7 +12,7 @@
     padding: 50px 0px;
     color: rgba(80, 80, 80, 1);
 }
-.xleft {
+#left {
     /* flex: 0 0 200px; 左侧固定200px */
     position: fixed;
     top:50px;
@@ -22,7 +22,7 @@
     height:500px;
     background:rgba(255, 255, 255, 0.5);
   }
-  .xright {
+#right {
     /* 此处解释下
     flex: 1 1 0%
     0%表示此处宽度是按照自身内容宽度来，此处自身内容宽度为0，但是分配剩余的空间，所以可以自适应变化
@@ -127,7 +127,7 @@ ul li {
 }
 
 .modal-dialog {
-  width: 66%;
+  max-width: 66%;
   height: auto;
   background: url("https://s1.ax1x.com/2020/06/06/t6zpxU.jpg");
   background-size: 100% auto;
@@ -151,10 +151,12 @@ ul li {
   flex-direction: row-reverse;
   align-items: center;
 }
-
+#left-menu{
+  display: none;
+}
 @media screen and (max-width:600px){
   .modal-dialog{
-      width: 100%;
+    max-width: 100%;
   }
   .modal-content{
       width: 100%;
@@ -168,5 +170,55 @@ ul li {
   .mask-box {
       width: 100%;
   }
+  #left-menu{
+    display: block;
+  }
+    #right {
+      /* 此处解释下
+      flex: 1 1 0%
+      0%表示此处宽度是按照自身内容宽度来，此处自身内容宽度为0，但是分配剩余的空间，所以可以自适应变化
+       */
+       position: relative;
+       left: 0px;
+       width: 100%;
+       min-height:100%;
+       padding: 15px 20px 0px 20px;
+       background:rgba(255, 255, 255, 0.5);
+    }
+    ul{
+      padding: 0px;
+    }
+    #left {
+      display: none;
+    }
+    #left-menu {
+    display: block;
+    position: fixed;
+    top:40px;
+    left: 10px;
+    z-index: 10;
+    }
+    .profile{
+    padding: 0px;
+  }
+
+  .push{
+    height: 120px;
+    margin-bottom: 10px;
+  }
+  .yleft{
+    padding:0px;
+  }
+  .yright{
+    padding: 0px;
+  }
+  .title{
+    font-size: 20px;
+    padding: 2px;
+  }
+  .con{
+    height: 40px;
+  }
   
-}
+  }
+  

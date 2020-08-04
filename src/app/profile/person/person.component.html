@@ -1,6 +1,6 @@
 <div class="profile">
   <div id="left-menu">
-    <button mat-icon-button class="g-green" [matMenuTriggerFor]="menu">
+    <button mat-icon-button class="g-blue" [matMenuTriggerFor]="menu">
       <mat-icon>more_vert</mat-icon>
     </button>
     <mat-menu #menu="matMenu">
@@ -13,7 +13,7 @@
       <button mat-menu-item [matMenuTriggerFor]="letter">
         <span>我的信件</span>
       </button>
-      <button mat-menu-item>
+      <button mat-menu-item [routerLink]="['myreply']">
         <span>我的回信</span>
       </button>
       <button mat-menu-item>
@@ -30,6 +30,8 @@
       <button mat-menu-item [routerLink]="['myletter','draft']">草稿</button>
     </mat-menu>
   </div>
+
+
   <aside id="left">
     <ul>
       <li class="" [routerLink]="['personalData']"><i class="material-icons">home</i>个人资料</li>
@@ -41,7 +43,7 @@
         <ul style="padding-left: 20px;">
           <li class="" [routerLink]="['collect','letter']">信件</li>
           <li class="" [routerLink]="['collect','push']">心理知识</li>
-          <li class="" >心理测试</li>
+          <!-- <li class="" >心理测试</li> -->
         </ul>
       </li>
       <li class="" (click)='showMailbox=!showMailbox'><i class="material-icons">&#xe89b;</i>我的信箱

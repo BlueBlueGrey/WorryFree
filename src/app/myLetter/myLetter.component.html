@@ -2,9 +2,32 @@
 <app-letterItem [Obj]=item [flag]="isCollect" *ngIf="!isPush" [isTrash]="isTrash">
 
 </app-letterItem>
-<app-pushItem [item]=item *ngIf="isPush" (fromChild)='fromChildFunc($event)'>
+<!-- <app-pushItem [item]=item *ngIf="isPush" (fromChild)='fromChildFunc($event)'>
 
-</app-pushItem>
+</app-pushItem> -->
+<div *ngIf="isPush">
+  <div *ngFor="let item of tablePageList;let i=index">
+    <div class="push">
+     <div class="yleft">
+      <img style=" width: 100%;
+      height: 100%;" [src]="item.url" alt="Photo of a Shiba Inu">
+     </div>
+     <div class="yright">
+      <div class="title">{{ item.title }}</div>
+      <div class="con" (click)='clickContext(myModal,i)'>{{ item.context }}
+
+      </div>
+      <div class="tim">{{ item.date }}
+        <button mat-icon-button disabled style="float: right;">
+          <mat-icon *ngIf="!item.collect_flag" aria-label="Example icon-button with a heart icon" (click)='collect(item.xinli_id,i)'>favorite_border</mat-icon>
+          <mat-icon *ngIf="item.collect_flag" aria-label="Example icon-button with a heart icon" style="color: pink;" (click)='deleteCollect(item.xinli_id,i)'>favorite</mat-icon>
+        </button>
+      </div>
+     </div>
+    </div>
+   </div>
+</div>
+
 </div>
 <div class="pagination">
   <custom-pagination *ngIf="tablePageList.length"
@@ -17,4 +40,33 @@
 </div>
 <div *ngIf="tablePageList.length==0" class="nothing">
 nothing......
+</div>
+
+
+<div bsModal #myModal="bs-modal" class="modal fade" tabindex="-1" role="dialog"
+    aria-labelledby="myModalLabel" aria-hidden="true">
+    <div class="modal-dialog modal-primary" role="document">
+        <div class="modal-content">
+            <div class="modal-header">
+                <!-- <h4 class="modal-title">{{ showPush.letter_topic }}</h4> -->
+                <button type="button" class="close" (click)="myModal.hide()" aria-label="Close">
+                    <span aria-hidden="true">&times;</span>
+                </button>
+            </div>
+            <div class="modal-footer">
+              <p style="white-space: pre-wrap;
+              word-wrap: break-word;">
+                {{ showPush.context }}
+              </p>
+              <div style="float: right;">
+                <!-- <button type="button" class="btn btn-outline-secondary">确定</button> -->
+                <button mat-icon-button disabled style="justify-content: flex-end;">
+                  <mat-icon *ngIf="!showPush.collect_flag" aria-label="Example icon-button with a heart icon" (click)='test()'>favorite_border</mat-icon>
+        <mat-icon *ngIf="showPush.collect_flag" aria-label="Example icon-button with a heart icon" (click)='test()'>favorite</mat-icon>
+                </button>
+              </div>
+            </div>
+
+        </div>
+    </div>
 </div>

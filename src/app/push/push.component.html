@@ -1,5 +1,28 @@
 <div class="profile">
-  <aside id="left" class="xleft">
+  <div id="left-menu">
+    <button mat-icon-button class="g-blue b-g" [matMenuTriggerFor]="menu">
+      <mat-icon>more_vert</mat-icon>
+    </button>
+    <mat-menu #menu="matMenu">
+      <button mat-menu-item (click)="refreshTheme('抑郁症')">
+        <span>抑郁症</span>
+      </button>
+      <button mat-menu-item (click)="refreshTheme('焦虑症')">
+        <span>焦虑症</span>
+      </button>
+      <button mat-menu-item (click)="refreshTheme('恋爱心理')">
+        <span>恋爱心理</span>
+      </button>
+      <button mat-menu-item (click)="refreshTheme('亲子关系')">
+        <span>亲子关系</span>
+      </button>
+      <button mat-menu-item (click)="refreshTheme('人际交往障碍')">
+        <span>人际交往障碍</span>
+      </button>
+    </mat-menu>
+  </div>
+
+  <aside id="left">
     <ul>
     
       
@@ -12,8 +35,8 @@
   
     </ul>
   </aside>
-  <section id="right" class="xright">
-    <div *ngFor="let item of tablePageList;let i=index">
+  <section id="right">
+  <div *ngFor="let item of tablePageList;let i=index">
     <div class="push">
      <div class="yleft">
       <img style=" width: 100%;

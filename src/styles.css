@@ -11,3 +11,6 @@ body { margin: 0; font-family: 'Roboto', sans-serif; }
 .g-grey {
     color:rgba(166, 166, 166, 1)
 }
+.g-blue{
+    color: #06a0e7;
+}

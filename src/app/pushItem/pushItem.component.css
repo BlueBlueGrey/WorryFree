@@ -20,6 +20,9 @@
     font-size:24px;
     padding:5px;
     color:rgba(80, 80, 80, 1);
+    overflow: hidden;
+    white-space: nowrap;
+    text-overflow: elipsis;
   }
   .con {
     font-size:15px;
@@ -47,3 +50,73 @@
 mat-grid-tile {
     background: lightblue; 
 }
+
+
+@media screen and (max-width:600px){
+  .modal-dialog{
+    max-width: 100%;
+  }
+  .modal-content{
+      width: 100%;
+  }
+  .return{
+      width: 100%;
+  }
+  .letter{
+      padding:0px
+  }
+  .mask-box {
+      width: 100%;
+  }
+  #left-menu{
+    display: block;
+  }
+    #right {
+      /* 此处解释下
+      flex: 1 1 0%
+      0%表示此处宽度是按照自身内容宽度来，此处自身内容宽度为0，但是分配剩余的空间，所以可以自适应变化
+       */
+       position: relative;
+       left: 0px;
+       width: 100%;
+       min-height:100%;
+       padding: 15px 20px 0px 20px;
+       background:rgba(255, 255, 255, 0.5);
+    }
+    ul{
+      padding: 0px;
+    }
+    #left {
+      display: none;
+    }
+    #left-menu {
+    display: block;
+    position: fixed;
+    top:40px;
+    left: 10px;
+    z-index: 10;
+    }
+    .profile{
+    padding: 0px;
+  }
+
+  .push{
+    height: 120px;
+    margin-bottom: 10px;
+  }
+  .yleft{
+    padding:0px;
+  }
+  .yright{
+    padding: 0px;
+  }
+  .title{
+    font-size: 20px;
+    padding: 2px;
+  }
+  .con{
+    height: 40px;
+  }
+  
+  }
+  
