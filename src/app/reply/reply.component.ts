@@ -5,16 +5,17 @@ import { Http } from "@angular/http"
 import { ToastrService } from 'ngx-toastr';
 
 @Component({
-  selector: 'app-letter',
-  templateUrl: './letter.component.html',
-  styleUrls: ['./letter.component.css']
+  selector: 'app-reply',
+  templateUrl: './reply.component.html',
+  styleUrls: ['./reply.component.css']
 })
-export class LetterComponent implements OnInit {
+export class ReplyComponent implements OnInit {
+
   limit=0;
   letter_topic="爱情";
   context="";
   msgService = MsgService.getInstance()
-  
+  id=0
   constructor(public route:Router,public activatedroute:ActivatedRoute,private toastr: ToastrService,private http:Http,private router:Router) { }
   showSuccess(str) {
     this.toastr.success(str,null,{timeOut: 1500});
@@ -23,6 +24,7 @@ export class LetterComponent implements OnInit {
     this.toastr.warning(str,null,{timeOut: 1500});
   }
   ngOnInit(){
+    this.id = this.activatedroute.snapshot.params['id']
     let url='api/getSession'
     let thisa =this
     this.http.get(url).subscribe(function(res){
@@ -54,31 +56,25 @@ export class LetterComponent implements OnInit {
     }
     return true;
   }
-  submit(f){
+  reply(f){
 
     if(this.checkLogin()){
       let data = {
         'username':this.msgService.USERNAME,
-        'flag':f,
-        'letter_topic':this.letter_topic,
-        'right':this.limit,
+        'letterID':this.id,
         'context':this.context
       }
-      let url='api/write_letter/save'
+      let url='api/reply_letter'
       let thisa=this
       this.http.post(url,null,{params:data}).subscribe(function(res){
           let data=res.json()
           data=data.data
-          if(data=='save success'){
-            if(f==0){
-              thisa.showSuccess('保存成功')
-            }
-            else{
-              thisa.showSuccess('提交成功')
-            }
+          if(data=='reply success'){
+            thisa.showSuccess('回复成功')
           }
       })
     }
     
   }
+  
 }

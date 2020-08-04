@@ -20,10 +20,14 @@ export class PushComponent implements OnInit {
   curPage = 0; //当前页
   showPupup = false;
   theme=""
+  msgService = MsgService.getInstance()
+
   constructor(private http:Http,private router:Router) { }
 
   ngOnInit() {
+    console.log("push")
     this.getPageList()
+
   }
   setPageParams(){
     let len = this.totalCount
@@ -48,7 +52,7 @@ export class PushComponent implements OnInit {
       this.pageNo = 1;
       this.curPage = 1;
     }
-
+    console.log(this.pageNo)
   }
   changePage(event){
     this.getPageList(this.theme,this.curPage)
@@ -66,19 +70,51 @@ getPageList(str="",x=1) {
   let thisa =  this
   let params={ 
     page:x,
-    top:str
+    top:str,
+    username:this.msgService.USERNAME
    }
   this.http.get(url,{params:params}).subscribe(function(res){
     let data = res.json()
     thisa.tablePageList=[]
     let len = data.length-1
-    thisa.totalCount = data[len]['all_count'] 
+    thisa.totalCount = data[len]['all_count']
+    console.log(thisa.totalCount)
     thisa.setPageParams()
     for(var i=0;i<data.length-1;i++){
       thisa.tablePageList.push(data[i])
    }
   })
 
+}
+collect(xinli_id,index){
+  let url='api/collect_xinli'
+  let thisa =  this
+  let params={
+    xinliID:xinli_id,
+    username: thisa.msgService.USERNAME
+   }
+  this.http.get(url,{params:params}).subscribe(function(res){
+    let data = res.json()
+    if(data.data==" collect success"){
+      thisa.tablePageList[index].collect_flag=!thisa.tablePageList[index].collect_flag
+      console.log("show success")
+    }
+    })
+}
+deleteCollect(xinli_id,index){
+  let url='api/delete_collect_xinli'
+  let thisa =  this
+  let params= {
+    xinliID:xinli_id,
+    username: thisa.msgService.USERNAME
+  }
+  this.http.get(url,{params:params}).subscribe(function(res){
+    let data = res.json()
+    if(data.data=="delete collect success"){
+      thisa.tablePageList[index].collect_flag=!thisa.tablePageList[index].collect_flag
+      console.log("delete collect success")
+    }
+    })
 }
 
 

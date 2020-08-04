@@ -21,8 +21,10 @@ export class MyLetterComponent implements OnInit {
       thisa.isCollect= thisa.flag=='letter'?true:false; 
       thisa.isPush= thisa.flag=='push'?true:false; 
       thisa.isTrash= thisa.flag=='trash'?true:false; 
-      thisa.getPageList();
       thisa.curPage=1;
+      this.tablePageList=[]
+      thisa.getPageList();
+      console.log("router.events")
     
     })
   }
@@ -32,7 +34,7 @@ export class MyLetterComponent implements OnInit {
   nextShow = true; //下一页
   pageSize = 6; //单页显示数
   totalCount:0; //总页数
-  curPage = 0; //当前页
+  curPage = 1; //当前页
   flag="";
   private router:Router;
   ngOnInit() {
@@ -65,31 +67,68 @@ export class MyLetterComponent implements OnInit {
   }
 
   getPageList(str="",x=1) {
-    let url='api/all_message'
+    let url='api/all_message';
+    let which_right=0;
+    let isLetter=false;
     // if(this.flag == 'public'){
     // }else{
     //   url = this.flag == 'privacy' ? 'api/all_message': 'api/all_message';
     // }
     let thisa =  this
-    let params={ 
-      letter_topic:str,
-      page:x,
-      username:this.msgService.USERNAME
+    let params=null
+    switch(this.flag){
+      case 'public':
+        url='api/show_letter';
+        which_right=0;
+        isLetter=true;
+        break;
+        case 'privacy':
+          url='api/show_letter';
+          which_right=1;
+          isLetter=true;
+          break;
+        case 'draft':
+          url='api/show_letter';
+          which_right=2;
+          isLetter=true;
+          break;
+        case 'letter':
+          url='api/show_my_collect';
+          isLetter=true;
+          break;
+    }
+   if(isLetter){
+     if(this.isCollect){
+      params={
+        username:this.msgService.USERNAME,
+        page:x,
+      }
+     }
+     else {
+      params={
+        username:this.msgService.USERNAME,
+        page:x,
+        which_right:which_right
+      }
+     }
    }
-   let params2={
-    page:x,
-    top:str
-  };
-  let p= (this.flag == 'push'?params2:params);
+  let p= (this.flag == 'push'?params:params);
    if(this.flag == 'push'){
-    url='api/send_xinli_message'
+    url='api/show_my_xinli_collect'
+       params={
+        username:this.msgService.USERNAME,
+        page:x
+       }
   }
+  console.log(url)
+  console.log(params)
   
-      this.http.get(url,{params:p}).subscribe(function(res){
+      this.http.get(url,{params:params}).subscribe(function(res){
       let data = res.json()
       thisa.tablePageList=[]
       let len = data.length-1
       thisa.totalCount = data[len]['all_count']
+      console.log(data)
       thisa.setPageParams()
       for(var i=0;i<data.length-1;i++){
         thisa.tablePageList.push(data[i])

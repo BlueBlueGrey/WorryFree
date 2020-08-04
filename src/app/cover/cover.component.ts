@@ -10,6 +10,7 @@ export class CoverComponent implements OnInit {
   constructor() { }
 
   ngOnInit() {
+    
   }
 
 }

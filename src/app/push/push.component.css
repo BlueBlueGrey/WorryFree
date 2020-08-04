@@ -57,6 +57,9 @@
     font-size:24px;
     padding:5px;
     color:rgba(80, 80, 80, 1);
+    overflow: hidden;
+    white-space: nowrap;
+    text-overflow: elipsis;
   }
   .con {
     font-size:15px;

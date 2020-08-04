@@ -43,3 +43,37 @@
     background: url("https://s1.ax1x.com/2020/06/06/t6zZPx.jpg");
     background-size: 100% 100%;
 }
+.name {
+  width: 150px;
+  margin: 0;
+  padding: 0;
+  border: 1px solid transparent;background-color: white;
+  display:inline-block;
+  outline: none; font-size: 25px; 
+  line-height: 50px; margin: 0px; 
+  font-weight:700;
+  color: black;
+}
+.nav{
+    /* display: flex; */
+    /* justify-content: space-between; */
+    height: 50px;
+    /* align-items: center; */
+    width: 100%;
+    white-space: nowrap;
+    overflow-y: hidden;
+    overflow-x: auto;
+    display:inline-block;
+}
+a {
+    /* float: right; */
+    outline: none;
+    text-decoration:none;
+    color: #6c757d;
+    width: 160px;
+    display: inline-block;
+}
+
+@media screen and  (max-width:600px){
+    
+}

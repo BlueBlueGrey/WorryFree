@@ -1,0 +1,34 @@
+.modal-content {
+    width: 100%;
+    min-height: 400px;
+    height: auto;
+    background: url("https://s1.ax1x.com/2020/07/08/UZvv4A.jpg");
+    background-size: 100% auto;
+    background-repeat: repeat-y;
+    background-color: none;
+    border: none;
+}
+.modal-dialog {
+    opacity: 1;
+    background-color: none;
+}
+/*
+.modal-content {
+    margin: 0;
+    width: 100%;
+    background: rgba(255, 255, 255, 0.5);
+}
+*/
+.modal-footer {
+    display: inline;
+}
+.footer {
+    display: flex;
+    flex-direction: row-reverse;
+    align-items: center;
+}
+p{
+    white-space: pre-wrap;
+    word-wrap: break-word;
+}
+

@@ -88,8 +88,7 @@ export class CommunityComponent implements OnInit {
   }
 
   changePage(event){
-      let page=this.curPage
-      this.getPageList(this.theme,page)
+      this.getPageList(this.theme,this.curPage)
   }
   ngOnInit() {
     this.showLetter={

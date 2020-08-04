@@ -1,0 +1,45 @@
+.return1 {
+    height: 70px;
+    margin-bottom:10px;
+    width: 100%;
+    border-radius: 3px;
+    background-color: rgba(243, 249, 239, 1);
+    position: relative;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+}
+.return2 {
+    height: 70px;
+    margin-bottom:10px;
+    width: 100%;
+    border-radius: 3px;
+    background-color: rgba(154, 203, 182, 1);
+    position: relative;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    /* padding: 10px; */
+}
+.context {
+    position: absolute;
+    /* padding: 10px; */
+    left: 70px;
+    top: 10px;
+    flex-grow: 1;
+    height: 50px;
+    max-width: 1000px;
+    white-space:normal;
+    word-break:break-all;
+    overflow: hidden;
+    text-overflow: ellipsis;
+    font-size: 16px;
+    line-height: 1.5;
+    padding-right: 40px;
+}
+.heart{
+    width: 40px;
+    height: 70px;
+    padding: 15px 0px;
+    z-index: 10;
+}

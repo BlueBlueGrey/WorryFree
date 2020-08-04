@@ -22,6 +22,10 @@ import {  PubQuesComponent } from './index/nav/pubques.component'
 import { ViewletterComponent } from './viewletter/viewletter.component'
 import { PersonalDataComponent } from './profile/personalData/personalData.component'
 import { MyLetterComponent } from './myLetter/myLetter.component'
+import { ReplyComponent } from './reply/reply.component'
+import { ViewreplyComponent } from './viewreply/viewreply.component'
+import { ChildComponent } from './child/child.component'
+import { from } from 'rxjs';
 const routes: Routes = [
     { path: '',component:CoverComponent,
     },
@@ -82,7 +86,9 @@ const routes: Routes = [
     { path: 'index',component:IndexComponent },
     { path: 'register',component:RegisterComponent },
     { path: 'forget',component:ForgetComponent },
-    { path: 'viewletter/:id',component:ViewletterComponent }
+    { path: 'viewletter/:id',component:ViewletterComponent },
+    { path: 'reply/:id',component:ReplyComponent },
+    // { path: 'viewreply',component:ViewreplyComponent}
 ];
 
 
@@ -92,7 +98,7 @@ const routes: Routes = [
             IndexComponent,
             DaohangComponent,
             LloginComponent,
-            PubQuesComponent
+            PubQuesComponent,
         ],
         imports: [RouterModule.forRoot(routes),
             BrowserModule,

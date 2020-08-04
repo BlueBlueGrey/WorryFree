@@ -38,11 +38,20 @@ import { from } from 'rxjs';
 import { MyLetterComponent } from './myLetter/myLetter.component';
 import { LetterItemComponent } from './letterItem/letterItem.component';
 import { PushItemComponent } from './pushItem/pushItem.component';
+import { ReturnComponent } from './return/return.component';
+import { ReplyComponent } from './reply/reply.component';
+import { ViewreplyComponent } from './viewreply/viewreply.component';
+import { ChildComponent } from './child/child.component';
+import { ReplyItemComponent } from './replyItem/replyItem.component';
+import { MatDialogModule } from '@angular/material/dialog';
 const DEFAULT_SWIPER_CONFIG: SwiperConfigInterface = {
    direction: 'horizontal',
    slidesPerView: 'auto'
  };
 @NgModule({
+   entryComponents: [
+      ChildComponent
+   ],
    declarations: [
       AppComponent,
       CoverComponent,
@@ -64,7 +73,12 @@ const DEFAULT_SWIPER_CONFIG: SwiperConfigInterface = {
       PersonalDataComponent,
       MyLetterComponent,
       LetterItemComponent,
-      PushItemComponent
+      PushItemComponent,
+      ReturnComponent,
+      ReplyComponent,
+      ViewreplyComponent,
+      ChildComponent,
+      ReplyItemComponent
    ],
    imports: [
       BrowserModule,
@@ -81,7 +95,8 @@ const DEFAULT_SWIPER_CONFIG: SwiperConfigInterface = {
       MatGridListModule,
       SwiperModule,
       MatCardModule,
-      ToastrModule.forRoot()
+      ToastrModule.forRoot(),
+      MatDialogModule
    ],
    providers: [{
       provide: SWIPER_CONFIG, 

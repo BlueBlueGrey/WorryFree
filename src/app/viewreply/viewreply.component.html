@@ -1,0 +1,19 @@
+<div class="letter">
+  <div class="back">
+  <button mat-raised-button color="primary" class="r-m" (click)="goback()">返回</button> 
+  </div>
+  <!-- <input type="text" placeholder="请输入标题" [(ngModel)]="letter_topic"> -->
+  <div class="mask-box">
+    <div>
+      {{
+        letter.context
+      }}
+    </div>
+    <button mat-raised-button style="float: right; box-shadow: rgba(128, 128, 128, 1) solid 1px;" [routerLink]="['/reply',letter.letterID]">回信</button>
+  </div>
+  <div class="return">
+    <app-return [isEven]="i%2" *ngFor="let item of [0,1,2,3,4,5];let i = index"></app-return>
+  </div>
+  
+
+</div>

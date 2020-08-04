@@ -1,0 +1,19 @@
+<div class="item">
+  <div>
+    <li class="cr"  *ngIf="!Obj.read_flag"><span>未读</span></li>
+    <li class="cg"  *ngIf="Obj.read_flag"><span>已读</span></li>
+  </div>
+  <div class="context" [routerLink]="['/viewreply',Obj.letterID]">
+    {{
+      Obj.reply_context
+    }}
+  </div>
+  <div class="bottom">
+    <a href="">举报</a>
+    <div class="line"></div>
+  <button mat-icon-button disabled>
+    <mat-icon *ngIf="!Obj.collect_flag" aria-label="Example icon-button with a heart icon" (click)='collect(Obj.letterID)'>favorite_border</mat-icon>
+    <mat-icon *ngIf="Obj.collect_flag" aria-label="Example icon-button with a heart icon" style="color: pink;" (click)='deleteCollect(Obj.letterID)'>favorite</mat-icon>
+  </button>
+</div>
+</div>

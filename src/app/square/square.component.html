@@ -1,21 +1,18 @@
-<div class="form-inline" style="justify-content: space-between;">
-  <button class="l-p" style="margin: 0;
-  padding: 0;
-  border: 1px solid transparent;background-color: white;
-  outline: none; font-size: 25px; line-height: 25px; margin: 0px; font-weight:700" (click)="selectedIndexChange(0)">解忧杂货铺</button>
-<div class="form-inline">
-  <mat-tab-group (selectedTabChange)="selectedIndexChange([(selectedIndex)])" [(selectedIndex)]="selectedIndex">
-    <mat-tab disabled=true isActive=false></mat-tab>
-    <mat-tab label="个人中心"></mat-tab>
-    <mat-tab label="广场社区"></mat-tab>
-    <mat-tab label="心理知识推送"></mat-tab>
-    <mat-tab label="未读消息提醒"></mat-tab>
-    <mat-tab label="写信"></mat-tab>
-    <mat-tab label="帮助"></mat-tab>
-  </mat-tab-group>
-  <button *ngIf='msgService.loginFlag' mat-raised-button color="primary" class="r-m" (click)='logout()'>注销</button>
-  <button *ngIf='!msgService.loginFlag' mat-raised-button color="primary" class="r-m" [routerLink]="['/login']" >登录</button>
+<div  class="nav">
+<div class="name">
+  <a mat-button class="name" [routerLink]="['/square']">解忧杂货铺</a>
+</div>
+  <div style="display: inline-block;">
+<a mat-button routerLink="person">个人中心</a>
+<a mat-button routerLink="community">广场社区</a>
+<a mat-button routerLink="push">心理知识推送</a>
+<a mat-button routerLink="unread-messages">未读消息提醒</a>
+<a mat-button routerLink="letter">写信</a>
+<a mat-button routerLink="help">帮助</a>
+<button *ngIf='msgService.loginFlag' mat-raised-button color="primary" class="r-m" (click)='logout()'>注销</button>
+<button *ngIf='!msgService.loginFlag' mat-raised-button color="primary" class="r-m" [routerLink]="['/login']" >登录</button>
   </div>
 </div>
+
 <router-outlet></router-outlet>
 

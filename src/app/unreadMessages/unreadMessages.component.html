@@ -35,7 +35,21 @@
     </ul>
   </aside>
   <section id="right">
-    
+    <div style="margin-bottom:10px" *ngFor="let item of tablePageList ;let i=index">
+
+    <app-replyItem [Obj]=item>
+
+    </app-replyItem>
+    </div>
+    <div class="pagination">
+      <custom-pagination *ngIf="tablePageList.length"
+                            [fastTurnBtn]="false"
+                            [totalPage]="pageNo"
+                            [maxSize]="pageSize"
+                            [(ngModel)]="curPage"
+                            (changePage)="changePage($event)">
+      </custom-pagination>
+    </div>
   </section>
 </div>
 
