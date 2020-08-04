@@ -3,7 +3,7 @@ import { MsgService } from '../services/CommonService'
 import { Router,ActivatedRoute } from '@angular/router';
 import { Http } from "@angular/http"
 import { ToastrService } from 'ngx-toastr';
-
+import { Md5 } from "ts-md5/dist/md5";
 @Component({
   selector: 'app-letter',
   templateUrl: './letter.component.html',
@@ -64,6 +64,9 @@ export class LetterComponent implements OnInit {
         'right':this.limit,
         'context':this.context
       }
+      console.log(this.context)
+      let s=Md5.hashStr(this.context)
+      console.log(s);
       let url='api/write_letter/save'
       let thisa=this
       this.http.post(url,null,{params:data}).subscribe(function(res){
