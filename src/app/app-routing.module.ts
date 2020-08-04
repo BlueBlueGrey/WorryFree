@@ -60,6 +60,10 @@ const routes: Routes = [
                     path:'collect/:flag',
                     component:MyLetterComponent
                 }
+                {
+                    path:'myreply',
+                    component:UnreadMessagesComponent
+                }
             ]
         },
         {

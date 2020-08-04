@@ -11,7 +11,7 @@
       <a *ngIf="isTrash" href="">还原</a>
     </div>
     <div class="bottom" *ngIf="flag">
-      <a href="">举报</a>
+      <a (click)="report(Obj.letter_id)">举报</a>
       <div class="line"></div>
     <button mat-icon-button disabled>
       <mat-icon *ngIf="!Obj.collect_flag" aria-label="Example icon-button with a heart icon" (click)='collect(Obj.letterID)'>favorite_border</mat-icon>

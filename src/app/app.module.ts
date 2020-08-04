@@ -44,6 +44,7 @@ import { ViewreplyComponent } from './viewreply/viewreply.component';
 import { ChildComponent } from './child/child.component';
 import { ReplyItemComponent } from './replyItem/replyItem.component';
 import { MatDialogModule } from '@angular/material/dialog';
+import { MatMenuModule } from '@angular/material/menu';
 const DEFAULT_SWIPER_CONFIG: SwiperConfigInterface = {
    direction: 'horizontal',
    slidesPerView: 'auto'
@@ -96,7 +97,8 @@ const DEFAULT_SWIPER_CONFIG: SwiperConfigInterface = {
       SwiperModule,
       MatCardModule,
       ToastrModule.forRoot(),
-      MatDialogModule
+      MatDialogModule,
+      MatMenuModule
    ],
    providers: [{
       provide: SWIPER_CONFIG, 

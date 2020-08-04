@@ -76,6 +76,8 @@ export class LetterComponent implements OnInit {
             else{
               thisa.showSuccess('提交成功')
             }
+          }else{
+            thisa.showFail('该信件可能存在敏感词汇，待审核')
           }
       })
     }

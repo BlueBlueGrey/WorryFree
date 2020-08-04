@@ -11,17 +11,3 @@ body { margin: 0; font-family: 'Roboto', sans-serif; }
 .g-grey {
     color:rgba(166, 166, 166, 1)
 }
-.m-content {
-    max-width: 100%;
-    min-height: 400px;
-    height: auto;
-    background: url("https://s1.ax1x.com/2020/07/08/UZvv4A.jpg");
-    background-size: 100% auto;
-    background-repeat: repeat-y;
-    background-color: none;
-    border: none;
-}
-.m-dialog {
-    opacity: 1;
-    background-color: none;
-}

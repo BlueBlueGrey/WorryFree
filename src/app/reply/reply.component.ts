@@ -21,7 +21,7 @@ export class ReplyComponent implements OnInit {
     this.toastr.success(str,null,{timeOut: 1500});
   }
   showFail(str) {
-    this.toastr.warning(str,null,{timeOut: 1500});
+    this.toastr.warning(str,null,{timeOut: 3000});
   }
   ngOnInit(){
     this.id = this.activatedroute.snapshot.params['id']
@@ -71,6 +71,9 @@ export class ReplyComponent implements OnInit {
           data=data.data
           if(data=='reply success'){
             thisa.showSuccess('回复成功')
+          }
+          else{
+            thisa.showFail('该回复可能存在敏感词汇，待审核')
           }
       })
     }

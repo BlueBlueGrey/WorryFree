@@ -35,11 +35,28 @@
     </ul>
   </aside>
   <section id="right">
-    <div style="margin-bottom:10px" *ngFor="let item of tablePageList ;let i=index">
+    <div style="margin-bottom:10px" *ngFor="let Obj of tablePageList ;let i=index">
 
-    <app-replyItem [Obj]=item>
+      <div class="item">
+        <div>
+          <li class="cr"  *ngIf="!Obj.read_flag"><span>未读</span></li>
+          <li class="cg"  *ngIf="Obj.read_flag"><span>已读</span></li>
+        </div>
+        <div class="context" (click)='clickContext(myModal,i)'>
+          {{
+            Obj.reply_context
+          }}
+        </div>
+        <div class="r-bottom">
+          <a (click)="report(Obj.reply_id)">举报</a>
+          <div class="line"></div>
+        <button mat-icon-button disabled class="bp">
+          <mat-icon *ngIf="!Obj.collect_flag" aria-label="Example icon-button with a heart icon" (click)='collect(Obj.letterID)'>favorite_border</mat-icon>
+          <mat-icon *ngIf="Obj.collect_flag" aria-label="Example icon-button with a heart icon" style="color: pink;" (click)='deleteCollect(Obj.letterID)'>favorite</mat-icon>
+        </button>
+      </div>
+      </div>
 
-    </app-replyItem>
     </div>
     <div class="pagination">
       <custom-pagination *ngIf="tablePageList.length"
@@ -51,5 +68,34 @@
       </custom-pagination>
     </div>
   </section>
+</div>
+
+
+<div bsModal #myModal="bs-modal" class="modal fade" tabindex="-1" role="dialog"
+    aria-labelledby="myModalLabel" aria-hidden="true">
+    <div class="modal-dialog modal-primary" role="document">
+        <div class="modal-content">
+            <div class="modal-header">
+                <!-- <h4 class="modal-title">{{ showReply.letter_topic }}</h4> -->
+                <button type="button" class="close" (click)="myModal.hide()" aria-label="Close">
+                    <span aria-hidden="true">&times;</span>
+                </button>
+            </div>
+            <div class="modal-footer">
+              <p style="white-space: pre-wrap;
+              word-wrap: break-word;">
+                {{ showReply.reply_context }}
+              </p>
+              <div style="float: right;">
+                <!-- <button type="button" class="btn btn-outline-secondary">确定</button> -->
+                <button mat-icon-button disabled style="justify-content: flex-end;">
+                  <mat-icon *ngIf="!showReply.collect_flag" aria-label="Example icon-button with a heart icon" (click)='test()'>favorite_border</mat-icon>
+        <mat-icon *ngIf="showReply.collect_flag" aria-label="Example icon-button with a heart icon" (click)='test()'>favorite</mat-icon>
+                </button>
+              </div>
+            </div>
+
+        </div>
+    </div>
 </div>
 

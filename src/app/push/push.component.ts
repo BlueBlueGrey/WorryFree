@@ -21,6 +21,14 @@ export class PushComponent implements OnInit {
   showPupup = false;
   theme=""
   msgService = MsgService.getInstance()
+  showPush={
+    title:"",
+    context:"",
+    editor:"",
+    date:"",
+    url:"",
+    collect_flag:0
+  }
 
   constructor(private http:Http,private router:Router) { }
 
@@ -115,6 +123,11 @@ deleteCollect(xinli_id,index){
       console.log("delete collect success")
     }
     })
+}
+
+clickContext(m,i){
+  this.showPush=this.tablePageList[i]
+  m.show()
 }
 
 

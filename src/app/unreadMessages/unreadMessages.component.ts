@@ -22,6 +22,33 @@ export class UnreadMessagesComponent implements OnInit {
   totalCount:0; //总页数
   curPage = 0; //当前页
 
+  clickContext(m,i){
+    
+    this.showReply=this.tablePageList[i]
+    m.show()
+    if(!this.showReply['read_flag'])
+    {
+      this.showReply['read_flag']=1
+      this.read()
+    }
+  }
+  read() {
+    let url='api/unread_to_read'
+    let params={
+      reply_id:this.showReply['reply_id']
+    }
+    this.http.get(url,{params:params}).subscribe(function(res){
+      let data=res.json()
+      console.log(data)
+    })
+    
+  }
+  showReply={
+    reply_context:"nice to meet you too",
+    collect_flag:1,
+    reply_id:1
+  }
+
   ngOnInit() {
     this.getPageList()
   }
@@ -73,6 +100,24 @@ getPageList(x=1) {
    }
   })
 
+}
+
+report(id){
+  let url='api/report_reply_letter'
+  let thisa =  this
+  let params={
+    reply_id:id,
+    // username: thisa.msgService.USERNAME
+   }
+  this.http.get(url,{params:params}).subscribe(function(res){
+    let data = res.json()
+    console.log("report-------")
+    console.log(data)
+    if(data.data=="report success"){
+      // thisa.Obj.collect_flag=!thisa.Obj.collect_flag
+      // console.log("delete collect success")
+    }
+    })
 }
 
 }

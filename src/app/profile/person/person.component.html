@@ -1,4 +1,35 @@
 <div class="profile">
+  <div id="left-menu">
+    <button mat-icon-button class="g-green" [matMenuTriggerFor]="menu">
+      <mat-icon>more_vert</mat-icon>
+    </button>
+    <mat-menu #menu="matMenu">
+      <button mat-menu-item>
+        <span>个人资料</span>
+      </button>
+      <button mat-menu-item [matMenuTriggerFor]="collect">
+        <span>我的收藏</span>
+      </button>
+      <button mat-menu-item [matMenuTriggerFor]="letter">
+        <span>我的信件</span>
+      </button>
+      <button mat-menu-item>
+        <span>我的回信</span>
+      </button>
+      <button mat-menu-item>
+        <span>垃圾箱</span>
+      </button>
+    </mat-menu>
+    <mat-menu #collect="matMenu">
+      <button mat-menu-item [routerLink]="['collect','letter']">信件</button>
+      <button mat-menu-item [routerLink]="['collect','push']">心理知识</button>
+    </mat-menu>
+    <mat-menu #letter="matMenu">
+      <button mat-menu-item [routerLink]="['myletter','public']">公开信件</button>
+      <button mat-menu-item [routerLink]="['myletter','trash']">隐私信件</button>
+      <button mat-menu-item [routerLink]="['myletter','draft']">草稿</button>
+    </mat-menu>
+  </div>
   <aside id="left">
     <ul>
       <li class="" [routerLink]="['personalData']"><i class="material-icons">home</i>个人资料</li>
@@ -28,7 +59,7 @@
               <li class="" [routerLink]="['myletter','draft']">草稿</li>
             </ul>
           </li>
-          <li class="" >我的回信</li>
+          <li class="" [routerLink]="['myreply']">我的回信</li>
           <li class="" [routerLink]="['myletter','trash']">垃圾箱</li>
         </ul>
       </li>

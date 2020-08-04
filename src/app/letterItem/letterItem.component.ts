@@ -47,5 +47,22 @@ export class LetterItemComponent implements OnInit {
       }
       })
   }
+  report(id){
+    let url='api/report_letter'
+    let thisa =  this
+    let params={
+      letterID:id,
+      // username: thisa.msgService.USERNAME
+     }
+    this.http.get(url,{params:params}).subscribe(function(res){
+      let data = res.json()
+      console.log("report-------")
+      console.log(data)
+      if(data.data=="report success"){
+        // thisa.Obj.collect_flag=!thisa.Obj.collect_flag
+        // console.log("delete collect success")
+      }
+      })
+  }
 
 }
