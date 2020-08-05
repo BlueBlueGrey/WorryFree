@@ -3,6 +3,8 @@ import { MsgService } from '../services/CommonService'
 import { Http } from '@angular/http';
 import { Router,ActivatedRoute,NavigationEnd,ActivationEnd } from '@angular/router';
 import 'rxjs/add/operator/filter'
+import * as $ from 'jquery'
+import { ToastrService } from 'ngx-toastr';
 @Component({
   selector: 'app-myLetter',
   templateUrl: './myLetter.component.html',
@@ -12,8 +14,9 @@ export class MyLetterComponent implements OnInit {
   isCollect=false;
   isPush=false;
   isTrash=false;
+  showM=false;
   msgService = MsgService.getInstance();
-  constructor(private http:Http,private activatedroute:ActivatedRoute, router:Router) { 
+  constructor(private http:Http,private activatedroute:ActivatedRoute, router:Router,private toastr: ToastrService) { 
     this.router=router
     let thisa=this
     router.events.filter(event=>event instanceof NavigationEnd).subscribe((event:NavigationEnd)=>{
@@ -46,7 +49,12 @@ export class MyLetterComponent implements OnInit {
     url:"",
     collect_flag:0
   }
-
+  editLetter={
+    context:"",
+    limit:0,
+    letter_topic:"",
+    letterID:0
+  }
 
   ngOnInit() {
     this.getPageList();
@@ -84,7 +92,7 @@ export class MyLetterComponent implements OnInit {
   }
 
   getPageList(str="",x=1) {
-    let url='apiall_message';
+    let url='api/all_message';
     let which_right=0;
     let isLetter=false;
     // if(this.flag == 'public'){
@@ -95,26 +103,26 @@ export class MyLetterComponent implements OnInit {
     let params=null
     switch(this.flag){
       case 'public':
-        url='apishow_letter';
+        url='api/show_letter';
         which_right=0;
         isLetter=true;
         break;
         case 'privacy':
-          url='apishow_letter';
+          url='api/show_letter';
           which_right=1;
           isLetter=true;
           break;
         case 'draft':
-          url='apishow_letter';
+          url='api/show_letter';
           which_right=2;
           isLetter=true;
           break;
         case 'letter':
-          url='apishow_my_collect';
+          url='api/show_my_collect';
           isLetter=true;
           break;
         case 'trash':
-          url='apishow_rubbish_letter'
+          url='api/show_rubbish_letter'
           isLetter=true;
           break;
     }
@@ -133,9 +141,8 @@ export class MyLetterComponent implements OnInit {
       }
      }
    }
-  let p= (this.flag == 'push'?params:params);
    if(this.flag == 'push'){
-    url='apishow_my_xinli_collect'
+    url='api/show_my_xinli_collect'
        params={
         username:this.msgService.USERNAME,
         page:x
@@ -149,11 +156,14 @@ export class MyLetterComponent implements OnInit {
       thisa.tablePageList=[]
       let len = data.length-1
       thisa.totalCount = data[len]['all_count']
-      console.log(data)
       thisa.setPageParams()
       for(var i=0;i<data.length-1;i++){
         thisa.tablePageList.push(data[i])
      }
+     console.log(data)
+      console.log("*************8")
+      console.log(thisa.isPush)
+      console.log(thisa.tablePageList)
     
     })
 
@@ -165,8 +175,159 @@ export class MyLetterComponent implements OnInit {
   fromChildFunc(data){
     console.log("sdfasdff")
     console.log(data)
-
     this.getPageList("",1)
   }
+
+  edit(m,i){
+    // var myModal = document.getElementById('xx');
+    // console.log(myModal)
+    this.editLetter=this.tablePageList[i]
+    m.show()
+    console.log(this.editLetter)
+    // myModal.show()
+    
+  }
+
+  collect(letterId,i){
+    let url='api/collect_letter'
+    let thisa =  this
+    let params={
+      letterID:letterId,
+      username: thisa.msgService.USERNAME
+     }
+    this.http.get(url,{params:params}).subscribe(function(res){
+      let data = res.json()
+      if(data.data=="collect success"){
+        thisa.tablePageList[i].collect_flag=!thisa.tablePageList[i].collect_flag
+        console.log("show success")
+      }
+      })
+  }
+
+  showSuccess(str) {
+    this.toastr.success(str,null,{timeOut: 1500});
+  }
+  showFail(str) {
+    this.toastr.warning(str,null,{timeOut: 1500});
+  }
+
+  recover(i){
+    console.log("recover")
+    let url='api/recover_delete_letter'
+    let thisa =  this
+    let params={
+      letterID:this.tablePageList[i].letterID,
+      // username: thisa.msgService.USERNAME
+     }
+   
+    this.http.get(url,{params:params}).subscribe(function(res){
+      let data = res.json()
+      console.log(data)
+      if(data.data=="recover success"){
+        // thisa.tablePageList[i].collect_flag=!thisa.tablePageList[i].collect_flag
+        console.log("recover success  success")
+        thisa.getPageList()
+      }
+      })
+  }
+  delete(i){
+    let url='api/delete_letter'
+    if(this.isTrash){
+      url='api/completely_delete_letter'
+    }
+    let thisa =  this
+    let params={
+      letterID:this.tablePageList[i].letterID,
+      // username: thisa.msgService.USERNAME
+     }
+    console.log(this.tablePageList[i])
+    console.log(params)
+    this.http.get(url,{params:params}).subscribe(function(res){
+      let data = res.json()
+      if(data.data=="delete success"){
+        // thisa.tablePageList[i].collect_flag=!thisa.tablePageList[i].collect_flag
+        console.log("delete  success")
+        thisa.getPageList()
+      }
+      })
+    
+  }
+  deleteCollect(id,i){
+    console.log("letterId,i")
+    console.log(this.tablePageList[i])
+    let url='api/delete_collect_letter'
+    let thisa =  this
+    let params=null
+     if(this.isPush){
+       url='api/delete_collect_xinli';
+       params={
+        xinliID:id,
+        username: thisa.msgService.USERNAME
+       }
+     }else{
+      params={
+        letterID:id,
+        username: thisa.msgService.USERNAME
+       }
+     }
+    this.http.get(url,{params:params}).subscribe(function(res){
+      let data = res.json()
+      if(data.data=="delete collect success"){
+        // thisa.tablePageList[i].collect_flag=!thisa.tablePageList[i].collect_flag
+        // console.log("delete collect success")
+        thisa.getPageList()
+      }
+      })
+  }
+
+  report(id){
+    let url='api/report_letter'
+    let thisa =  this
+    let params={
+      letterID:id,
+      // username: thisa.msgService.USERNAME
+     }
+    this.http.get(url,{params:params}).subscribe(function(res){
+      let data = res.json()
+      console.log("report-------")
+      console.log(data)
+      if(data.data=="report success"){
+        // thisa.tablePageList[i].collect_flag=!thisa.tablePageList[i].collect_flag
+        // console.log("delete collect success")
+      }
+      })
+  }
+  
+  submit(f){
+
+      console.log(" submit  sdfasf")
+      console.log(this.editLetter)
+      let data = {
+        'letterID':this.editLetter.letterID,
+        'flag':f,
+        'letter_topic':this.editLetter.letter_topic,
+        'right':this.editLetter.limit,
+        'context':this.editLetter.context
+      }
+      let url='api/edit_letter'
+      let thisa=this
+      this.http.post(url,null,{params:data}).subscribe(function(res){
+          let data=res.json()
+          console.log(data)
+          data=data.data
+          console.log(data)
+          if(data=='edit success'){
+            if(f==0){
+              thisa.showSuccess('保存成功')
+            }
+            else{
+              thisa.showSuccess('提交成功')
+            }
+          }else{
+            thisa.showFail('该信件可能存在敏感词汇，待审核')
+          }
+      })
+    
+
   
 }

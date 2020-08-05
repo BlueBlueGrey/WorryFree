@@ -6,6 +6,8 @@
       邮 箱： *******@gmail.com
     </div>
     <div>
-      <button>修改密码</button>
+      <input type="password" [ngStyle]="{'disabled': correcting}" [(ngModel)]="password">
+
+      <button (click)="correct()">修改密码</button>
     </div>
 </div>

@@ -18,7 +18,7 @@ export class PersonComponent implements OnInit {
     
   }
   isLogin(){
-    let url='apigetSession'
+    let url='api/getSession'
     let thisa =this
     this.http.get(url).subscribe(function(res){
       let data=res.json()

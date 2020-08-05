@@ -1,34 +1,70 @@
-<div style="margin-bottom:10px" *ngFor="let item of tablePageList ;let i=index">
-<app-letterItem [Obj]=item [flag]="isCollect" *ngIf="!isPush" [isTrash]="isTrash" (fromChild)="fromChildFunc($event)">
+<div *ngIf="!isPush">
+<!-- <app-letterItem [Obj]=Obj [flag]="isCollect" *ngIf="!isPush" [isTrash]="isTrash" (fromChild)="fromChildFunc($event)" (edit)="edit($event)">
 
-</app-letterItem>
+</app-letterItem> -->
+
+
+<div class="item" *ngFor="let Obj of tablePageList ;let i=index">
+
+  <div class="context" [routerLink]="['/viewletter',Obj.letterID]">
+    {{
+      Obj.context
+    }}
+  </div>
+
+  <div class="bottom" *ngIf="!isCollect">
+    <button  mat-button color="primary" (click)="delete(i)">删除</button>
+    <div class="line"></div>
+    <button *ngIf="!isTrash"  color="primary" mat-button (click)="edit(myModalLetter, i)">修改</button>
+    <!-- <a *ngIf="isTrash" href="">还原</a> -->
+    <button  *ngIf="isTrash" mat-button color="primary" (click)="recover(i)">还原</button>
+  </div> 
+  <div class="bottom" *ngIf="isCollect">
+    <button (click)="report(Obj.letterID,i)" mat-button color="primary">举报</button>
+    <div class="line"></div>
+  <button mat-icon-button disabled>
+    <mat-icon *ngIf="!Obj.collect_flag" aria-label="Example icon-button with a heart icon" (click)='collect(Obj.letterID,i)'>favorite_border</mat-icon>
+    <mat-icon *ngIf="Obj.collect_flag" aria-label="Example icon-button with a heart icon" style="color: pink;" (click)='deleteCollect(Obj.letterID,i)'>favorite</mat-icon>
+  </button>
+</div>
+
+</div>
+</div>
+
 <!-- <app-pushItem [item]=item *ngIf="isPush" (fromChild)='fromChildFunc($event)'>
-
 </app-pushItem> -->
+
 <div *ngIf="isPush">
   <div *ngFor="let item of tablePageList;let i=index">
     <div class="push">
+
      <div class="yleft">
       <img style=" width: 100%;
       height: 100%;" [src]="item.url" alt="Photo of a Shiba Inu">
      </div>
+
      <div class="yright">
+
       <div class="title">{{ item.title }}</div>
       <div class="con" (click)='clickContext(myModal,i)'>{{ item.context }}
 
       </div>
+
       <div class="tim">{{ item.date }}
         <button mat-icon-button disabled style="float: right;">
           <mat-icon *ngIf="!item.collect_flag" aria-label="Example icon-button with a heart icon" (click)='collect(item.xinli_id,i)'>favorite_border</mat-icon>
           <mat-icon *ngIf="item.collect_flag" aria-label="Example icon-button with a heart icon" style="color: pink;" (click)='deleteCollect(item.xinli_id,i)'>favorite</mat-icon>
         </button>
       </div>
+
      </div>
+
     </div>
    </div>
 </div>
 
-</div>
+
+
 <div class="pagination">
   <custom-pagination *ngIf="tablePageList.length"
                         [fastTurnBtn]="false"
@@ -38,17 +74,63 @@
                         (changePage)="changePage($event)">
   </custom-pagination>
 </div>
+
 <div *ngIf="tablePageList.length==0" class="nothing">
 nothing......
 </div>
 
+<div bsModal  #myModalLetter="bs-modal" class="modal fade" tabindex="-1" role="dialog"
+    aria-labelledby="myModalLabel" aria-hidden="true">
+    <div class="modal-dialog modal-primary" role="document">
+        <div class="modal-content">
+            <div class="modal-header">
+                <!-- <h4 class="modal-title">{{ showPush.letter_topic }}</h4> -->
+                <button type="button" class="close" (click)="myModalLetter.hide()" aria-label="Close">
+                    <span aria-hidden="true">&times;</span>
+                </button>
+            </div>
+            <div class="modal-footer">
+              <div class="letter">
+                <div class="container">
+                <!-- <button mat-raised-button color="primary" class="r-m" (click)="goback()   ">返回</button>  -->
+                 <!-- <input type="text" placeholder="请输入标题" [(ngModel)]="letter_topic"> -->
+                 <textarea class="form-control" rows="9" [(ngModel)]="editLetter.context"></textarea>
+                <div class="row" style="margin: 0px;">
+                    <label class="labelg">信件主题</label>
+                    <select [(ngModel)]="editLetter.letter_topic">
+                      <option value="爱情">爱情</option>
+                      <option value="亲情">亲情</option>
+                      <option value="人际关系">人际关系</option>
+                      <option value="学业">学业</option>
+                      <option value="求职工作">工作</option>
+                      <option value="压力">压力</option>
+                      <option value="吐槽">吐槽</option>
+                    </select>
+                    <label class="labelg">权限</label>
+                    <select [(ngModel)]="editLetter.limit">
+                      <option value="0">公开</option>
+                      <option value="1">仅自己可见</option>
+                    </select>
+                    <div style="margin-left: auto;">
+                      <!-- <a mat-stroked-button routerLink=".">保存</a> -->
+                      <button mat-raised-button style="float: right; box-shadow: rgba(128, 128, 128, 1) solid 1px;" (click)="submit(0)">保存</button>
+                      <button mat-raised-button style="box-shadow: rgba(128, 128, 128, 1) solid 1px;" (click)="submit(1)">提交</button>
+                    </div>
+                </div>
+              </div>
+              </div>
+
+            </div>
+
+        </div>
+    </div>
+</div>
 
 <div bsModal #myModal="bs-modal" class="modal fade" tabindex="-1" role="dialog"
     aria-labelledby="myModalLabel" aria-hidden="true">
     <div class="modal-dialog modal-primary" role="document">
         <div class="modal-content">
             <div class="modal-header">
-                <!-- <h4 class="modal-title">{{ showPush.letter_topic }}</h4> -->
                 <button type="button" class="close" (click)="myModal.hide()" aria-label="Close">
                     <span aria-hidden="true">&times;</span>
                 </button>
@@ -59,7 +141,6 @@ nothing......
                 {{ showPush.context }}
               </p>
               <div style="float: right;">
-                <!-- <button type="button" class="btn btn-outline-secondary">确定</button> -->
                 <button mat-icon-button disabled style="justify-content: flex-end;">
                   <mat-icon *ngIf="!showPush.collect_flag" aria-label="Example icon-button with a heart icon" (click)='test()'>favorite_border</mat-icon>
         <mat-icon *ngIf="showPush.collect_flag" aria-label="Example icon-button with a heart icon" (click)='test()'>favorite</mat-icon>

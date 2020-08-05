@@ -54,7 +54,7 @@ export class ViewreplyComponent implements OnInit {
     this.onIntiData()
   }
   onIntiData(){
-    let url='apiget_letter_byID'
+    let url='api/get_letter_byID'
     let params={
       letterID:this.id
     }
@@ -98,7 +98,7 @@ export class ViewreplyComponent implements OnInit {
         'right':this.limit,
         'context':this.context
       }
-      let url='apiwrite_letter/save'
+      let url='api/write_letter/save'
       let thisa=this
       this.http.post(url,null,{params:data}).subscribe(function(res){
           let data=res.json()

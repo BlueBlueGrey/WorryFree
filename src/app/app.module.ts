@@ -45,6 +45,7 @@ import { ChildComponent } from './child/child.component';
 import { ReplyItemComponent } from './replyItem/replyItem.component';
 import { MatDialogModule } from '@angular/material/dialog';
 import { MatMenuModule } from '@angular/material/menu';
+// import {MatDialogModule} from '@angular/material/dialog';
 const DEFAULT_SWIPER_CONFIG: SwiperConfigInterface = {
    direction: 'horizontal',
    slidesPerView: 'auto'

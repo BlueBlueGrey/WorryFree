@@ -14,7 +14,7 @@ export class SquareComponent implements OnInit {
   constructor(public route:Router,public activatedroute:ActivatedRoute,private http:Http,private router:Router) { }
 
   ngOnInit(){
-    let url='apigetSession'
+    let url='api/getSession'
     let thisa =this
     this.http.get(url).subscribe(function(res){
       let data=res.json()
@@ -58,7 +58,7 @@ export class SquareComponent implements OnInit {
    }
   }
   logout(){
-    let url='apilogout'
+    let url='api/logout'
     let thisa =this
     this.http.get(url).subscribe(function(res){
       let data=res.json()

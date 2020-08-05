@@ -2,6 +2,9 @@ import { Component, OnInit } from '@angular/core';
 import { Http } from "@angular/http"
 import { Router }from '@angular/router'
 import { MsgService } from '../../services/CommonService'
+import { param } from 'jquery';
+import { ToastrService } from 'ngx-toastr';
+
 @Component({
   selector: 'app-personalData',
   templateUrl: './personalData.component.html',
@@ -9,13 +12,44 @@ import { MsgService } from '../../services/CommonService'
 })
 export class PersonalDataComponent implements OnInit {
   username="";
-  constructor(private http:Http,private router:Router) { }
+  correcting=true;
+  password="asdfasdf"
+  constructor(private http:Http,private router:Router,private toastr: ToastrService) { }
   msgService = MsgService.getInstance();
   ngOnInit() {
     this.isLogin()
   }
+  showSuccess(str) {
+    this.toastr.success(str,null,{timeOut: 1500});
+  }
+  showFail(str) {
+    this.toastr.error(str,null,{timeOut: 1500});
+  }
+  correct(){
+    this.correcting=false;
+    let url='api/correct_password'
+    let thisa =this
+    let params={
+      username:this.msgService.USERNAME,
+      password:this.password
+    }
+    this.http.post(url,null,{params:params}).subscribe(function(res){
+      let data=res.json()
+      data=data.data
+      console.log(data)
+      if(data=='success'){
+        console.log('修改成功')
+        thisa.showSuccess('修改成功')
+        thisa.correcting=true
+        // thisa.router.navigate(['/login'])
+        // thisa.msgService.loginFlag = false
+      }
+      
+    })
+  }
+
   isLogin(){
-    let url='apigetSession'
+    let url='api/getSession'
     let thisa =this
     this.http.get(url).subscribe(function(res){
       let data=res.json()

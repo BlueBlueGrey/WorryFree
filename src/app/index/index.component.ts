@@ -17,7 +17,7 @@ export class IndexComponent {
   msgService = MsgService.getInstance();
   constructor(private modalService:BsModalService,private http:Http,private router:Router){}
   logout(){
-    let url='apilogout'
+    let url='api/logout'
     let thisa =this
     this.http.get(url).subscribe(function(res){
       let data=res.json()
@@ -30,7 +30,7 @@ export class IndexComponent {
     })
   }
   ngOnInit(){
-    let url='apigetSession'
+    let url='api/getSession'
     let thisa =this
     this.http.get(url).subscribe(function(res){
       let data=res.json()

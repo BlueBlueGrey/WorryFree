@@ -25,7 +25,7 @@ export class ReplyComponent implements OnInit {
   }
   ngOnInit(){
     this.id = this.activatedroute.snapshot.params['id']
-    let url='apigetSession'
+    let url='api/getSession'
     let thisa =this
     this.http.get(url).subscribe(function(res){
       let data=res.json()
@@ -64,7 +64,7 @@ export class ReplyComponent implements OnInit {
         'letterID':this.id,
         'context':this.context
       }
-      let url='apireply_letter'
+      let url='api/reply_letter'
       let thisa=this
       this.http.post(url,null,{params:data}).subscribe(function(res){
           let data=res.json()

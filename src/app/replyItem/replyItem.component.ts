@@ -19,7 +19,7 @@ export class ReplyItemComponent implements OnInit {
   @Input() flag;
   @Input() isTrash;
   collect(letterId){
-    let url='apicollect_letter'
+    let url='api/collect_letter'
     let thisa =  this
     let params={
       letterID:letterId,
@@ -34,7 +34,7 @@ export class ReplyItemComponent implements OnInit {
       })
   }
   deleteCollect(letterId){
-    let url='apidelete_collect_letter'
+    let url='api/delete_collect_letter'
     let thisa =  this
     let params={
       letterID:letterId,

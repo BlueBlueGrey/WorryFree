@@ -17,7 +17,7 @@ export class LloginComponent {
   modalRef:BsModalRef;
   constructor(private modalService:BsModalService,private http:Http,private router:Router){}
   ngOnInit(){
-    let url='apigetSession'
+    let url='api/getSession'
     let thisa=this
     this.http.get(url).subscribe(function(res){
       let data=res.json()

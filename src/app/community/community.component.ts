@@ -60,7 +60,7 @@ export class CommunityComponent implements OnInit {
   }
 
   getPageList(str="",x=1) {
-    let url='apiall_message'
+    let url='api/all_message'
     let thisa =  this
     let params={ 
       letter_topic:str,
@@ -160,7 +160,7 @@ export class CommunityComponent implements OnInit {
     this.curPage=1
   }
   collect(letterId,index){
-    let url='apicollect_letter'
+    let url='api/collect_letter'
     let thisa =  this
     let params={
       letterID:letterId,
@@ -175,7 +175,7 @@ export class CommunityComponent implements OnInit {
       })
   }
   deleteCollect(letterId,index){
-    let url='apidelete_collect_letter'
+    let url='api/delete_collect_letter'
     let thisa =  this
     let params= {
       letterID:letterId,

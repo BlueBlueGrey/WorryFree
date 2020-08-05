@@ -38,7 +38,7 @@ export class LetterComponent implements OnInit {
     this.toastr.warning(str,null,{timeOut: 1500});
   }
   ngOnInit(){
-    let url='apigetSession'
+    let url='api/getSession'
     let thisa =this
     this.http.get(url).subscribe(function(res){
       let data=res.json()
@@ -87,11 +87,6 @@ export class LetterComponent implements OnInit {
   }
   submit(f){
 
-    // console.log(this.context)
-    // let s=this.encryptByEnAES(this.context)
-    // console.log(s)
-    // console.log(this.encryptByDeAES(s))
-
     if(this.checkLogin()){
       let data = {
         'username':this.msgService.USERNAME,
@@ -100,7 +95,7 @@ export class LetterComponent implements OnInit {
         'right':this.limit,
         'context':this.context
       }
-      let url='apiwrite_letter/save'
+      let url='api/write_letter/save'
       let thisa=this
       this.http.post(url,null,{params:data}).subscribe(function(res){
           let data=res.json()
