@@ -84,37 +84,37 @@ export class MyLetterComponent implements OnInit {
   }
 
   getPageList(str="",x=1) {
-    let url='api/all_message';
+    let url='apiall_message';
     let which_right=0;
     let isLetter=false;
     // if(this.flag == 'public'){
     // }else{
-    //   url = this.flag == 'privacy' ? 'api/all_message': 'api/all_message';
+    //   url = this.flag == 'privacy' ? 'apiall_message': 'apiall_message';
     // }
     let thisa =  this
     let params=null
     switch(this.flag){
       case 'public':
-        url='api/show_letter';
+        url='apishow_letter';
         which_right=0;
         isLetter=true;
         break;
         case 'privacy':
-          url='api/show_letter';
+          url='apishow_letter';
           which_right=1;
           isLetter=true;
           break;
         case 'draft':
-          url='api/show_letter';
+          url='apishow_letter';
           which_right=2;
           isLetter=true;
           break;
         case 'letter':
-          url='api/show_my_collect';
+          url='apishow_my_collect';
           isLetter=true;
           break;
         case 'trash':
-          url='api/show_rubbish_letter'
+          url='apishow_rubbish_letter'
           isLetter=true;
           break;
     }
@@ -135,7 +135,7 @@ export class MyLetterComponent implements OnInit {
    }
   let p= (this.flag == 'push'?params:params);
    if(this.flag == 'push'){
-    url='api/show_my_xinli_collect'
+    url='apishow_my_xinli_collect'
        params={
         username:this.msgService.USERNAME,
         page:x

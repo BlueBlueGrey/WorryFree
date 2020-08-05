@@ -17,7 +17,7 @@ export class IndexComponent {
   msgService = MsgService.getInstance();
   constructor(private modalService:BsModalService,private http:Http,private router:Router){}
   logout(){
-    let url='api/logout'
+    let url='apilogout'
     let thisa =this
     this.http.get(url).subscribe(function(res){
       let data=res.json()
@@ -30,13 +30,13 @@ export class IndexComponent {
     })
   }
   ngOnInit(){
-    let url='api/getSession'
+    let url='apigetSession'
     let thisa =this
     this.http.get(url).subscribe(function(res){
       let data=res.json()
       console.log(data)
       if(data==0){
-        console.log('没登录ii')
+        console.log('没登录没登录没登录ii')
         thisa.router.navigate(['/login'])
         thisa.msgService.loginFlag = false
       }
@@ -53,7 +53,7 @@ export class IndexComponent {
     this.modalRef = this.modalService.show(template);
   }
   onRegisterSubmit(form:any){
-      let url = 'api/register/'
+      let url = 'apiregister/'
       this.http.post(url,null,{params:form}).subscribe(function(data){
         
         console.log(data['_body'])
@@ -63,7 +63,7 @@ export class IndexComponent {
       });
   }
   onLoginSubmit(form:any){
-    let url = 'api/login/'
+    let url = 'apilogin/'
     this.http.post(url,null,{params:form}).subscribe(function(res){
       console.log(res)
       let data =res.json()

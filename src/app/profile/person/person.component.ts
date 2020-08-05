@@ -18,13 +18,13 @@ export class PersonComponent implements OnInit {
     
   }
   isLogin(){
-    let url='api/getSession'
+    let url='apigetSession'
     let thisa =this
     this.http.get(url).subscribe(function(res){
       let data=res.json()
       console.log(data)
       if(data==0){
-        console.log('没登录')
+        console.log('没登录没登录没登录')
         thisa.router.navigate(['/login'])
         thisa.msgService.loginFlag = false
       }

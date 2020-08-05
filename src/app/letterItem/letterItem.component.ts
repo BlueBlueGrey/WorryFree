@@ -18,7 +18,7 @@ export class LetterItemComponent implements OnInit {
   @Input() flag;
   @Input() isTrash;
   collect(letterId){
-    let url='api/collect_letter'
+    let url='apicollect_letter'
     let thisa =  this
     let params={
       letterID:letterId,
@@ -34,7 +34,7 @@ export class LetterItemComponent implements OnInit {
   }
   recover(){
     console.log("recover")
-    let url='api/recover_delete_letter'
+    let url='apirecover_delete_letter'
     let thisa =  this
     let params={
       letterID:this.Obj.letterID,
@@ -52,9 +52,9 @@ export class LetterItemComponent implements OnInit {
       })
   }
   delete(){
-    let url='api/delete_letter'
+    let url='apidelete_letter'
     if(this.isTrash){
-      url='api/completely_delete_letter'
+      url='apicompletely_delete_letter'
     }
     let thisa =  this
     let params={
@@ -74,7 +74,7 @@ export class LetterItemComponent implements OnInit {
     
   }
   deleteCollect(letterId){
-    let url='api/delete_collect_letter'
+    let url='apidelete_collect_letter'
     let thisa =  this
     let params={
       letterID:letterId,
@@ -89,7 +89,7 @@ export class LetterItemComponent implements OnInit {
       })
   }
   report(id){
-    let url='api/report_letter'
+    let url='apireport_letter'
     let thisa =  this
     let params={
       letterID:id,

@@ -17,12 +17,12 @@ export class LloginComponent {
   modalRef:BsModalRef;
   constructor(private modalService:BsModalService,private http:Http,private router:Router){}
   ngOnInit(){
-    let url='api/getSession'
+    let url='apigetSession'
     let thisa=this
     this.http.get(url).subscribe(function(res){
       let data=res.json()
       if(data==0){
-        console.log('没登录')
+        console.log('没登录没登录没登录')
         thisa.msgService.loginFlag = true
       }
       else{
@@ -37,7 +37,7 @@ export class LloginComponent {
     // this.modalRef = this.modalService.show(template);
   }
   onRegisterSubmit(form:any){
-      let url = 'api/login'
+      let url = 'apilogin'
       this.http.post(url,null,{params:form}).subscribe(function(data){
         
         console.log(data['_body'])
@@ -47,7 +47,7 @@ export class LloginComponent {
       });
   }
   onLoginSubmit(form:any){
-    let url = 'api/login'
+    let url = 'apilogin'
     let thisa=this
     this.http.post(url,null,{params:form}).subscribe(function(res){
       

@@ -64,7 +64,7 @@ export class ViewletterComponent implements OnInit {
     this.toastr.warning(str,null,{timeOut: 1500});
   }
   ngOnInit(){
-    let url='api/getSession'
+    let url='apigetSession'
     this.id = this.activatedroute.snapshot.params['id']
     console.log("id")
     console.log(this.id)
@@ -73,7 +73,7 @@ export class ViewletterComponent implements OnInit {
       let data=res.json()
       console.log(data)
       if(data==0){
-        console.log('没登录')
+        console.log('没登录没登录没登录')
         // thisa.router.navigate(['/login'])
         thisa.msgService.loginFlag = false
         thisa.msgService.USERNAME=""
@@ -91,7 +91,7 @@ export class ViewletterComponent implements OnInit {
   }
   onIntiData(){
     
-    let url='api/get_letter_byID'
+    let url='apiget_letter_byID'
     let params={
       letterID:this.id
     }
@@ -101,7 +101,7 @@ export class ViewletterComponent implements OnInit {
       console.log(data)
       thisa.letter=data[0]
       // if(data==0){
-      //   console.log('没登录')
+      //   console.log('没登录没登录没登录')
       //   // thisa.router.navigate(['/login'])
       //   thisa.msgService.loginFlag = false
       //   thisa.msgService.USERNAME=""
@@ -143,7 +143,7 @@ export class ViewletterComponent implements OnInit {
   }
 
   getPageList(x=1) {
-    let url='api/get_reply_letter'
+    let url='apiget_reply_letter'
     let thisa =  this
     let params={ 
       letterID:this.id,
@@ -214,7 +214,7 @@ export class ViewletterComponent implements OnInit {
         'right':this.limit,
         'context':this.context
       }
-      let url='api/write_letter/save'
+      let url='apiwrite_letter/save'
       let thisa=this
       this.http.post(url,null,{params:data}).subscribe(function(res){
           let data=res.json()

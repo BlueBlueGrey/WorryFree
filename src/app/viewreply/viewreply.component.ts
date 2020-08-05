@@ -38,7 +38,7 @@ export class ViewreplyComponent implements OnInit {
       let data=res.json()
       console.log(data)
       if(data==0){
-        console.log('没登录')
+        console.log('没登录没登录没登录')
         // thisa.router.navigate(['/login'])
         thisa.msgService.loginFlag = false
         thisa.msgService.USERNAME=""
@@ -54,7 +54,7 @@ export class ViewreplyComponent implements OnInit {
     this.onIntiData()
   }
   onIntiData(){
-    let url='api/get_letter_byID'
+    let url='apiget_letter_byID'
     let params={
       letterID:this.id
     }
@@ -64,7 +64,7 @@ export class ViewreplyComponent implements OnInit {
       console.log(data)
       thisa.letter=data[0]
       // if(data==0){
-      //   console.log('没登录')
+      //   console.log('没登录没登录没登录')
       //   // thisa.router.navigate(['/login'])
       //   thisa.msgService.loginFlag = false
       //   thisa.msgService.USERNAME=""
@@ -98,7 +98,7 @@ export class ViewreplyComponent implements OnInit {
         'right':this.limit,
         'context':this.context
       }
-      let url='api/write_letter/save'
+      let url='apiwrite_letter/save'
       let thisa=this
       this.http.post(url,null,{params:data}).subscribe(function(res){
           let data=res.json()

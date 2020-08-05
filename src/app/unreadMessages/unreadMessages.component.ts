@@ -33,7 +33,7 @@ export class UnreadMessagesComponent implements OnInit {
     }
   }
   read() {
-    let url='api/unread_to_read'
+    let url='apiunread_to_read'
     let params={
       reply_id:this.showReply['reply_id']
     }
@@ -81,7 +81,7 @@ export class UnreadMessagesComponent implements OnInit {
     this.getPageList(this.curPage)
 }
 getPageList(x=1) {
-  let url='api/receive_reply_letter'
+  let url='apireceive_reply_letter'
   let thisa =  this
   let params={
     page:x,
@@ -103,7 +103,7 @@ getPageList(x=1) {
 }
 
 report(id){
-  let url='api/report_reply_letter'
+  let url='apireport_reply_letter'
   let thisa =  this
   let params={
     reply_id:id,

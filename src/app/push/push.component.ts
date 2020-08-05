@@ -74,7 +74,7 @@ refreshTheme(str){
 }
 
 getPageList(str="",x=1) {
-  let url='api/send_xinli_message'
+  let url='apisend_xinli_message'
   let thisa =  this
   let params={ 
     page:x,
@@ -95,7 +95,7 @@ getPageList(str="",x=1) {
 
 }
 collect(xinli_id,index){
-  let url='api/collect_xinli'
+  let url='apicollect_xinli'
   let thisa =  this
   let params={
     xinliID:xinli_id,
@@ -110,7 +110,7 @@ collect(xinli_id,index){
     })
 }
 deleteCollect(xinli_id,index){
-  let url='api/delete_collect_xinli'
+  let url='apidelete_collect_xinli'
   let thisa =  this
   let params= {
     xinliID:xinli_id,

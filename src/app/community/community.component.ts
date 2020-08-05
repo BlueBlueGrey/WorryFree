@@ -60,7 +60,7 @@ export class CommunityComponent implements OnInit {
   }
 
   getPageList(str="",x=1) {
-    let url='api/all_message'
+    let url='apiall_message'
     let thisa =  this
     let params={ 
       letter_topic:str,
@@ -89,8 +89,22 @@ export class CommunityComponent implements OnInit {
 
   changePage(event){
       this.getPageList(this.theme,this.curPage)
+      console.log("createNonceStr")
+    console.log("createNonceStr")
+    console.log("createNonceStr")
+    console.log("createNonceStr")
+    let s=this.msgService.createNonceStr()
+    console.log(s);
+    console.log("createNonceStr")
   }
   ngOnInit() {
+    console.log("createNonceStr")
+    console.log("createNonceStr")
+    console.log("createNonceStr")
+    console.log("createNonceStr")
+    let s=this.msgService.createNonceStr()
+    console.log(s);
+    console.log("createNonceStr")
     this.showLetter={
       "letter_topic":"",
       "context":"",
@@ -146,7 +160,7 @@ export class CommunityComponent implements OnInit {
     this.curPage=1
   }
   collect(letterId,index){
-    let url='api/collect_letter'
+    let url='apicollect_letter'
     let thisa =  this
     let params={
       letterID:letterId,
@@ -161,7 +175,7 @@ export class CommunityComponent implements OnInit {
       })
   }
   deleteCollect(letterId,index){
-    let url='api/delete_collect_letter'
+    let url='apidelete_collect_letter'
     let thisa =  this
     let params= {
       letterID:letterId,

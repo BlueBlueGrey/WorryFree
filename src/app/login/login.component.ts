@@ -41,7 +41,7 @@ export class LoginComponent implements OnInit {
       let data=res.json()
       console.log(data)
       if(data==0){
-        console.log('没登录')
+        console.log('没登录没登录没登录')
         thisa.router.navigate(['/login'])
         thisa.msgService.loginFlag = false
       }

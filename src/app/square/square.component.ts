@@ -14,13 +14,13 @@ export class SquareComponent implements OnInit {
   constructor(public route:Router,public activatedroute:ActivatedRoute,private http:Http,private router:Router) { }
 
   ngOnInit(){
-    let url='api/getSession'
+    let url='apigetSession'
     let thisa =this
     this.http.get(url).subscribe(function(res){
       let data=res.json()
       console.log(data)
       if(data==0){
-        console.log('没登录')
+        console.log('没登录没登录没登录')
         thisa.router.navigate(['/login'])
         thisa.msgService.loginFlag = false
         thisa.msgService.USERNAME = ""
@@ -58,7 +58,7 @@ export class SquareComponent implements OnInit {
    }
   }
   logout(){
-    let url='api/logout'
+    let url='apilogout'
     let thisa =this
     this.http.get(url).subscribe(function(res){
       let data=res.json()

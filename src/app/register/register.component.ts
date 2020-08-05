@@ -32,7 +32,7 @@ export class RegisterComponent implements OnInit {
     };
     console.log("register============");
     // 跨域 get
-    let url = 'api/register/';
+    let url = 'apiregister/';
     let thisa=this
     this.http.post(url,null,{params:data}).subscribe(function(res){
       let data = res.json()

@@ -38,13 +38,13 @@ export class LetterComponent implements OnInit {
     this.toastr.warning(str,null,{timeOut: 1500});
   }
   ngOnInit(){
-    let url='api/getSession'
+    let url='apigetSession'
     let thisa =this
     this.http.get(url).subscribe(function(res){
       let data=res.json()
       console.log(data)
       if(data==0){
-        console.log('没登录')
+        console.log('没登录没登录没登录')
         // thisa.router.navigate(['/login'])
         thisa.msgService.loginFlag = false
         thisa.msgService.USERNAME=""
@@ -100,7 +100,7 @@ export class LetterComponent implements OnInit {
         'right':this.limit,
         'context':this.context
       }
-      let url='api/write_letter/save'
+      let url='apiwrite_letter/save'
       let thisa=this
       this.http.post(url,null,{params:data}).subscribe(function(res){
           let data=res.json()
