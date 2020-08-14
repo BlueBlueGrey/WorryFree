@@ -37,7 +37,7 @@ export class LloginComponent {
     // this.modalRef = this.modalService.show(template);
   }
   onRegisterSubmit(form:any){
-      let url = 'apilogin'
+      let url = 'api/login'
       this.http.post(url,null,{params:form}).subscribe(function(data){
         
         //console.log(data['_body'])
@@ -47,7 +47,7 @@ export class LloginComponent {
       });
   }
   onLoginSubmit(form:any){
-    let url = 'apilogin'
+    let url = 'api/login'
     let thisa=this
     this.http.post(url,null,{params:form}).subscribe(function(res){
       

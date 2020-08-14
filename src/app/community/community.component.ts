@@ -15,7 +15,13 @@ import { MsgService } from '../services/CommonService'
 export class CommunityComponent implements OnInit {
   //假数据
   modalRef:BsModalRef;
-  showLetter:{}
+  showLetter={
+    "letter_topic":"",
+    "context":"",
+    "username":"",
+    "letterID":null,
+    "collect_flag":0
+  };
   msgService = MsgService.getInstance()
   tablePageList = [];  //分页后前台显示数据
   pageNo = 0; //当前页码
@@ -105,13 +111,7 @@ export class CommunityComponent implements OnInit {
     let s=this.msgService.createNonceStr()
     //console.log(s);
     //console.log("createNonceStr")
-    this.showLetter={
-      "letter_topic":"",
-      "context":"",
-      "username":"",
-      "letterID":null,
-      "collect_flag":0
-    };
+
     this.getPageList();
     this.themes=["学业","求职工作","人际关系","亲情","爱情",
     "压力","吐槽"]

@@ -56,7 +56,7 @@ export class ReplyComponent implements OnInit {
     }
     return true;
   }
-  reply(f){
+  reply(){
 
     if(this.checkLogin()){
       let data = {

@@ -14,7 +14,7 @@ export class ChildComponent implements OnInit {
   title: string = '';
   onClose: any;
   showReply={
-    context:'child',
+    reply_context:'child',
     collect_flag:false
   }
   constructor(public bsModalRef: BsModalRef) { }

@@ -63,7 +63,7 @@ export class IndexComponent {
       });
   }
   onLoginSubmit(form:any){
-    let url = 'apilogin/'
+    let url = 'api/login/'
     this.http.post(url,null,{params:form}).subscribe(function(res){
       //console.log(res)
       let data =res.json()
