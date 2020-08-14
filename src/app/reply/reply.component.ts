@@ -29,9 +29,9 @@ export class ReplyComponent implements OnInit {
     let thisa =this
     this.http.get(url).subscribe(function(res){
       let data=res.json()
-      console.log(data)
+      //console.log(data)
       if(data==0){
-        console.log('没登录没登录没登录')
+        //console.log('没登录没登录没登录')
         // thisa.router.navigate(['/login'])
         thisa.msgService.loginFlag = false
         thisa.msgService.USERNAME=""
@@ -39,8 +39,8 @@ export class ReplyComponent implements OnInit {
       else{
         thisa.msgService.loginFlag = true
         thisa.msgService.USERNAME = data['username']
-        console.log('登录')
-        console.log(data['username'])
+        //console.log('登录')
+        //console.log(data['username'])
         // thisa.router.navigate(['/square'])
       }
     })

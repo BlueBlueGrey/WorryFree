@@ -27,7 +27,7 @@ export class MyLetterComponent implements OnInit {
       thisa.curPage=1;
       this.tablePageList=[]
       thisa.getPageList();
-      console.log("router.events")
+      //console.log("router.events")
     
     })
   }
@@ -55,7 +55,12 @@ export class MyLetterComponent implements OnInit {
     letter_topic:"",
     letterID:0
   }
-
+  showSuccess(str) {
+    this.toastr.success(str,null,{timeOut: 1500});
+  }
+  showFail(str) {
+    this.toastr.warning(str,null,{timeOut: 1500});
+  }
   ngOnInit() {
     this.getPageList();
   }
@@ -148,8 +153,8 @@ export class MyLetterComponent implements OnInit {
         page:x
        }
   }
-  console.log(url)
-  console.log(params)
+  //console.log(url)
+  //console.log(params)
   
       this.http.get(url,{params:params}).subscribe(function(res){
       let data = res.json()
@@ -160,10 +165,10 @@ export class MyLetterComponent implements OnInit {
       for(var i=0;i<data.length-1;i++){
         thisa.tablePageList.push(data[i])
      }
-     console.log(data)
-      console.log("*************8")
-      console.log(thisa.isPush)
-      console.log(thisa.tablePageList)
+     //console.log(data)
+      //console.log("*************8")
+      //console.log(thisa.isPush)
+      //console.log(thisa.tablePageList)
     
     })
 
@@ -173,17 +178,17 @@ export class MyLetterComponent implements OnInit {
     this.getPageList("",page)
   }
   fromChildFunc(data){
-    console.log("sdfasdff")
-    console.log(data)
+    //console.log("sdfasdff")
+    //console.log(data)
     this.getPageList("",1)
   }
 
   edit(m,i){
     // var myModal = document.getElementById('xx');
-    // console.log(myModal)
+    // //console.log(myModal)
     this.editLetter=this.tablePageList[i]
     m.show()
-    console.log(this.editLetter)
+    //console.log(this.editLetter)
     // myModal.show()
     
   }
@@ -195,24 +200,20 @@ export class MyLetterComponent implements OnInit {
       letterID:letterId,
       username: thisa.msgService.USERNAME
      }
+    //console.log(url)
+    //console.log(params)
     this.http.get(url,{params:params}).subscribe(function(res){
       let data = res.json()
       if(data.data=="collect success"){
         thisa.tablePageList[i].collect_flag=!thisa.tablePageList[i].collect_flag
-        console.log("show success")
+        //console.log("show success")
       }
       })
   }
 
-  showSuccess(str) {
-    this.toastr.success(str,null,{timeOut: 1500});
-  }
-  showFail(str) {
-    this.toastr.warning(str,null,{timeOut: 1500});
-  }
 
   recover(i){
-    console.log("recover")
+    //console.log("recover")
     let url='api/recover_delete_letter'
     let thisa =  this
     let params={
@@ -222,10 +223,10 @@ export class MyLetterComponent implements OnInit {
    
     this.http.get(url,{params:params}).subscribe(function(res){
       let data = res.json()
-      console.log(data)
+      //console.log(data)
       if(data.data=="recover success"){
         // thisa.tablePageList[i].collect_flag=!thisa.tablePageList[i].collect_flag
-        console.log("recover success  success")
+        //console.log("recover success  success")
         thisa.getPageList()
       }
       })
@@ -240,21 +241,21 @@ export class MyLetterComponent implements OnInit {
       letterID:this.tablePageList[i].letterID,
       // username: thisa.msgService.USERNAME
      }
-    console.log(this.tablePageList[i])
-    console.log(params)
+    //console.log(this.tablePageList[i])
+    //console.log(params)
     this.http.get(url,{params:params}).subscribe(function(res){
       let data = res.json()
       if(data.data=="delete success"){
         // thisa.tablePageList[i].collect_flag=!thisa.tablePageList[i].collect_flag
-        console.log("delete  success")
+        //console.log("delete  success")
         thisa.getPageList()
       }
       })
     
   }
   deleteCollect(id,i){
-    console.log("letterId,i")
-    console.log(this.tablePageList[i])
+    //console.log("letterId,i")
+    //console.log(this.tablePageList[i])
     let url='api/delete_collect_letter'
     let thisa =  this
     let params=null
@@ -274,34 +275,37 @@ export class MyLetterComponent implements OnInit {
       let data = res.json()
       if(data.data=="delete collect success"){
         // thisa.tablePageList[i].collect_flag=!thisa.tablePageList[i].collect_flag
-        // console.log("delete collect success")
+        // //console.log("delete collect success")
         thisa.getPageList()
       }
       })
   }
 
-  report(id){
+  report(id) {
     let url='api/report_letter'
     let thisa =  this
     let params={
       letterID:id,
       // username: thisa.msgService.USERNAME
      }
+     //console.log("report--d--d---")
+     //console.log(params)
     this.http.get(url,{params:params}).subscribe(function(res){
       let data = res.json()
-      console.log("report-------")
-      console.log(data)
+      //console.log("report-------")
+      //console.log(data)
       if(data.data=="report success"){
         // thisa.tablePageList[i].collect_flag=!thisa.tablePageList[i].collect_flag
-        // console.log("delete collect success")
+        // //console.log("delete collect success")
+        thisa.showSuccess('举报成功')
       }
       })
   }
   
   submit(f){
 
-      console.log(" submit  sdfasf")
-      console.log(this.editLetter)
+      //console.log(" submit  sdfasf")
+      //console.log(this.editLetter)
       let data = {
         'letterID':this.editLetter.letterID,
         'flag':f,
@@ -313,9 +317,9 @@ export class MyLetterComponent implements OnInit {
       let thisa=this
       this.http.post(url,null,{params:data}).subscribe(function(res){
           let data=res.json()
-          console.log(data)
+          //console.log(data)
           data=data.data
-          console.log(data)
+          //console.log(data)
           if(data=='edit success'){
             if(f==0){
               thisa.showSuccess('保存成功')
@@ -330,4 +334,6 @@ export class MyLetterComponent implements OnInit {
     
 
   
+}
+
 }

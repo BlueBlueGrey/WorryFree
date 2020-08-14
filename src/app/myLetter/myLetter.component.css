@@ -55,7 +55,7 @@
     margin-bottom:50px;
     height: 220px;
     /* position: absolute; */
-    background:rgba(255, 255, 255, 0.5);
+    background:rgba(255, 255, 255, 0.9);
   }
 
 .mask-box {
@@ -64,7 +64,7 @@
     width: 66%;
     text-align: center;
     min-height: 400px;
-    background: rgba(255, 255, 255, 0.5);
+    background: rgba(255, 255, 255, 0.7);
 
 }
 .modal-dialog {
@@ -80,12 +80,12 @@
   .modal-content {
     padding: 20px 20px 50px 20px;
     width: 100%;
-    background: rgba(255, 255, 255, 0.8);
+    background: rgba(255, 255, 255, 0.7);
     border: none;
   }
   .modal-footer {
     display: inline;
-    /* background: rgba(255, 255, 255, 0.5); */
+    /* background: rgba(255, 255, 255, 0.7); */
   }
   .footer {
     display: flex;
@@ -164,7 +164,7 @@ a{
          width: 100%;
          min-height:100%;
          padding: 15px 20px 0px 20px;
-         background:rgba(255, 255, 255, 0.5);
+         background:rgba(255, 255, 255, 0.9);
       }
       ul{
         padding: 0px;

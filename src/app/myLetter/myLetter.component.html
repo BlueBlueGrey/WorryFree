@@ -6,7 +6,7 @@
 
 <div class="item" *ngFor="let Obj of tablePageList ;let i=index">
 
-  <div class="context" [routerLink]="['/viewletter',Obj.letterID]">
+  <div class="context" [routerLink]="['/viewletter',Obj.letterID?Obj.letterID:Obj.letter_id]">
     {{
       Obj.context
     }}
@@ -20,11 +20,11 @@
     <button  *ngIf="isTrash" mat-button color="primary" (click)="recover(i)">还原</button>
   </div> 
   <div class="bottom" *ngIf="isCollect">
-    <button (click)="report(Obj.letterID,i)" mat-button color="primary">举报</button>
+    <button (click)="report(Obj.letter_id,i)" mat-button color="primary">举报</button>
     <div class="line"></div>
   <button mat-icon-button disabled>
-    <mat-icon *ngIf="!Obj.collect_flag" aria-label="Example icon-button with a heart icon" (click)='collect(Obj.letterID,i)'>favorite_border</mat-icon>
-    <mat-icon *ngIf="Obj.collect_flag" aria-label="Example icon-button with a heart icon" style="color: pink;" (click)='deleteCollect(Obj.letterID,i)'>favorite</mat-icon>
+    <mat-icon *ngIf="!Obj.collect_flag" aria-label="Example icon-button with a heart icon" (click)='collect(Obj.letter_id,i)'>favorite_border</mat-icon>
+    <mat-icon *ngIf="Obj.collect_flag" aria-label="Example icon-button with a heart icon" style="color: pink;" (click)='deleteCollect(Obj.letter_id,i)'>favorite</mat-icon>
   </button>
 </div>
 

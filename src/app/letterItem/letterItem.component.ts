@@ -11,7 +11,7 @@ export class LetterItemComponent implements OnInit {
   constructor(private http:Http) { }
   @Output() fromChild = new EventEmitter();
   ngOnInit() {
-    console.log(this.Obj)
+    //console.log(this.Obj)
   }
   
   @Input() Obj;
@@ -28,12 +28,12 @@ export class LetterItemComponent implements OnInit {
       let data = res.json()
       if(data.data=="collect success"){
         thisa.Obj.collect_flag=!thisa.Obj.collect_flag
-        console.log("show success")
+        //console.log("show success")
       }
       })
   }
   recover(){
-    console.log("recover")
+    //console.log("recover")
     let url='api/recover_delete_letter'
     let thisa =  this
     let params={
@@ -43,10 +43,10 @@ export class LetterItemComponent implements OnInit {
    
     this.http.get(url,{params:params}).subscribe(function(res){
       let data = res.json()
-      console.log(data)
+      //console.log(data)
       if(data.data=="recover success"){
         // thisa.Obj.collect_flag=!thisa.Obj.collect_flag
-        console.log("recover success  success")
+        //console.log("recover success  success")
         thisa.fromChild.emit('recover')
       }
       })
@@ -61,13 +61,13 @@ export class LetterItemComponent implements OnInit {
       letterID:this.Obj.letterID,
       // username: thisa.msgService.USERNAME
      }
-    console.log(this.Obj)
-    console.log(params)
+    //console.log(this.Obj)
+    //console.log(params)
     this.http.get(url,{params:params}).subscribe(function(res){
       let data = res.json()
       if(data.data=="delete success"){
         // thisa.Obj.collect_flag=!thisa.Obj.collect_flag
-        console.log("delete  success")
+        //console.log("delete  success")
         thisa.fromChild.emit('delete')
       }
       })
@@ -84,7 +84,7 @@ export class LetterItemComponent implements OnInit {
       let data = res.json()
       if(data.data=="delete collect success"){
         thisa.Obj.collect_flag=!thisa.Obj.collect_flag
-        console.log("delete collect success")
+        //console.log("delete collect success")
       }
       })
   }
@@ -97,11 +97,11 @@ export class LetterItemComponent implements OnInit {
      }
     this.http.get(url,{params:params}).subscribe(function(res){
       let data = res.json()
-      console.log("report-------")
-      console.log(data)
+      //console.log("report-------")
+      //console.log(data)
       if(data.data=="report success"){
         // thisa.Obj.collect_flag=!thisa.Obj.collect_flag
-        // console.log("delete collect success")
+        // //console.log("delete collect success")
       }
       })
   }

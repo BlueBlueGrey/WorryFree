@@ -22,12 +22,12 @@ export class LloginComponent {
     this.http.get(url).subscribe(function(res){
       let data=res.json()
       if(data==0){
-        console.log('没登录没登录没登录')
+        //console.log('没登录没登录没登录')
         thisa.msgService.loginFlag = true
       }
       else{
-        console.log('登录')
-        console.log(data['nicheng'])
+        //console.log('登录')
+        //console.log(data['nicheng'])
         thisa.msgService.loginFlag = false
         thisa.router.navigate(['/daohang'])
       }
@@ -40,9 +40,9 @@ export class LloginComponent {
       let url = 'apilogin'
       this.http.post(url,null,{params:form}).subscribe(function(data){
         
-        console.log(data['_body'])
+        //console.log(data['_body'])
         if(data['_body']=='0'){
-          console.log('注册成功')
+          //console.log('注册成功')
         }
       });
   }
@@ -52,14 +52,14 @@ export class LloginComponent {
     this.http.post(url,null,{params:form}).subscribe(function(res){
       
       let data =res.json()
-      console.log(data)
+      //console.log(data)
       // if(data!=1){
-      //   console.log("onLoginSubmit")
-      //   console.log(data['nicheng'])
+      //   //console.log("onLoginSubmit")
+      //   //console.log(data['nicheng'])
       //   thisa.router.navigate(['/daohang'])
       //   thisa.msgService.loginFlag = false
       // }else {
-      //   console.log("登录失败")
+      //   //console.log("登录失败")
       // }
     });
 }

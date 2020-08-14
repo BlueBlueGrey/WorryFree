@@ -23,7 +23,7 @@ export class IndexComponent {
       let data=res.json()
       if(data==1){
         thisa.msgService.loginFlag = false
-        console.log('注销')
+        //console.log('注销')
         thisa.msgService.USERNAME = ""
         thisa.router.navigate(['/login'])
       }
@@ -34,17 +34,17 @@ export class IndexComponent {
     let thisa =this
     this.http.get(url).subscribe(function(res){
       let data=res.json()
-      console.log(data)
+      //console.log(data)
       if(data==0){
-        console.log('没登录没登录没登录ii')
+        //console.log('没登录没登录没登录ii')
         thisa.router.navigate(['/login'])
         thisa.msgService.loginFlag = false
       }
       else{
         thisa.msgService.loginFlag = true
         
-        console.log('登录')
-        console.log(data['nicheng'])
+        //console.log('登录')
+        //console.log(data['nicheng'])
         thisa.router.navigate(['/daohang'])
       }
     })
@@ -56,22 +56,22 @@ export class IndexComponent {
       let url = 'apiregister/'
       this.http.post(url,null,{params:form}).subscribe(function(data){
         
-        console.log(data['_body'])
+        //console.log(data['_body'])
         if(data['_body']=='0'){
-          console.log('注册成功')
+          //console.log('注册成功')
         }
       });
   }
   onLoginSubmit(form:any){
     let url = 'apilogin/'
     this.http.post(url,null,{params:form}).subscribe(function(res){
-      console.log(res)
+      //console.log(res)
       let data =res.json()
       if(data!=1){
-        console.log("success")
-        // console.log(json['nicheng'])
+        //console.log("success")
+        // //console.log(json['nicheng'])
       }else {
-        console.log("登录失败")
+        //console.log("登录失败")
       }
     });
 }

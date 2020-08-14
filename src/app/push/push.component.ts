@@ -33,7 +33,7 @@ export class PushComponent implements OnInit {
   constructor(private http:Http,private router:Router) { }
 
   ngOnInit() {
-    console.log("push")
+    //console.log("push")
     this.getPageList()
 
   }
@@ -60,7 +60,7 @@ export class PushComponent implements OnInit {
       this.pageNo = 1;
       this.curPage = 1;
     }
-    console.log(this.pageNo)
+    //console.log(this.pageNo)
   }
   changePage(event){
     this.getPageList(this.theme,this.curPage)
@@ -86,7 +86,7 @@ getPageList(str="",x=1) {
     thisa.tablePageList=[]
     let len = data.length-1
     thisa.totalCount = data[len]['all_count']
-    console.log(thisa.totalCount)
+    //console.log(thisa.totalCount)
     thisa.setPageParams()
     for(var i=0;i<data.length-1;i++){
       thisa.tablePageList.push(data[i])
@@ -105,7 +105,7 @@ collect(xinli_id,index){
     let data = res.json()
     if(data.data==" collect success"){
       thisa.tablePageList[index].collect_flag=!thisa.tablePageList[index].collect_flag
-      console.log("show success")
+      //console.log("show success")
     }
     })
 }
@@ -120,7 +120,7 @@ deleteCollect(xinli_id,index){
     let data = res.json()
     if(data.data=="delete collect success"){
       thisa.tablePageList[index].collect_flag=!thisa.tablePageList[index].collect_flag
-      console.log("delete collect success")
+      //console.log("delete collect success")
     }
     })
 }

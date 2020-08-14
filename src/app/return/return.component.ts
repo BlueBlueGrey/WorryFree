@@ -15,7 +15,7 @@ export class ReturnComponent implements OnInit {
   ngOnInit() {
   }
  test(){
-   console.log("sadf")
+   //console.log("sadf")
  }
  clickContext(){
    let data={
@@ -23,6 +23,6 @@ export class ReturnComponent implements OnInit {
      index:this.index
    }
    this.fromChild.emit(data)
-   console.log(this.obj)
+   //console.log(this.obj)
  }
 }

@@ -20,15 +20,15 @@ export class LetterComponent implements OnInit {
   
   constructor(public route:Router,public activatedroute:ActivatedRoute,private toastr: ToastrService,private http:Http,private router:Router) { 
     this.id = this.activatedroute.snapshot.params['id'];
-    console.log(this.id)
+    //console.log(this.id)
     if(this.id)
     {
       this.isEdit=true
-      console.log("this.isEdit=true")
+      //console.log("this.isEdit=true")
       
     }
     else{
-      console.log("write")
+      //console.log("write")
     }
   }
   showSuccess(str) {
@@ -42,9 +42,9 @@ export class LetterComponent implements OnInit {
     let thisa =this
     this.http.get(url).subscribe(function(res){
       let data=res.json()
-      console.log(data)
+      //console.log(data)
       if(data==0){
-        console.log('没登录没登录没登录')
+        //console.log('没登录没登录没登录')
         // thisa.router.navigate(['/login'])
         thisa.msgService.loginFlag = false
         thisa.msgService.USERNAME=""
@@ -52,8 +52,8 @@ export class LetterComponent implements OnInit {
       else{
         thisa.msgService.loginFlag = true
         thisa.msgService.USERNAME = data['username']
-        console.log('登录')
-        console.log(data['username'])
+        //console.log('登录')
+        //console.log(data['username'])
         // thisa.router.navigate(['/square'])
       }
     })
@@ -99,9 +99,9 @@ export class LetterComponent implements OnInit {
       let thisa=this
       this.http.post(url,null,{params:data}).subscribe(function(res){
           let data=res.json()
-          console.log(data)
+          //console.log(data)
           data=data.data
-          console.log(data)
+          //console.log(data)
           if(data=='reply success'){
             if(f==0){
               thisa.showSuccess('保存成功')

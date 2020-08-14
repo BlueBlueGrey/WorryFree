@@ -44,13 +44,15 @@ export class ViewletterComponent implements OnInit {
   obj={
     reply_context:"nice to meet you",
     collect_flag:1
-  }
+  };
+
   showReply={
     reply_context:"nice to meet you too",
-    collect_flag:1
-  }
-  msgService = MsgService.getInstance()
-  id=""
+    collect_flag:1,
+    id:0
+  };
+  msgService = MsgService.getInstance();
+  id="";
   constructor(public route:Router,
     public activatedroute:ActivatedRoute,
     private toastr: ToastrService,
@@ -66,14 +68,14 @@ export class ViewletterComponent implements OnInit {
   ngOnInit(){
     let url='api/getSession'
     this.id = this.activatedroute.snapshot.params['id']
-    console.log("id")
-    console.log(this.id)
+    //console.log("id")
+    //console.log(this.id)
     let thisa =this
     this.http.get(url).subscribe(function(res){
       let data=res.json()
-      console.log(data)
+      //console.log(data)
       if(data==0){
-        console.log('没登录没登录没登录')
+        //console.log('没登录没登录没登录')
         // thisa.router.navigate(['/login'])
         thisa.msgService.loginFlag = false
         thisa.msgService.USERNAME=""
@@ -81,8 +83,8 @@ export class ViewletterComponent implements OnInit {
       else{
         thisa.msgService.loginFlag = true
         thisa.msgService.USERNAME = data['username']
-        console.log('登录')
-        console.log(data['username'])
+        //console.log('登录')
+        //console.log(data['username'])
         // thisa.router.navigate(['/square'])
       }
     })
@@ -98,10 +100,10 @@ export class ViewletterComponent implements OnInit {
     let thisa =this
     this.http.get(url,{params:params}).subscribe(function(res){
       let data=res.json()
-      console.log(data)
+      //console.log(data)
       thisa.letter=data[0]
       // if(data==0){
-      //   console.log('没登录没登录没登录')
+      //   //console.log('没登录没登录没登录')
       //   // thisa.router.navigate(['/login'])
       //   thisa.msgService.loginFlag = false
       //   thisa.msgService.USERNAME=""
@@ -109,8 +111,8 @@ export class ViewletterComponent implements OnInit {
       // else{
       //   thisa.msgService.loginFlag = true
       //   thisa.msgService.USERNAME = data['username']
-      //   console.log('登录')
-      //   console.log(data['username'])
+      //   //console.log('登录')
+      //   //console.log(data['username'])
       //   // thisa.router.navigate(['/square'])
       // }
     })
@@ -171,7 +173,51 @@ export class ViewletterComponent implements OnInit {
     history.go(-1);
   }
 
+ report() {
+   //console.log("举报举报")
+  let url='api/report_letter'
+  let thisa =  this
+  let params={
+    letterID:this.id,
+    // username: thisa.msgService.USERNAME
+   }
+   //console.log("report--d--d---")
+   //console.log(params)
+  this.http.get(url,{params:params}).subscribe(function(res){
+    let data = res.json()
+    //console.log("report-------")
+    //console.log(data)
+    if(data.data=="report success"){
+      // thisa.tablePageList[i].collect_flag=!thisa.tablePageList[i].collect_flag
+      // //console.log("delete collect success")
+      thisa.showSuccess('举报成功')
+    }
+    })
+   
+ }
 
+ report2(){
+  //console.log(this.showReply)
+  let url='api/report_reply_letter'
+  let thisa =  this
+  let params={
+    reply_id:this.showReply.id,
+    // username: thisa.msgService.USERNAME
+   }
+   //console.log("report--reply---")
+   //console.log(params)
+  this.http.get(url,{params:params}).subscribe(function(res){
+    let data = res.json()
+    //console.log("report-------")
+    //console.log(data)
+    if(data.data=="report success"){
+      // thisa.tablePageList[i].collect_flag=!thisa.tablePageList[i].collect_flag
+      // //console.log("delete collect success")
+      thisa.showSuccess('举报成功')
+    }
+    })
+
+ }
   test(){
 
   }
@@ -183,18 +229,18 @@ export class ViewletterComponent implements OnInit {
     this.bsModalRef = this.modalService.show(ChildComponent, { initialState,class:'m-content' ,backdrop:false});
     // 子组件关闭后，触发的订阅函数
     this.modalService.onHidden.subscribe(() => {
-      console.log('title', this.bsModalRef.content.showReply);
+      //console.log('title', this.bsModalRef.content.showReply);
 
     });
     this.bsModalRef.content.onClose = (msg: string) => {
-      console.log('msg', msg);
+      //console.log('msg', msg);
       this.bsModalRef.hide();
     }
 
   }
   fromChildFunc(data){
     this.showReply=data.showReply
-    console.log(data)
+    //console.log(data)
     this.showModal(data.index)
   }
   checkLogin(){
@@ -218,8 +264,8 @@ export class ViewletterComponent implements OnInit {
       let thisa=this
       this.http.post(url,null,{params:data}).subscribe(function(res){
           let data=res.json()
-          console.log("submit")
-          console.log(data)
+          //console.log("submit")
+          //console.log(data)
           if(data==1){
             if(f==0){
               thisa.showSuccess('保存成功')

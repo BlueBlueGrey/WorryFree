@@ -20,7 +20,7 @@
     width: 200px;
     padding-right: 12px;
     height:500px;
-    background:rgba(255, 255, 255, 0.5);
+    background:rgba(255, 255, 255, 0.9);
   }
 #right {
     /* 此处解释下
@@ -33,7 +33,7 @@
     width: 70%;
     /* height: 90%; */
     /* margin: 50px 30px; */
-    /* background:rgba(255, 255, 255, 0.5); */
+    /* background:rgba(255, 255, 255, 0.9); */
   }
   .yleft { 
     position: absolute;
@@ -82,7 +82,7 @@
     margin-bottom:50px;
     height: 220px;
     /* position: absolute; */
-    background:rgba(255, 255, 255, 0.5);
+    background:rgba(255, 255, 255, 0.9);
   }
 
 .mask-box {
@@ -91,7 +91,7 @@
     width: 66%;
     text-align: center;
     min-height: 400px;
-    background: rgba(255, 255, 255, 0.5);
+    background: rgba(255, 255, 255, 0.7);
 
 }
 mat-grid-tile {
@@ -144,7 +144,7 @@ ul li {
 }
 .modal-footer {
   display: inline;
-  /* background: rgba(255, 255, 255, 0.5); */
+  /* background: rgba(255, 255, 255, 0.7); */
 }
 .footer {
   display: flex;
@@ -183,7 +183,7 @@ ul li {
        width: 100%;
        min-height:100%;
        padding: 15px 20px 0px 20px;
-       background:rgba(255, 255, 255, 0.5);
+       background:rgba(255, 255, 255, 0.9);
     }
     ul{
       padding: 0px;

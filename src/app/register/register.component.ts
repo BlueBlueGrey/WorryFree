@@ -30,7 +30,7 @@ export class RegisterComponent implements OnInit {
       "password":this.password,
       "email":this.email
     };
-    console.log("register============");
+    //console.log("register============");
     // 跨域 get
     let url = 'apiregister/';
     let thisa=this
@@ -45,7 +45,7 @@ export class RegisterComponent implements OnInit {
     });
   }
   checkPassword(event){
-    console.log(event);
+    //console.log(event);
   }
 
 }

@@ -11,8 +11,8 @@
 }
 input {
     margin-top: 40px;
-    background: rgba(255, 255, 255, 0.5);
-    border: 1px solid rgba(255, 255, 255, 0.5);
+    background: rgba(255, 255, 255, 0.7);
+    border: 1px solid rgba(255, 255, 255, 0.9);
     width: 100%;
 }
 .labelg{
@@ -34,13 +34,13 @@ input {
     margin-top: 80px;
     /* text-align: center; */
     min-height: 400px;
-    background: rgba(255, 255, 255, 0.5);
+    background: rgba(255, 255, 255, 0.7);
 }
 #left {
     flex: 0 0 200px; /* 左侧固定200px */
     margin: 50px 10px;
     height:90%;
-    background:rgba(255, 255, 255, 0.5);;
+    background:rgba(255, 255, 255, 0.9);;
   }
   #right {
     /* 此处解释下
@@ -50,7 +50,7 @@ input {
     flex: 1; /* 随父级变化 */
     height: 90%;
     margin: 50px 30px;
-    background:rgba(255, 255, 255, 0.5);;
+    background:rgba(255, 255, 255, 0.9);;
   }
 
 .mask-box {
@@ -59,7 +59,7 @@ input {
     width: 66%;
     text-align: center;
     min-height: 400px;
-    background: rgba(255, 255, 255, 0.5);
+    background: rgba(255, 255, 255, 0.7);
 
 }
 mat-grid-tile {

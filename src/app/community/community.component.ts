@@ -89,22 +89,22 @@ export class CommunityComponent implements OnInit {
 
   changePage(event){
       this.getPageList(this.theme,this.curPage)
-      console.log("createNonceStr")
-    console.log("createNonceStr")
-    console.log("createNonceStr")
-    console.log("createNonceStr")
+      //console.log("createNonceStr")
+    //console.log("createNonceStr")
+    //console.log("createNonceStr")
+    //console.log("createNonceStr")
     let s=this.msgService.createNonceStr()
-    console.log(s);
-    console.log("createNonceStr")
+    //console.log(s);
+    //console.log("createNonceStr")
   }
   ngOnInit() {
-    console.log("createNonceStr")
-    console.log("createNonceStr")
-    console.log("createNonceStr")
-    console.log("createNonceStr")
+    //console.log("createNonceStr")
+    //console.log("createNonceStr")
+    //console.log("createNonceStr")
+    //console.log("createNonceStr")
     let s=this.msgService.createNonceStr()
-    console.log(s);
-    console.log("createNonceStr")
+    //console.log(s);
+    //console.log("createNonceStr")
     this.showLetter={
       "letter_topic":"",
       "context":"",
@@ -170,7 +170,7 @@ export class CommunityComponent implements OnInit {
       let data = res.json()
       if(data.data=="collect success"){
         thisa.tablePageList[index].collect_flag=!thisa.tablePageList[index].collect_flag
-        console.log("show success")
+        //console.log("show success")
       }
       })
   }
@@ -185,7 +185,7 @@ export class CommunityComponent implements OnInit {
       let data = res.json()
       if(data.data=="delete collect success"){
         thisa.tablePageList[index].collect_flag=!thisa.tablePageList[index].collect_flag
-        console.log("delete collect success")
+        //console.log("delete collect success")
       }
       })
   }

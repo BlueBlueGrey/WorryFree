@@ -26,7 +26,7 @@ export class ChildComponent implements OnInit {
     this.onClose('close');
   }
   test2() {
-    console.log("child test")
+    //console.log("child test")
     this.showReply.collect_flag=!this.showReply.collect_flag
   }
   test(){

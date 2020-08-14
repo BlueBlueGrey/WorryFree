@@ -23,7 +23,7 @@ export class PushItemComponent implements OnInit {
       //   function(res){
       //     let data = res.json()
       //   if(data.data=="delete collect success"){
-      //     console.log("delete collect success")
+      //     //console.log("delete collect success")
       //     thisa.fromChild.emit('delete')
       //   }
       //   }

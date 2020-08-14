@@ -18,9 +18,9 @@ export class SquareComponent implements OnInit {
     let thisa =this
     this.http.get(url).subscribe(function(res){
       let data=res.json()
-      console.log(data)
+      //console.log(data)
       if(data==0){
-        console.log('没登录没登录没登录')
+        //console.log('没登录没登录没登录')
         thisa.router.navigate(['/login'])
         thisa.msgService.loginFlag = false
         thisa.msgService.USERNAME = ""
@@ -28,17 +28,17 @@ export class SquareComponent implements OnInit {
       else{
         thisa.msgService.loginFlag = true
         thisa.msgService.USERNAME = data['username']
-        console.log('登录')
-        console.log(data['username'])
+        //console.log('登录')
+        //console.log(data['username'])
         thisa.router.navigate(['/square'])
       }
     });
-    console.log(this.activatedroute)
+    //console.log(this.activatedroute)
     this.activatedroute.data.subscribe(function(res){
 
-        console.log("------");
-        console.log(res)
-        console.log("------");
+        //console.log("------");
+        //console.log(res)
+        //console.log("------");
 
     });
   }
@@ -65,7 +65,7 @@ export class SquareComponent implements OnInit {
       if(data==1){
         thisa.msgService.loginFlag = false
         thisa.msgService.USERNAME = ""
-        console.log('注销')
+        //console.log('注销')
         thisa.router.navigate(['/login'])
       }
     })

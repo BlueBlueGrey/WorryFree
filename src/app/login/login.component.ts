@@ -29,7 +29,7 @@ export class LoginComponent implements OnInit {
       if(data==1){
         thisa.msgService.loginFlag = false
         thisa.msgService.USERNAME = ""
-        console.log('注销')
+        //console.log('注销')
         thisa.router.navigate(['/login'])
       }
     })
@@ -39,17 +39,17 @@ export class LoginComponent implements OnInit {
     let thisa =this
     this.http.get(url).subscribe(function(res){
       let data=res.json()
-      console.log(data)
+      //console.log(data)
       if(data==0){
-        console.log('没登录没登录没登录')
+        //console.log('没登录没登录没登录')
         thisa.router.navigate(['/login'])
         thisa.msgService.loginFlag = false
       }
       else{
         thisa.msgService.loginFlag = true
         thisa.msgService.USERNAME = data['username']
-        console.log('登录')
-        console.log(data['username'])
+        //console.log('登录')
+        //console.log(data['username'])
         thisa.router.navigate(['/square'])
       }
     })
@@ -66,7 +66,7 @@ export class LoginComponent implements OnInit {
     this.http.post(url,null,{params:data}).subscribe(function(res){
       
       let data =res.json()
-      console.log(data)
+      //console.log(data)
       if(data!=0){
         thisa.showSuccess()
         thisa.router.navigate(['/square'])

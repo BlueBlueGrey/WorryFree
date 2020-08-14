@@ -31,14 +31,14 @@ export class ViewreplyComponent implements OnInit {
   ngOnInit(){
     let url='api/getSession'
     this.id = this.activatedroute.snapshot.params['id']
-    console.log("id")
-    console.log(this.id)
+    //console.log("id")
+    //console.log(this.id)
     let thisa =this
     this.http.get(url).subscribe(function(res){
       let data=res.json()
-      console.log(data)
+      //console.log(data)
       if(data==0){
-        console.log('没登录没登录没登录')
+        //console.log('没登录没登录没登录')
         // thisa.router.navigate(['/login'])
         thisa.msgService.loginFlag = false
         thisa.msgService.USERNAME=""
@@ -46,8 +46,8 @@ export class ViewreplyComponent implements OnInit {
       else{
         thisa.msgService.loginFlag = true
         thisa.msgService.USERNAME = data['username']
-        console.log('登录')
-        console.log(data['username'])
+        //console.log('登录')
+        //console.log(data['username'])
         // thisa.router.navigate(['/square'])
       }
     })
@@ -61,10 +61,10 @@ export class ViewreplyComponent implements OnInit {
     let thisa =this
     this.http.get(url,{params:params}).subscribe(function(res){
       let data=res.json()
-      console.log(data)
+      //console.log(data)
       thisa.letter=data[0]
       // if(data==0){
-      //   console.log('没登录没登录没登录')
+      //   //console.log('没登录没登录没登录')
       //   // thisa.router.navigate(['/login'])
       //   thisa.msgService.loginFlag = false
       //   thisa.msgService.USERNAME=""
@@ -72,8 +72,8 @@ export class ViewreplyComponent implements OnInit {
       // else{
       //   thisa.msgService.loginFlag = true
       //   thisa.msgService.USERNAME = data['username']
-      //   console.log('登录')
-      //   console.log(data['username'])
+      //   //console.log('登录')
+      //   //console.log(data['username'])
       //   // thisa.router.navigate(['/square'])
       // }
     })
@@ -102,8 +102,8 @@ export class ViewreplyComponent implements OnInit {
       let thisa=this
       this.http.post(url,null,{params:data}).subscribe(function(res){
           let data=res.json()
-          console.log("submit")
-          console.log(data)
+          //console.log("submit")
+          //console.log(data)
           if(data==1){
             if(f==0){
               thisa.showSuccess('保存成功')

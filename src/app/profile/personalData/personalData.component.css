@@ -5,3 +5,11 @@
 div{
     padding: 8px;
 }
+
+@media screen and (max-width:600px) {
+    .person{
+        height: auto;
+        margin-left:30px;
+        padding-bottom: 50px;
+    }
+}

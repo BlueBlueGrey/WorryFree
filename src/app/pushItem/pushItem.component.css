@@ -45,7 +45,7 @@
     margin-bottom:30px;
     height: 220px;
     /* position: absolute; */
-    background:rgba(255, 255, 255, 0.5);
+    background:rgba(255, 255, 255, 0.9);
   }
 mat-grid-tile {
     background: lightblue; 
@@ -81,7 +81,7 @@ mat-grid-tile {
        width: 100%;
        min-height:100%;
        padding: 15px 20px 0px 20px;
-       background:rgba(255, 255, 255, 0.5);
+       background:rgba(255, 255, 255, 0.9);
     }
     ul{
       padding: 0px;

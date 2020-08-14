@@ -10,8 +10,10 @@
       }}
     </div>
     <button mat-raised-button style="float: right; box-shadow: rgba(128, 128, 128, 1) solid 1px;" [routerLink]="['/reply',letter.letterID]">回信</button>
+    <div class="report">
+    <button mat-button (click)="report()" class="report-a" color="warn">举报</button>
   </div>
-
+  </div>
 
   <div class="return">
     <div *ngFor="let obj of tablePageList;let i = index;">
@@ -21,10 +23,12 @@
         <path d="M40 8H8c-2.21 0-3.98 1.79-3.98 4L4 36c0 2.21 1.79 4 4 4h32c2.21 0 4-1.79 4-4V12c0-2.21-1.79-4-4-4zm0 28H8V16l16 10 16-10v20zM24 22L8 12h32L24 22z"></path>
       </svg>
     <div class="context" (click)='clickContext(myModal,i)'>{{ obj.reply_context }}</div>
-    <div class="heart"><button mat-icon-button disabled>
+    <div class="heart">
+    <button mat-icon-button disabled>
       <mat-icon *ngIf="!obj.collect_flag" aria-label="Example icon-button with a heart icon" (click)='test2()'>favorite_border</mat-icon>
       <mat-icon *ngIf="obj.collect_flag" aria-label="Example icon-button with a heart icon" style="color: pink;" (click)='deleteCollect(obj.letterID,i)'>favorite</mat-icon>
     </button>
+    
     </div>
 
     </div>
@@ -62,12 +66,17 @@
               word-wrap: break-word;">
                 {{ showReply.reply_context }}
               </p>
-              <div style="float: right;">
+              <div class="bottom">
                 <!-- <button type="button" class="btn btn-outline-secondary">确定</button> -->
-                <button mat-icon-button disabled style="justify-content: flex-end;">
-                  <mat-icon *ngIf="!showReply.collect_flag" aria-label="Example icon-button with a heart icon" (click)='test()'>favorite_border</mat-icon>
-        <mat-icon *ngIf="showReply.collect_flag" aria-label="Example icon-button with a heart icon" (click)='test()'>favorite</mat-icon>
-                </button>
+               
+
+                <button (click)="report2()" mat-button color="primary">举报</button>
+    <div class="line"></div>
+    <button mat-icon-button disabled style="justify-content: flex-end; width: 80px;">
+      <mat-icon *ngIf="!showReply.collect_flag" aria-label="Example icon-button with a heart icon" (click)='test()'>favorite_border</mat-icon>
+<mat-icon *ngIf="showReply.collect_flag" aria-label="Example icon-button with a heart icon" (click)='test()'>favorite</mat-icon>
+    </button>
+
               </div>
             </div>
 

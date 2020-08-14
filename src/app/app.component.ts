@@ -23,10 +23,10 @@ export class AppComponent {
     this.bsModalRef = this.modalService.show(ChildComponent, { initialState });
     // 子组件关闭后，触发的订阅函数
     this.modalService.onHidden.subscribe(() => {
-      console.log('title', this.bsModalRef.content.title);
+      //console.log('title', this.bsModalRef.content.title);
     });
     this.bsModalRef.content.onClose = (msg: string) => {
-      console.log('msg', msg);
+      //console.log('msg', msg);
       this.bsModalRef.hide();
     }
   }

@@ -29,7 +29,7 @@ export class ReplyItemComponent implements OnInit {
       let data = res.json()
       if(data.data=="collect success"){
         thisa.Obj.collect_flag=!thisa.Obj.collect_flag
-        console.log("show success")
+        //console.log("show success")
       }
       })
   }
@@ -44,7 +44,7 @@ export class ReplyItemComponent implements OnInit {
       let data = res.json()
       if(data.data=="delete collect success"){
         thisa.Obj.collect_flag=!thisa.Obj.collect_flag
-        console.log("delete collect success")
+        //console.log("delete collect success")
       }
       })
   }

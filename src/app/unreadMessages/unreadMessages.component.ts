@@ -39,7 +39,7 @@ export class UnreadMessagesComponent implements OnInit {
     }
     this.http.get(url,{params:params}).subscribe(function(res){
       let data=res.json()
-      console.log(data)
+      //console.log(data)
     })
     
   }
@@ -75,7 +75,7 @@ export class UnreadMessagesComponent implements OnInit {
       this.pageNo = 1;
       this.curPage = 1;
     }
-    console.log(this.pageNo)
+    //console.log(this.pageNo)
   }
   changePage(event){
     this.getPageList(this.curPage)
@@ -89,11 +89,11 @@ getPageList(x=1) {
    }
   this.http.get(url,{params:params}).subscribe(function(res){
     let data = res.json()
-    console.log(data)
+    //console.log(data)
     thisa.tablePageList=[]
     let len = data.length-1
     thisa.totalCount = data[len]['all_count']
-    console.log(thisa.totalCount)
+    //console.log(thisa.totalCount)
     thisa.setPageParams()
     for(var i=0;i<data.length-1;i++){
       thisa.tablePageList.push(data[i])
@@ -111,11 +111,11 @@ report(id){
    }
   this.http.get(url,{params:params}).subscribe(function(res){
     let data = res.json()
-    console.log("report-------")
-    console.log(data)
+    //console.log("report-------")
+    //console.log(data)
     if(data.data=="report success"){
       // thisa.Obj.collect_flag=!thisa.Obj.collect_flag
-      // console.log("delete collect success")
+      // //console.log("delete collect success")
     }
     })
 }
