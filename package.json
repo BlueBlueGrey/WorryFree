@@ -26,7 +26,7 @@
     "core-js": "^2.5.4",
     "crypto-js": "^4.0.0",
     "jquery": "^3.5.1",
-    "jsrsasign": "^8.0.22",
+    "jsrsasign": "^10.5.25",
     "ngx-bootstrap": "^2.0.2",
     "ngx-swiper-wrapper": "^4.9.0",
     "ngx-toastr": "^10.1.0",
